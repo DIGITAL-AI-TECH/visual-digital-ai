@@ -1,0 +1,119 @@
+/* =====================================================
+   Digital AI — Motion System
+   Arquétipo Sábio + Herói: precise, purposeful, confident
+   ===================================================== */
+
+:root {
+  /* ── Durations ── */
+  --duration-instant:  0ms;
+  --duration-fast:     100ms;
+  --duration-normal:   200ms;
+  --duration-slow:     300ms;
+  --duration-slower:   500ms;
+  --duration-slowest:  800ms;
+
+  /* ── Easings ── */
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);   /* Precise, balanced */
+  --easing-in:      cubic-bezier(0.4, 0, 1, 1);      /* Entering fast */
+  --easing-out:     cubic-bezier(0, 0, 0.2, 1);      /* Exiting smooth */
+  --easing-spring:  cubic-bezier(0.34, 1.56, 0.64, 1); /* Heroic bounce */
+  --easing-linear:  linear;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes slideInUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes slideInDown {
+  from { transform: translateY(-16px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { transform: translateX(-16px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(16px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+@keyframes scaleOut {
+  from { transform: scale(1);    opacity: 1; }
+  to   { transform: scale(0.95); opacity: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.6; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* ── Animation Utility Classes ── */
+.animate-fade-in      { animation: fadeIn       var(--duration-normal)  var(--easing-out) both; }
+.animate-fade-out     { animation: fadeOut      var(--duration-normal)  var(--easing-in)  both; }
+.animate-slide-up     { animation: slideInUp    var(--duration-slow)    var(--easing-out) both; }
+.animate-slide-down   { animation: slideInDown  var(--duration-slow)    var(--easing-out) both; }
+.animate-slide-left   { animation: slideInLeft  var(--duration-slow)    var(--easing-out) both; }
+.animate-slide-right  { animation: slideInRight var(--duration-slow)    var(--easing-out) both; }
+.animate-scale-in     { animation: scaleIn      var(--duration-normal)  var(--easing-spring) both; }
+.animate-scale-out    { animation: scaleOut     var(--duration-fast)    var(--easing-in)  both; }
+.animate-pulse        { animation: pulse        2s                       var(--easing-default) infinite; }
+.animate-spin         { animation: spin         1s                       var(--easing-linear)  infinite; }
+
+/* ── Transition Utilities ── */
+.transition-all     { transition: all var(--duration-normal) var(--easing-default); }
+.transition-colors  { transition: color var(--duration-fast) var(--easing-default), background-color var(--duration-fast) var(--easing-default), border-color var(--duration-fast) var(--easing-default); }
+.transition-shadow  { transition: box-shadow var(--duration-normal) var(--easing-default); }
+.transition-transform { transition: transform var(--duration-normal) var(--easing-default); }
+.transition-opacity { transition: opacity var(--duration-fast) var(--easing-default); }
+.transition-none    { transition: none; }
+
+/* ── Duration Modifiers ── */
+.duration-fast    { animation-duration: var(--duration-fast)    !important; }
+.duration-normal  { animation-duration: var(--duration-normal)  !important; }
+.duration-slow    { animation-duration: var(--duration-slow)    !important; }
+.duration-slower  { animation-duration: var(--duration-slower)  !important; }
+
+/* ── Delay Utilities ── */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ── Skeleton / Shimmer ── */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-hover) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--border-radius-md);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in, .animate-fade-out, .animate-slide-up, .animate-slide-down,
+  .animate-slide-left, .animate-slide-right, .animate-scale-in, .animate-scale-out,
+  .animate-pulse, .animate-spin, .skeleton { animation: none !important; }
+  .transition-all, .transition-colors, .transition-shadow, .transition-transform, .transition-opacity { transition: none !important; }
+}

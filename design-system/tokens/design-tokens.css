@@ -1,0 +1,304 @@
+/* =====================================================
+   Digital AI — Design Tokens CSS
+   Generated from brand-identity.md
+   Do not edit manually — update source tokens instead
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ── Brand Colors ── */
+  --color-brand-50: #EEF1FF;
+  --color-brand-100: #E0E5FF;
+  --color-brand-200: #C7CFFF;
+  --color-brand-300: #A5B0FF;
+  --color-brand-400: #7A88FF;
+  --color-brand-500: #2D52EF;
+  --color-brand-600: #2344D4;
+  --color-brand-700: #1A35B8;
+  --color-brand-800: #3B2FC9;
+  --color-brand-900: #0F1F5C;
+  --color-brand-950: #080F2E;
+
+  /* ── Accent ── */
+  --color-accent-50: #F8F9FF;
+  --color-accent-100: #E8EEFF;
+  --color-accent-200: #D4DCFF;
+  --color-accent-300: #B8C4FF;
+
+  /* ── Neutral ── */
+  --color-neutral-50: #F8F9FA;
+  --color-neutral-100: #F1F3F5;
+  --color-neutral-200: #E9ECEF;
+  --color-neutral-300: #DEE2E6;
+  --color-neutral-400: #CED4DA;
+  --color-neutral-500: #ADB5BD;
+  --color-neutral-600: #868E96;
+  --color-neutral-700: #495057;
+  --color-neutral-800: #343A40;
+  --color-neutral-900: #212529;
+  --color-neutral-950: #0D0F12;
+
+  /* ── Feedback ── */
+  --color-feedback-success: #22C55E;
+  --color-feedback-success-bg: #F0FDF4;
+  --color-feedback-success-text: #15803D;
+  --color-feedback-error: #EF4444;
+  --color-feedback-error-bg: #FEF2F2;
+  --color-feedback-error-text: #DC2626;
+  --color-feedback-warning: #F59E0B;
+  --color-feedback-warning-bg: #FFFBEB;
+  --color-feedback-warning-text: #B45309;
+  --color-feedback-info: #2D52EF;
+  --color-feedback-info-bg: #E8EEFF;
+  --color-feedback-info-text: #1A35B8;
+
+  /* ── Semantic — Light Mode ── */
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-600);
+  --text-tertiary: var(--color-neutral-500);
+  --text-disabled: var(--color-neutral-400);
+  --text-inverse: var(--color-neutral-50);
+  --text-on-action: #FFFFFF;
+  --text-brand: var(--color-brand-500);
+  --text-link: var(--color-brand-500);
+  --text-link-hover: var(--color-brand-700);
+  --text-error: var(--color-feedback-error-text);
+  --text-success: var(--color-feedback-success-text);
+
+  --bg-page: var(--color-neutral-50);
+  --bg-primary: #FFFFFF;
+  --bg-secondary: var(--color-neutral-100);
+  --bg-elevated: #FFFFFF;
+  --bg-overlay: rgba(15,31,92,0.5);
+  --bg-hover: var(--color-neutral-100);
+  --bg-active: var(--color-neutral-200);
+  --bg-disabled: var(--color-neutral-100);
+  --bg-brand: var(--color-brand-900);
+  --bg-brand-subtle: var(--color-accent-100);
+  --bg-status-success: var(--color-feedback-success-bg);
+  --bg-status-error: var(--color-feedback-error-bg);
+  --bg-status-warning: var(--color-feedback-warning-bg);
+  --bg-status-info: var(--color-feedback-info-bg);
+
+  --border-default: var(--color-neutral-300);
+  --border-subtle: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-400);
+  --border-focus: var(--color-brand-500);
+  --border-error: var(--color-feedback-error);
+  --border-success: var(--color-feedback-success);
+  --border-brand: var(--color-brand-500);
+
+  --action-primary: var(--color-brand-500);
+  --action-primary-hover: var(--color-brand-600);
+  --action-primary-active: var(--color-brand-700);
+  --action-secondary: var(--color-brand-800);
+
+  --focus-ring: var(--color-brand-500);
+  --focus-ring-offset: #FFFFFF;
+
+  /* ── Sizing ── */
+  --sizing-xs: 24px;
+  --sizing-sm: 32px;
+  --sizing-md: 40px;
+  --sizing-lg: 48px;
+  --sizing-xl: 56px;
+  --sizing-2xl: 64px;
+  --sizing-3xl: 80px;
+  --sizing-4xl: 96px;
+  --sizing-icon-sm: 16px;
+  --sizing-icon-md: 20px;
+  --sizing-icon-lg: 24px;
+  --sizing-icon-xl: 32px;
+  --sizing-avatar-sm: 32px;
+  --sizing-avatar-md: 40px;
+  --sizing-avatar-lg: 56px;
+  --sizing-avatar-xl: 80px;
+
+  /* ── Spacing ── */
+  --spacing-1x: 4px;
+  --spacing-2x: 8px;
+  --spacing-3x: 12px;
+  --spacing-4x: 16px;
+  --spacing-5x: 20px;
+  --spacing-6x: 24px;
+  --spacing-8x: 32px;
+  --spacing-10x: 40px;
+  --spacing-12x: 48px;
+  --spacing-16x: 64px;
+  --spacing-20x: 80px;
+  --spacing-24x: 96px;
+
+  /* ── Typography ── */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* ── Border ── */
+  --border-width-none: 0px;
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+  --border-width-heavy: 4px;
+
+  --border-radius-none: 0px;
+  --border-radius-xs: 2px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-2xl: 24px;
+  --border-radius-3xl: 32px;
+  --border-radius-full: 9999px;
+
+  /* ── Shadow ── */
+  --shadow-none: none;
+  --shadow-xs: 0px 1px 2px 0px rgba(15,31,92,0.06);
+  --shadow-sm: 0px 1px 3px 0px rgba(15,31,92,0.10), 0px 1px 2px -1px rgba(15,31,92,0.10);
+  --shadow-md: 0px 4px 6px -1px rgba(15,31,92,0.10), 0px 2px 4px -2px rgba(15,31,92,0.08);
+  --shadow-lg: 0px 10px 15px -3px rgba(15,31,92,0.12), 0px 4px 6px -4px rgba(15,31,92,0.08);
+  --shadow-xl: 0px 20px 25px -5px rgba(15,31,92,0.14), 0px 8px 10px -6px rgba(15,31,92,0.08);
+  --shadow-2xl: 0px 25px 50px -12px rgba(15,31,92,0.25);
+  --shadow-inner: inset 0px 2px 4px 0px rgba(15,31,92,0.06);
+  --shadow-brand: 0px 4px 20px -2px rgba(45,82,239,0.30);
+  --shadow-brand-strong: 0px 8px 32px -4px rgba(45,82,239,0.40);
+
+  /* ── Z-Index ── */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 30;
+  --z-modal: 40;
+  --z-notification: 45;
+  --z-tooltip: 50;
+
+  /* ── Opacity ── */
+  --opacity-0: 0;
+  --opacity-5: 0.05;
+  --opacity-10: 0.10;
+  --opacity-20: 0.20;
+  --opacity-25: 0.25;
+  --opacity-30: 0.30;
+  --opacity-40: 0.40;
+  --opacity-50: 0.50;
+  --opacity-60: 0.60;
+  --opacity-70: 0.70;
+  --opacity-75: 0.75;
+  --opacity-80: 0.80;
+  --opacity-90: 0.90;
+  --opacity-95: 0.95;
+  --opacity-100: 1;
+
+  /* ── Motion ── */
+  --duration-instant: 0ms;
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 500ms;
+  --duration-slowest: 800ms;
+
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-linear: linear;
+}
+
+/* ── Dark Mode ── */
+[data-theme="dark"] {
+  --text-primary: var(--color-neutral-50);
+  --text-secondary: var(--color-neutral-400);
+  --text-tertiary: var(--color-neutral-500);
+  --text-disabled: var(--color-neutral-600);
+  --text-inverse: var(--color-neutral-900);
+  --text-brand: var(--color-brand-300);
+  --text-link: var(--color-brand-300);
+  --text-link-hover: var(--color-brand-200);
+
+  --bg-page: var(--color-brand-950);
+  --bg-primary: var(--color-brand-900);
+  --bg-secondary: #0D1847;
+  --bg-elevated: #1A2870;
+  --bg-overlay: rgba(0,0,0,0.7);
+  --bg-hover: rgba(45,82,239,0.10);
+  --bg-active: rgba(45,82,239,0.15);
+  --bg-disabled: #0D1847;
+  --bg-brand-subtle: rgba(232,238,255,0.08);
+  --bg-status-success: #052E16;
+  --bg-status-error: #1A0000;
+  --bg-status-warning: #1A0E00;
+  --bg-status-info: rgba(45,82,239,0.15);
+
+  --border-default: rgba(255,255,255,0.12);
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.20);
+  --border-focus: var(--color-brand-400);
+  --border-brand: var(--color-brand-400);
+
+  --action-primary-hover: var(--color-brand-400);
+  --action-primary-active: var(--color-brand-300);
+
+  --shadow-xs: 0px 1px 2px 0px rgba(0,0,0,0.20);
+  --shadow-sm: 0px 1px 3px 0px rgba(0,0,0,0.30), 0px 1px 2px -1px rgba(0,0,0,0.25);
+  --shadow-md: 0px 4px 6px -1px rgba(0,0,0,0.30), 0px 2px 4px -2px rgba(0,0,0,0.25);
+  --shadow-lg: 0px 10px 15px -3px rgba(0,0,0,0.40), 0px 4px 6px -4px rgba(0,0,0,0.30);
+  --shadow-xl: 0px 20px 25px -5px rgba(0,0,0,0.50), 0px 8px 10px -6px rgba(0,0,0,0.35);
+  --shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.60);
+}
+
+/* ── High Contrast ── */
+@media (forced-colors: active) {
+  :root, [data-theme="dark"] {
+    --text-primary: CanvasText;
+    --text-secondary: CanvasText;
+    --text-tertiary: GrayText;
+    --text-disabled: GrayText;
+    --text-inverse: Canvas;
+    --text-on-action: ButtonText;
+    --text-brand: LinkText;
+    --text-link: LinkText;
+    --bg-page: Canvas;
+    --bg-primary: Canvas;
+    --bg-elevated: Canvas;
+    --bg-disabled: Canvas;
+    --bg-hover: Highlight;
+    --bg-active: Highlight;
+    --border-default: CanvasText;
+    --border-subtle: CanvasText;
+    --border-focus: Highlight;
+    --border-error: LinkText;
+    --action-primary: ButtonFace;
+    --shadow-xs: none;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
+    --shadow-2xl: none;
+    --shadow-brand: none;
+  }
+}

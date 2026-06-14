@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital AI — Component Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --color-brand-50: #EEF1FF;
+      --color-brand-100: #E0E5FF;
+      --color-brand-200: #C7CFFF;
+      --color-brand-300: #A5B0FF;
+      --color-brand-400: #7A88FF;
+      --color-brand-500: #2D52EF;
+      --color-brand-600: #2344D4;
+      --color-brand-700: #1A35B8;
+      --color-brand-800: #3B2FC9;
+      --color-brand-900: #0F1F5C;
+      --color-brand-950: #080F2E;
+      --color-accent-100: #E8EEFF;
+      --color-neutral-50: #F8F9FA;
+      --color-neutral-100: #F1F3F5;
+      --color-neutral-200: #E9ECEF;
+      --color-neutral-300: #DEE2E6;
+      --color-neutral-400: #CED4DA;
+      --color-neutral-500: #ADB5BD;
+      --color-neutral-600: #868E96;
+      --color-neutral-700: #495057;
+      --color-neutral-800: #343A40;
+      --color-neutral-900: #212529;
+      --color-feedback-success: #22C55E;
+      --color-feedback-success-bg: #F0FDF4;
+      --color-feedback-success-text: #15803D;
+      --color-feedback-error: #EF4444;
+      --color-feedback-error-bg: #FEF2F2;
+      --color-feedback-error-text: #DC2626;
+      --color-feedback-warning: #F59E0B;
+      --color-feedback-warning-bg: #FFFBEB;
+      --color-feedback-warning-text: #B45309;
+
+      --text-primary: #212529;
+      --text-secondary: #868E96;
+      --text-tertiary: #ADB5BD;
+      --text-disabled: #CED4DA;
+      --text-inverse: #F8F9FA;
+      --text-on-action: #FFFFFF;
+      --text-brand: #2D52EF;
+      --text-link: #2D52EF;
+
+      --bg-page: #F8F9FA;
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F1F3F5;
+      --bg-elevated: #FFFFFF;
+      --bg-hover: #F1F3F5;
+      --bg-active: #E9ECEF;
+      --bg-brand: #0F1F5C;
+      --bg-brand-subtle: #E8EEFF;
+
+      --border-default: #DEE2E6;
+      --border-subtle: #E9ECEF;
+      --border-focus: #2D52EF;
+      --border-error: #EF4444;
+
+      --action-primary: #2D52EF;
+      --action-primary-hover: #2344D4;
+      --action-primary-active: #1A35B8;
+
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+      --spacing-1x: 4px; --spacing-2x: 8px; --spacing-3x: 12px;
+      --spacing-4x: 16px; --spacing-5x: 20px; --spacing-6x: 24px;
+      --spacing-8x: 32px; --spacing-10x: 40px; --spacing-12x: 48px;
+
+      --border-radius-xs: 2px; --border-radius-sm: 4px; --border-radius-md: 8px;
+      --border-radius-lg: 12px; --border-radius-xl: 16px; --border-radius-full: 9999px;
+
+      --shadow-xs: 0px 1px 2px 0px rgba(15,31,92,0.06);
+      --shadow-sm: 0px 1px 3px 0px rgba(15,31,92,0.10), 0px 1px 2px -1px rgba(15,31,92,0.10);
+      --shadow-md: 0px 4px 6px -1px rgba(15,31,92,0.10), 0px 2px 4px -2px rgba(15,31,92,0.08);
+      --shadow-lg: 0px 10px 15px -3px rgba(15,31,92,0.12), 0px 4px 6px -4px rgba(15,31,92,0.08);
+      --shadow-xl: 0px 20px 25px -5px rgba(15,31,92,0.14), 0px 8px 10px -6px rgba(15,31,92,0.08);
+      --shadow-brand: 0px 4px 20px -2px rgba(45,82,239,0.30);
+      --shadow-brand-strong: 0px 8px 32px -4px rgba(45,82,239,0.40);
+
+      --duration-fast: 100ms; --duration-normal: 200ms; --duration-slow: 300ms;
+      --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+      --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      --sidebar-width: 240px;
+    }
+
+    [data-theme="dark"] {
+      --text-primary: #F8F9FA;
+      --text-secondary: #CED4DA;
+      --text-tertiary: #ADB5BD;
+      --text-disabled: #868E96;
+      --text-brand: #A5B0FF;
+      --text-link: #A5B0FF;
+
+      --bg-page: #080F2E;
+      --bg-primary: #0F1F5C;
+      --bg-secondary: #0D1847;
+      --bg-elevated: #1A2870;
+      --bg-hover: rgba(45,82,239,0.10);
+      --bg-active: rgba(45,82,239,0.15);
+      --bg-brand-subtle: rgba(232,238,255,0.08);
+
+      --border-default: rgba(255,255,255,0.12);
+      --border-subtle: rgba(255,255,255,0.08);
+
+      --shadow-sm: 0px 1px 3px 0px rgba(0,0,0,0.30);
+      --shadow-md: 0px 4px 6px -1px rgba(0,0,0,0.30);
+      --shadow-lg: 0px 10px 15px -3px rgba(0,0,0,0.40);
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+      background: var(--bg-page);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-width);
+      min-height: 100vh;
+      background: var(--bg-primary);
+      border-right: 1px solid var(--border-default);
+      padding: 24px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+      z-index: 20;
+      box-shadow: var(--shadow-sm);
+    }
+    .sidebar-logo {
+      padding: 0 20px 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 16px;
+    }
+    .sidebar-logo-text {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, #2D52EF, #3B2FC9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sidebar-logo-sub {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+    .sidebar-section {
+      padding: 8px 20px 4px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 0;
+      transition: all var(--duration-fast) var(--easing-default);
+      border-left: 2px solid transparent;
+    }
+    .sidebar-nav a:hover {
+      color: var(--text-brand);
+      background: var(--bg-hover);
+      border-left-color: var(--color-brand-300);
+    }
+    .sidebar-nav a.active {
+      color: var(--text-brand);
+      background: var(--bg-brand-subtle);
+      border-left-color: var(--color-brand-500);
+      font-weight: 600;
+    }
+
+    /* ── Main Content ── */
+    .main {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      padding: 0;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+      box-shadow: var(--shadow-xs);
+    }
+    .header-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-default);
+      background: var(--bg-secondary);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--duration-fast) var(--easing-default);
+      font-family: var(--font-body);
+    }
+    .theme-toggle:hover {
+      border-color: var(--color-brand-500);
+      color: var(--text-brand);
+    }
+
+    /* ── Content ── */
+    .content { padding: 40px; max-width: 1000px; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 64px; }
+    .section-header { margin-bottom: 32px; }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .section-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 32px 0;
+    }
+
+    /* ── Component Block ── */
+    .component-block {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-xs);
+    }
+    .component-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .component-name {
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .component-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--bg-brand-subtle);
+      color: var(--text-brand);
+    }
+    .component-preview {
+      padding: 32px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      background: var(--bg-secondary);
+      position: relative;
+    }
+    .component-preview.dark-bg {
+      background: var(--color-brand-900);
+    }
+    .component-code {
+      padding: 16px 20px;
+      background: #0D0F12;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .component-code pre {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: #A5B0FF;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+    .component-code .tag { color: #7A88FF; }
+    .component-code .attr { color: #E8EEFF; }
+    .component-code .val { color: #22C55E; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-weight: 600;
+      border-radius: var(--border-radius-md);
+      transition: all var(--duration-fast) var(--easing-default);
+      text-decoration: none;
+      white-space: nowrap;
+      outline: none;
+      position: relative;
+    }
+    .btn:focus-visible { outline: 3px solid var(--border-focus); outline-offset: 2px; }
+
+    /* Sizes */
+    .btn-sm { height: 32px; padding: 0 12px; font-size: 0.875rem; }
+    .btn-md { height: 40px; padding: 0 16px; font-size: 1rem; }
+    .btn-lg { height: 48px; padding: 0 24px; font-size: 1.125rem; font-weight: 700; }
+
+    /* Primary */
+    .btn-primary {
+      background: var(--action-primary);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-xs);
+    }
+    .btn-primary:hover {
+      background: var(--action-primary-hover);
+      box-shadow: var(--shadow-brand);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { background: var(--action-primary-active); transform: translateY(0); }
+    .btn-primary:disabled { background: var(--color-neutral-100); color: var(--color-neutral-400); cursor: not-allowed; box-shadow: none; transform: none; }
+
+    /* Secondary */
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-default);
+    }
+    .btn-secondary:hover {
+      background: rgba(45,82,239,0.06);
+      border-color: var(--color-brand-500);
+      color: var(--color-brand-500);
+    }
+    .btn-secondary:active { background: rgba(45,82,239,0.12); }
+    .btn-secondary:disabled { color: var(--text-disabled); border-color: var(--border-subtle); cursor: not-allowed; }
+
+    /* Ghost */
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+    }
+    .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); }
+    .btn-ghost:active { background: var(--bg-active); }
+    .btn-ghost:disabled { color: var(--text-disabled); cursor: not-allowed; }
+
+    /* Danger */
+    .btn-danger {
+      background: #EF4444;
+      color: #FFFFFF;
+    }
+    .btn-danger:hover { background: #DC2626; box-shadow: 0 4px 14px rgba(239,68,68,0.35); transform: translateY(-1px); }
+    .btn-danger:active { background: #B91C1C; transform: translateY(0); }
+    .btn-danger:disabled { background: var(--color-neutral-100); color: var(--text-disabled); cursor: not-allowed; }
+
+    /* Link */
+    .btn-link {
+      background: transparent;
+      color: var(--text-brand);
+      padding: 0;
+      height: auto;
+      font-weight: 500;
+    }
+    .btn-link:hover { text-decoration: underline; }
+
+    /* Icon button */
+    .btn-icon { width: 40px; height: 40px; padding: 0; border-radius: var(--border-radius-md); }
+    .btn-icon.btn-sm { width: 32px; height: 32px; }
+    .btn-icon.btn-lg { width: 48px; height: 48px; }
+
+    /* Loading state */
+    .btn-loading { pointer-events: none; opacity: 0.7; }
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Inputs ── */
+    .form-group { display: flex; flex-direction: column; gap: 6px; width: 280px; }
+    .form-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .form-label .required { color: #EF4444; margin-left: 2px; }
+    .input {
+      height: 40px;
+      padding: 0 12px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--border-radius-md);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color var(--duration-fast) var(--easing-default),
+                  box-shadow var(--duration-fast) var(--easing-default);
+      width: 100%;
+    }
+    .input::placeholder { color: var(--text-disabled); }
+    .input:hover { border-color: var(--color-neutral-500); }
+    .input:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(45,82,239,0.15);
+    }
+    .input:disabled {
+      background: var(--bg-secondary);
+      color: var(--text-disabled);
+      cursor: not-allowed;
+      border-color: var(--border-subtle);
+    }
+    .input.input-error {
+      border-color: var(--border-error);
+      box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+    }
+    .input.input-success {
+      border-color: var(--color-feedback-success);
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+    }
+    .input-sm { height: 32px; padding: 0 8px; font-size: 0.875rem; }
+    .input-lg { height: 48px; padding: 0 16px; font-size: 1.125rem; }
+    .form-hint {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+    .form-error {
+      font-size: 0.8125rem;
+      color: var(--color-feedback-error-text);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-icon-left { position: absolute; left: 12px; color: var(--text-tertiary); pointer-events: none; }
+    .input-icon-right { position: absolute; right: 12px; color: var(--text-tertiary); }
+    .input-with-icon-left { padding-left: 36px; }
+    .input-with-icon-right { padding-right: 36px; }
+
+    /* Textarea */
+    .textarea {
+      padding: 10px 12px;
+      height: auto;
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow var(--duration-normal) var(--easing-default),
+                  transform var(--duration-normal) var(--easing-default);
+    }
+    .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .card-header {
+      padding: 20px 24px 0;
+    }
+    .card-body { padding: 16px 24px 24px; }
+    .card-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .card-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .card-brand {
+      background: linear-gradient(135deg, var(--color-brand-900), var(--color-brand-800));
+      color: white;
+      border: none;
+    }
+    .card-brand .card-title { color: white; }
+    .card-brand .card-subtitle { color: rgba(255,255,255,0.7); }
+    .card-metric {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 12px 0 4px;
+    }
+    .metric-value {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .metric-label { font-size: 0.875rem; color: var(--text-secondary); }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: var(--border-radius-full);
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .badge-sm { font-size: 0.6875rem; padding: 1px 6px; }
+    .badge-lg { font-size: 0.8125rem; padding: 4px 10px; }
+    .badge-primary { background: #EEF1FF; color: #2D52EF; }
+    .badge-success { background: var(--color-feedback-success-bg); color: var(--color-feedback-success-text); }
+    .badge-warning { background: var(--color-feedback-warning-bg); color: var(--color-feedback-warning-text); }
+    .badge-error { background: var(--color-feedback-error-bg); color: var(--color-feedback-error-text); }
+    .badge-neutral { background: var(--color-neutral-100); color: var(--color-neutral-700); }
+    .badge-dot::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* ── Avatars ── */
+    .avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      background: #EEF1FF;
+      color: #2D52EF;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .avatar-xs { width: 24px; height: 24px; font-size: 0.625rem; }
+    .avatar-sm { width: 32px; height: 32px; font-size: 0.75rem; }
+    .avatar-md { width: 40px; height: 40px; font-size: 1rem; }
+    .avatar-lg { width: 56px; height: 56px; font-size: 1.25rem; }
+    .avatar-xl { width: 80px; height: 80px; font-size: 1.75rem; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .avatar-group { display: flex; }
+    .avatar-group .avatar { border: 2px solid var(--bg-primary); margin-left: -8px; }
+    .avatar-group .avatar:first-child { margin-left: 0; }
+    .avatar-status {
+      position: relative;
+      display: inline-flex;
+    }
+    .status-dot {
+      position: absolute;
+      bottom: 1px; right: 1px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-primary);
+    }
+    .status-online { background: var(--color-feedback-success); }
+    .status-away { background: var(--color-feedback-warning); }
+    .status-offline { background: var(--color-neutral-400); }
+
+    /* ── Alerts ── */
+    .alert {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: var(--border-radius-md);
+      border: 1px solid;
+    }
+    .alert-icon { flex-shrink: 0; font-size: 1.125rem; line-height: 1.5; }
+    .alert-content { flex: 1; }
+    .alert-title { font-weight: 600; margin-bottom: 4px; font-size: 0.9375rem; }
+    .alert-desc { font-size: 0.875rem; line-height: 1.5; }
+    .alert-info { background: var(--color-feedback-info-bg, #E8EEFF); border-color: rgba(45,82,239,0.3); color: #1A35B8; }
+    .alert-success { background: var(--color-feedback-success-bg); border-color: rgba(34,197,94,0.3); color: var(--color-feedback-success-text); }
+    .alert-warning { background: var(--color-feedback-warning-bg); border-color: rgba(245,158,11,0.3); color: var(--color-feedback-warning-text); }
+    .alert-error { background: var(--color-feedback-error-bg); border-color: rgba(239,68,68,0.3); color: var(--color-feedback-error-text); }
+
+    /* ── Toasts ── */
+    .toast {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--border-radius-md);
+      background: var(--bg-elevated);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-subtle);
+      min-width: 280px;
+      max-width: 380px;
+      pointer-events: all;
+    }
+    .toast-icon { font-size: 1.125rem; flex-shrink: 0; }
+    .toast-body { flex: 1; }
+    .toast-title { font-weight: 600; font-size: 0.9375rem; color: var(--text-primary); }
+    .toast-message { font-size: 0.875rem; color: var(--text-secondary); margin-top: 2px; }
+    .toast-close {
+      background: none; border: none; cursor: pointer;
+      color: var(--text-tertiary); padding: 2px;
+      border-radius: 4px; font-size: 1rem; line-height: 1;
+    }
+    .toast-close:hover { color: var(--text-primary); background: var(--bg-hover); }
+
+    /* ── Modal (Preview) ── */
+    .modal-preview-backdrop {
+      background: rgba(15,31,92,0.3);
+      border-radius: var(--border-radius-lg);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal {
+      background: var(--bg-primary);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-xl);
+      width: 100%;
+      max-width: 480px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+    .modal-header {
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .modal-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .modal-close {
+      background: none; border: none; cursor: pointer;
+      width: 32px; height: 32px;
+      border-radius: var(--border-radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary);
+      transition: all var(--duration-fast) var(--easing-default);
+    }
+    .modal-close:hover { background: var(--bg-hover); color: var(--text-primary); }
+    .modal-body { padding: 16px 24px 24px; }
+    .modal-body p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6; }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    /* ── Empty State ── */
+    .empty-state {
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--bg-primary);
+      border-radius: var(--border-radius-lg);
+      border: 2px dashed var(--border-default);
+    }
+    .empty-icon {
+      width: 64px; height: 64px;
+      border-radius: var(--border-radius-xl);
+      background: var(--bg-brand-subtle);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem;
+      margin: 0 auto 16px;
+    }
+    .empty-title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .empty-desc {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      max-width: 320px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* ── Tags & Chips ── */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--border-radius-full);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-default);
+      cursor: default;
+    }
+    .tag-close {
+      background: none; border: none; cursor: pointer;
+      color: inherit; opacity: 0.6; font-size: 1rem; line-height: 1;
+      padding: 0;
+    }
+    .tag-close:hover { opacity: 1; }
+    .tag-brand { background: var(--bg-brand-subtle); color: var(--text-brand); border-color: rgba(45,82,239,0.2); }
+
+    /* ── Progress ── */
+    .progress-bar-outer {
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: var(--border-radius-full);
+      overflow: hidden;
+      width: 100%;
+    }
+    .progress-bar-inner {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-brand-500), var(--color-brand-800));
+      border-radius: var(--border-radius-full);
+      transition: width var(--duration-slow) var(--easing-default);
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    /* ── Toggle ── */
+    .toggle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .toggle {
+      position: relative;
+      width: 44px; height: 24px;
+      border-radius: var(--border-radius-full);
+      background: var(--color-neutral-300);
+      border: none;
+      cursor: pointer;
+      transition: background var(--duration-fast) var(--easing-default);
+      flex-shrink: 0;
+    }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: white;
+      top: 3px; left: 3px;
+      transition: transform var(--duration-fast) var(--easing-spring);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .toggle.on { background: var(--color-brand-500); }
+    .toggle.on::after { transform: translateX(20px); }
+    .toggle-label { font-size: 0.9375rem; color: var(--text-primary); font-weight: 500; }
+
+    /* ── Checkbox ── */
+    .checkbox-wrapper {
+      display: flex; align-items: center; gap: 10px; cursor: pointer;
+    }
+    .checkbox {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border-default);
+      border-radius: var(--border-radius-sm);
+      background: var(--bg-primary);
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--duration-fast) var(--easing-default);
+      flex-shrink: 0;
+    }
+    .checkbox.checked { background: var(--action-primary); border-color: var(--action-primary); }
+    .checkbox.checked::after { content: '✓'; color: white; font-size: 0.75rem; font-weight: 700; }
+
+    /* ── Skeleton ── */
+    @keyframes shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-active) 50%, var(--bg-secondary) 100%);
+      background-size: 800px 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: var(--border-radius-md);
+    }
+
+    /* ── Divider ── */
+    .divider { height: 1px; background: var(--border-subtle); margin: 24px 0; }
+    .divider-label {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--text-tertiary); font-size: 0.8125rem;
+    }
+    .divider-label::before, .divider-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border-subtle);
+    }
+
+    /* ── Color Grid ── */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+    .color-swatch {
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+    }
+    .color-swatch-preview { height: 56px; }
+    .color-swatch-info { padding: 8px; background: var(--bg-primary); }
+    .color-swatch-name { font-size: 0.75rem; font-weight: 600; color: var(--text-primary); }
+    .color-swatch-hex { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--text-secondary); }
+
+    /* ── Typography showcase ── */
+    .type-row { padding: 12px 0; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: baseline; gap: 16px; }
+    .type-meta { min-width: 80px; font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--color-neutral-300); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-neutral-400); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .main { margin-left: 0; }
+      .content { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar" aria-label="Navegação do Design System">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-text">Digital AI</div>
+      <div class="sidebar-logo-sub">Component Library v1.0</div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="sidebar-section">Fundação</div>
+      <a href="#colors">🎨 Cores</a>
+      <a href="#typography">Aa Tipografia</a>
+      <a href="#spacing">⬛ Espaçamento</a>
+      <a href="#shadows">🌫️ Sombras</a>
+      <a href="#radius">⬜ Border Radius</a>
+
+      <div class="sidebar-section">Componentes</div>
+      <a href="#buttons">Botões</a>
+      <a href="#inputs">Inputs</a>
+      <a href="#cards">Cards</a>
+      <a href="#badges">Badges</a>
+      <a href="#avatars">Avatares</a>
+      <a href="#alerts">Alertas</a>
+      <a href="#toasts">Toasts</a>
+      <a href="#modals">Modais</a>
+
+      <div class="sidebar-section">Padrões</div>
+      <a href="#empty-states">Empty States</a>
+      <a href="#form-patterns">Formulários</a>
+      <a href="#toggles">Toggles & Checks</a>
+      <a href="#progress">Progresso</a>
+      <a href="#skeleton">Skeleton</a>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">Digital AI — Component Library</div>
+      <div class="header-actions">
+        <span style="font-size:0.8125rem;color:var(--text-secondary)">v1.0 · 2026</span>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+          <span id="theme-icon">🌙</span>
+          <span id="theme-label">Dark Mode</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+
+      <!-- ══ COLORS ══ -->
+      <section class="section" id="colors">
+        <div class="section-header">
+          <h2 class="section-title">Cores</h2>
+          <p class="section-desc">Paleta completa da Digital AI — Arquétipo Sábio + Herói.</p>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Brand Colors</span>
+            <span class="component-tag">Primitive</span>
+          </div>
+          <div class="component-preview">
+            <div class="color-grid" style="width:100%">
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#EEF1FF"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-50</div><div class="color-swatch-hex">#EEF1FF</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#E0E5FF"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-100</div><div class="color-swatch-hex">#E0E5FF</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#C7CFFF"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-200</div><div class="color-swatch-hex">#C7CFFF</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#A5B0FF"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-300</div><div class="color-swatch-hex">#A5B0FF</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#7A88FF"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-400</div><div class="color-swatch-hex">#7A88FF</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#2D52EF"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-500 ★</div><div class="color-swatch-hex">#2D52EF</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#2344D4"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-600</div><div class="color-swatch-hex">#2344D4</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#1A35B8"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-700</div><div class="color-swatch-hex">#1A35B8</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#3B2FC9"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-800 ★</div><div class="color-swatch-hex">#3B2FC9</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#0F1F5C"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-900 ★</div><div class="color-swatch-hex">#0F1F5C</div></div></div>
+              <div class="color-swatch"><div class="color-swatch-preview" style="background:#080F2E"></div><div class="color-swatch-info"><div class="color-swatch-name">brand-950</div><div class="color-swatch-hex">#080F2E</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Feedback Colors</span>
+            <span class="component-tag">Semantic</span>
+          </div>
+          <div class="component-preview">
+            <div style="display:flex;flex-wrap:wrap;gap:16px;width:100%">
+              <div style="display:flex;gap:8px;align-items:center">
+                <div style="width:40px;height:40px;border-radius:8px;background:#22C55E"></div>
+                <div><div style="font-size:0.75rem;font-weight:600;color:var(--text-primary)">Success</div><div style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">#22C55E</div></div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <div style="width:40px;height:40px;border-radius:8px;background:#EF4444"></div>
+                <div><div style="font-size:0.75rem;font-weight:600;color:var(--text-primary)">Error</div><div style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">#EF4444</div></div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <div style="width:40px;height:40px;border-radius:8px;background:#F59E0B"></div>
+                <div><div style="font-size:0.75rem;font-weight:600;color:var(--text-primary)">Warning</div><div style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">#F59E0B</div></div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <div style="width:40px;height:40px;border-radius:8px;background:#2D52EF"></div>
+                <div><div style="font-size:0.75rem;font-weight:600;color:var(--text-primary)">Info</div><div style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">#2D52EF</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ TYPOGRAPHY ══ -->
+      <section class="section" id="typography">
+        <div class="section-header">
+          <h2 class="section-title">Tipografia</h2>
+          <p class="section-desc">Plus Jakarta Sans (headings) + DM Sans (body). Escala fluida com clamp().</p>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Heading Scale</span>
+            <span class="component-tag">Plus Jakarta Sans</span>
+          </div>
+          <div class="component-preview" style="flex-direction:column;align-items:stretch;gap:0;background:var(--bg-primary)">
+            <div class="type-row"><span class="type-meta">H1 / 5xl</span><span style="font-family:var(--font-heading);font-size:clamp(2rem,calc(1.4rem + 5vw),3rem);font-weight:700;color:var(--text-primary);letter-spacing:-0.025em">Inteligência que transforma</span></div>
+            <div class="type-row"><span class="type-meta">H2 / 4xl</span><span style="font-family:var(--font-heading);font-size:clamp(1.75rem,calc(1.3rem + 3.5vw),2.25rem);font-weight:700;color:var(--text-primary);letter-spacing:-0.025em">Automação com precisão</span></div>
+            <div class="type-row"><span class="type-meta">H3 / 3xl</span><span style="font-family:var(--font-heading);font-size:clamp(1.5rem,calc(1.2rem + 2.5vw),1.875rem);font-weight:600;color:var(--text-primary)">Resultados que importam</span></div>
+            <div class="type-row"><span class="type-meta">H4 / 2xl</span><span style="font-family:var(--font-heading);font-size:clamp(1.25rem,calc(1.1rem + 1.25vw),1.5rem);font-weight:600;color:var(--text-primary)">Agentes de IA avançados</span></div>
+            <div class="type-row"><span class="type-meta">H5 / xl</span><span style="font-family:var(--font-heading);font-size:clamp(1.125rem,calc(1.05rem + 0.75vw),1.25rem);font-weight:500;color:var(--text-primary)">Fluxos automatizados</span></div>
+            <div class="type-row"><span class="type-meta">H6 / lg</span><span style="font-family:var(--font-heading);font-size:clamp(1rem,calc(0.95rem + 0.5vw),1.125rem);font-weight:500;color:var(--text-primary)">Configurações avançadas</span></div>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Body & Utility</span>
+            <span class="component-tag">DM Sans</span>
+          </div>
+          <div class="component-preview" style="flex-direction:column;align-items:stretch;gap:8px;background:var(--bg-primary)">
+            <p style="font-family:var(--font-body);font-size:1.125rem;color:var(--text-primary)"><strong>Body Large:</strong> A Digital AI conecta empresas com a inteligência artificial de forma prática e eficiente.</p>
+            <p style="font-family:var(--font-body);font-size:1rem;color:var(--text-primary)"><strong>Body Base:</strong> Nossos agentes de IA são treinados para responder com precisão e personalidade, mantendo o tom da sua marca.</p>
+            <p style="font-family:var(--font-body);font-size:0.875rem;color:var(--text-secondary)"><strong>Body Small:</strong> Configure seus fluxos em minutos e veja os resultados em tempo real no painel.</p>
+            <p style="font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary);letter-spacing:0.1em;text-transform:uppercase;font-weight:600">OVERLINE TEXT — CATEGORIA</p>
+            <p style="font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary)">Caption: Última atualização em 11/06/2026 às 14:32</p>
+            <p style="font-family:var(--font-mono);font-size:0.875rem;color:var(--text-brand);background:var(--bg-brand-subtle);padding:8px 12px;border-radius:6px">webhook.digital-ai.tech/api/v1/automations</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ SPACING ══ -->
+      <section class="section" id="spacing">
+        <div class="section-header">
+          <h2 class="section-title">Espaçamento</h2>
+          <p class="section-desc">Base 4px. Escala multiplicada por 1x a 24x.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Spacing Scale</span><span class="component-tag">4px base</span></div>
+          <div class="component-preview" style="flex-direction:column;align-items:stretch;gap:8px;background:var(--bg-primary)">
+            <div style="display:flex;align-items:center;gap:16px;padding:4px 0;border-bottom:1px solid var(--border-subtle)"><span style="font-family:monospace;font-size:0.75rem;color:var(--text-tertiary);min-width:60px">1x / 4px</span><div style="width:4px;height:16px;background:var(--color-brand-500);border-radius:2px"></div></div>
+            <div style="display:flex;align-items:center;gap:16px;padding:4px 0;border-bottom:1px solid var(--border-subtle)"><span style="font-family:monospace;font-size:0.75rem;color:var(--text-tertiary);min-width:60px">2x / 8px</span><div style="width:8px;height:16px;background:var(--color-brand-500);border-radius:2px"></div></div>
+            <div style="display:flex;align-items:center;gap:16px;padding:4px 0;border-bottom:1px solid var(--border-subtle)"><span style="font-family:monospace;font-size:0.75rem;color:var(--text-tertiary);min-width:60px">4x / 16px</span><div style="width:16px;height:16px;background:var(--color-brand-500);border-radius:2px"></div></div>
+            <div style="display:flex;align-items:center;gap:16px;padding:4px 0;border-bottom:1px solid var(--border-subtle)"><span style="font-family:monospace;font-size:0.75rem;color:var(--text-tertiary);min-width:60px">6x / 24px</span><div style="width:24px;height:16px;background:var(--color-brand-500);border-radius:2px"></div></div>
+            <div style="display:flex;align-items:center;gap:16px;padding:4px 0;border-bottom:1px solid var(--border-subtle)"><span style="font-family:monospace;font-size:0.75rem;color:var(--text-tertiary);min-width:60px">8x / 32px</span><div style="width:32px;height:16px;background:var(--color-brand-500);border-radius:2px"></div></div>
+            <div style="display:flex;align-items:center;gap:16px;padding:4px 0;border-bottom:1px solid var(--border-subtle)"><span style="font-family:monospace;font-size:0.75rem;color:var(--text-tertiary);min-width:60px">12x / 48px</span><div style="width:48px;height:16px;background:var(--color-brand-500);border-radius:2px"></div></div>
+            <div style="display:flex;align-items:center;gap:16px;padding:4px 0"><span style="font-family:monospace;font-size:0.75rem;color:var(--text-tertiary);min-width:60px">16x / 64px</span><div style="width:64px;height:16px;background:var(--color-brand-500);border-radius:2px"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ SHADOWS ══ -->
+      <section class="section" id="shadows">
+        <div class="section-header">
+          <h2 class="section-title">Sombras</h2>
+          <p class="section-desc">Escala de elevação baseada no azul profundo da marca (#0F1F5C).</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Shadow Scale</span><span class="component-tag">6 levels</span></div>
+          <div class="component-preview" style="flex-wrap:wrap;gap:24px;background:var(--bg-secondary)">
+            <div style="width:120px;height:72px;background:var(--bg-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:600;color:var(--text-secondary);box-shadow:var(--shadow-xs)">xs</div>
+            <div style="width:120px;height:72px;background:var(--bg-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:600;color:var(--text-secondary);box-shadow:var(--shadow-sm)">sm</div>
+            <div style="width:120px;height:72px;background:var(--bg-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:600;color:var(--text-secondary);box-shadow:var(--shadow-md)">md</div>
+            <div style="width:120px;height:72px;background:var(--bg-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:600;color:var(--text-secondary);box-shadow:var(--shadow-lg)">lg</div>
+            <div style="width:120px;height:72px;background:var(--bg-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:600;color:var(--text-secondary);box-shadow:var(--shadow-xl)">xl</div>
+            <div style="width:120px;height:72px;background:var(--bg-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:600;color:var(--text-brand);box-shadow:var(--shadow-brand)">brand</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ BORDER RADIUS ══ -->
+      <section class="section" id="radius">
+        <div class="section-header">
+          <h2 class="section-title">Border Radius</h2>
+          <p class="section-desc">Escala de arredondamento de 2px a full (9999px).</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Radius Scale</span></div>
+          <div class="component-preview" style="flex-wrap:wrap;gap:16px;background:var(--bg-secondary)">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:0"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">none / 0</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:2px"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">xs / 2px</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:4px"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">sm / 4px</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:8px"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">md / 8px</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:12px"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">lg / 12px</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:16px"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">xl / 16px</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:24px"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">2xl / 24px</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:56px;height:56px;background:var(--color-brand-500);border-radius:9999px"></div><span style="font-size:0.6875rem;color:var(--text-secondary);font-family:monospace">full</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ BUTTONS ══ -->
+      <section class="section" id="buttons">
+        <div class="section-header">
+          <h2 class="section-title">Botões</h2>
+          <p class="section-desc">5 variantes × 3 tamanhos. Todos com estados: default, hover, active, disabled, loading.</p>
+        </div>
+
+        <!-- Primary -->
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Primary Button</span>
+            <span class="component-tag">btn-primary</span>
+          </div>
+          <div class="component-preview">
+            <button class="btn btn-primary btn-sm">Pequeno</button>
+            <button class="btn btn-primary btn-md">Médio — Criar automação</button>
+            <button class="btn btn-primary btn-lg">Grande</button>
+            <button class="btn btn-primary btn-md" disabled>Desabilitado</button>
+            <button class="btn btn-primary btn-md btn-loading">
+              <div class="spinner"></div>
+              Salvando...
+            </button>
+          </div>
+          <div class="component-code"><pre><span class="tag">&lt;button</span> <span class="attr">class=</span><span class="val">"btn btn-primary btn-md"</span><span class="tag">&gt;</span>Criar automação<span class="tag">&lt;/button&gt;</span></pre></div>
+        </div>
+
+        <!-- Secondary -->
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Secondary Button</span>
+            <span class="component-tag">btn-secondary</span>
+          </div>
+          <div class="component-preview">
+            <button class="btn btn-secondary btn-sm">Pequeno</button>
+            <button class="btn btn-secondary btn-md">Médio — Ver detalhes</button>
+            <button class="btn btn-secondary btn-lg">Grande</button>
+            <button class="btn btn-secondary btn-md" disabled>Desabilitado</button>
+          </div>
+          <div class="component-code"><pre><span class="tag">&lt;button</span> <span class="attr">class=</span><span class="val">"btn btn-secondary btn-md"</span><span class="tag">&gt;</span>Ver detalhes<span class="tag">&lt;/button&gt;</span></pre></div>
+        </div>
+
+        <!-- Ghost -->
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Ghost Button</span>
+            <span class="component-tag">btn-ghost</span>
+          </div>
+          <div class="component-preview">
+            <button class="btn btn-ghost btn-sm">Pequeno</button>
+            <button class="btn btn-ghost btn-md">Médio — Cancelar</button>
+            <button class="btn btn-ghost btn-lg">Grande</button>
+            <button class="btn btn-ghost btn-md" disabled>Desabilitado</button>
+          </div>
+        </div>
+
+        <!-- Danger -->
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Danger Button</span>
+            <span class="component-tag">btn-danger</span>
+          </div>
+          <div class="component-preview">
+            <button class="btn btn-danger btn-sm">Excluir</button>
+            <button class="btn btn-danger btn-md">Excluir permanentemente</button>
+            <button class="btn btn-danger btn-lg">Resetar tudo</button>
+            <button class="btn btn-danger btn-md" disabled>Desabilitado</button>
+          </div>
+        </div>
+
+        <!-- Link -->
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Link Button</span>
+            <span class="component-tag">btn-link</span>
+          </div>
+          <div class="component-preview">
+            <button class="btn btn-link btn-sm">Ver mais detalhes</button>
+            <button class="btn btn-link btn-md">Saiba como funciona →</button>
+          </div>
+        </div>
+
+        <!-- Icon Buttons -->
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Icon Buttons</span>
+            <span class="component-tag">btn-icon</span>
+          </div>
+          <div class="component-preview">
+            <button class="btn btn-primary btn-icon btn-sm" aria-label="Adicionar">+</button>
+            <button class="btn btn-primary btn-icon btn-md" aria-label="Adicionar">+</button>
+            <button class="btn btn-primary btn-icon btn-lg" aria-label="Adicionar">+</button>
+            <button class="btn btn-secondary btn-icon btn-md" aria-label="Configurações">⚙</button>
+            <button class="btn btn-ghost btn-icon btn-md" aria-label="Fechar">✕</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ INPUTS ══ -->
+      <section class="section" id="inputs">
+        <div class="section-header">
+          <h2 class="section-title">Inputs</h2>
+          <p class="section-desc">Campos de formulário com todos os estados e variantes.</p>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Text Input — States</span>
+            <span class="component-tag">input</span>
+          </div>
+          <div class="component-preview" style="flex-direction:column;align-items:flex-start;gap:16px;background:var(--bg-primary)">
+            <div class="form-group">
+              <label class="form-label" for="i1">Default</label>
+              <input class="input" id="i1" type="text" placeholder="ex: João Silva">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="i2">Com foco (simulado)</label>
+              <input class="input" id="i2" type="text" value="digital-ai.tech" style="border-color:var(--border-focus);box-shadow:0 0 0 3px rgba(45,82,239,0.15)">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="i3">Erro<span class="required">*</span></label>
+              <input class="input input-error" id="i3" type="email" value="email-invalido" aria-invalid="true" aria-describedby="i3-error">
+              <span class="form-error" id="i3-error" role="alert">⚠ Email inválido — use o formato nome@empresa.com</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="i4">Sucesso</label>
+              <input class="input input-success" id="i4" type="text" value="Usuário verificado">
+              <span style="font-size:0.8125rem;color:var(--color-feedback-success-text)">✓ Campo validado</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="i5">Desabilitado</label>
+              <input class="input" id="i5" type="text" value="Campo bloqueado" disabled>
+              <span class="form-hint">Este campo não pode ser editado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Input Sizes</span>
+          </div>
+          <div class="component-preview" style="flex-direction:column;align-items:flex-start;gap:12px;background:var(--bg-primary)">
+            <input class="input input-sm" type="text" placeholder="Input pequeno (32px)" style="width:280px">
+            <input class="input" type="text" placeholder="Input médio — padrão (40px)" style="width:280px">
+            <input class="input input-lg" type="text" placeholder="Input grande (48px)" style="width:280px">
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">With Icons</span>
+          </div>
+          <div class="component-preview" style="flex-direction:column;align-items:flex-start;gap:12px;background:var(--bg-primary)">
+            <div class="form-group">
+              <label class="form-label">Buscar</label>
+              <div class="input-wrapper">
+                <span class="input-icon-left">🔍</span>
+                <input class="input input-with-icon-left" type="search" placeholder="Buscar automações...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Senha</label>
+              <div class="input-wrapper">
+                <input class="input input-with-icon-right" type="password" value="senhasecreta">
+                <span class="input-icon-right" style="cursor:pointer">👁</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header">
+            <span class="component-name">Textarea</span>
+          </div>
+          <div class="component-preview" style="background:var(--bg-primary)">
+            <div class="form-group" style="width:380px">
+              <label class="form-label" for="ta1">Descrição</label>
+              <textarea class="input textarea" id="ta1" placeholder="Descreva sua automação em detalhes..."></textarea>
+              <span class="form-hint">Máximo 500 caracteres</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ CARDS ══ -->
+      <section class="section" id="cards">
+        <div class="section-header">
+          <h2 class="section-title">Cards</h2>
+          <p class="section-desc">Containers de conteúdo com elevação e variantes de estilo.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:16px">
+          <!-- Basic Card -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Automação Ativa</h3>
+              <p class="card-subtitle">Agente de atendimento WhatsApp</p>
+            </div>
+            <div class="card-body">
+              <div class="card-metric">
+                <span class="metric-value">1.247</span>
+                <span class="metric-label">conversas hoje</span>
+              </div>
+              <span class="badge badge-success badge-dot">Operacional</span>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ghost btn-sm">Ver logs</button>
+              <button class="btn btn-primary btn-sm">Configurar</button>
+            </div>
+          </div>
+
+          <!-- Brand Card -->
+          <div class="card card-brand">
+            <div class="card-header" style="padding-top:20px">
+              <h3 class="card-title">Digital AI Pro</h3>
+              <p class="card-subtitle">Plano atual — renovação em 30 dias</p>
+            </div>
+            <div class="card-body">
+              <div class="card-metric">
+                <span class="metric-value" style="color:white">R$ 297</span>
+                <span class="metric-label" style="color:rgba(255,255,255,0.7)">/mês</span>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <span class="badge" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9)">10 agentes</span>
+                <span class="badge" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9)">Ilimitado</span>
+              </div>
+            </div>
+            <div class="card-footer" style="border-color:rgba(255,255,255,0.1)">
+              <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.2)">Gerenciar plano</button>
+            </div>
+          </div>
+
+          <!-- Stats Card -->
+          <div class="card">
+            <div class="card-body" style="padding-top:20px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                <span style="font-size:0.875rem;font-weight:500;color:var(--text-secondary)">Taxa de resolução</span>
+                <span class="badge badge-success">+12%</span>
+              </div>
+              <div style="font-family:var(--font-heading);font-size:2.5rem;font-weight:700;color:var(--text-primary);margin-bottom:12px">94,7%</div>
+              <div class="progress-label"><span>Meta: 90%</span><span>94,7% alcançado</span></div>
+              <div class="progress-bar-outer">
+                <div class="progress-bar-inner" style="width:94.7%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ BADGES ══ -->
+      <section class="section" id="badges">
+        <div class="section-header">
+          <h2 class="section-title">Badges</h2>
+          <p class="section-desc">Indicadores de status, categorias e contadores.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Badge Variants</span></div>
+          <div class="component-preview" style="flex-wrap:wrap;gap:8px">
+            <span class="badge badge-primary">Primário</span>
+            <span class="badge badge-success">Ativo</span>
+            <span class="badge badge-warning">Atenção</span>
+            <span class="badge badge-error">Erro</span>
+            <span class="badge badge-neutral">Inativo</span>
+            <span class="badge badge-primary badge-dot">Online</span>
+            <span class="badge badge-success badge-dot">Operacional</span>
+            <span class="badge badge-error badge-dot">Offline</span>
+            <span class="badge badge-primary badge-sm">Small</span>
+            <span class="badge badge-success badge-lg">Large</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ AVATARS ══ -->
+      <section class="section" id="avatars">
+        <div class="section-header">
+          <h2 class="section-title">Avatares</h2>
+          <p class="section-desc">Representação de usuários com iniciais, imagem e status.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Avatar Sizes</span></div>
+          <div class="component-preview" style="align-items:flex-end;gap:16px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar avatar-xs">A</div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">xs</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar avatar-sm">DA</div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">sm</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar avatar-md">MR</div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">md</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar avatar-lg" style="background:linear-gradient(135deg,#2D52EF,#3B2FC9)">AI</div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">lg</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar avatar-xl" style="background:var(--color-brand-900);color:var(--color-accent-100)">JR</div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">xl</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar-status">
+                <div class="avatar avatar-md">LM</div>
+                <span class="status-dot status-online"></span>
+              </div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">online</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar-status">
+                <div class="avatar avatar-md">PS</div>
+                <span class="status-dot status-away"></span>
+              </div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">away</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+              <div class="avatar-group">
+                <div class="avatar avatar-md">A</div>
+                <div class="avatar avatar-md" style="background:#E0E5FF">B</div>
+                <div class="avatar avatar-md" style="background:#C7CFFF">C</div>
+                <div class="avatar avatar-md" style="background:var(--color-neutral-200);color:var(--text-secondary)">+4</div>
+              </div>
+              <span style="font-size:0.625rem;color:var(--text-tertiary)">group</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ ALERTS ══ -->
+      <section class="section" id="alerts">
+        <div class="section-header">
+          <h2 class="section-title">Alertas</h2>
+          <p class="section-desc">Mensagens contextuais inline para feedback do sistema.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Alert Variants</span></div>
+          <div class="component-preview" style="flex-direction:column;gap:12px;background:var(--bg-secondary)">
+            <div class="alert alert-info" role="status">
+              <span class="alert-icon">ℹ️</span>
+              <div class="alert-content">
+                <div class="alert-title">Nova versão disponível</div>
+                <div class="alert-desc">O sistema será atualizado para v2.3.0 automaticamente amanhã às 03:00. Nenhuma ação necessária.</div>
+              </div>
+            </div>
+            <div class="alert alert-success" role="status">
+              <span class="alert-icon">✅</span>
+              <div class="alert-content">
+                <div class="alert-title">Automação criada com sucesso</div>
+                <div class="alert-desc">Seu agente de atendimento está configurado e operacional.</div>
+              </div>
+            </div>
+            <div class="alert alert-warning" role="alert">
+              <span class="alert-icon">⚠️</span>
+              <div class="alert-content">
+                <div class="alert-title">Limite de mensagens próximo</div>
+                <div class="alert-desc">Você usou 87% do seu limite mensal. Considere fazer upgrade do plano.</div>
+              </div>
+            </div>
+            <div class="alert alert-error" role="alert">
+              <span class="alert-icon">❌</span>
+              <div class="alert-content">
+                <div class="alert-title">Falha na conexão com WhatsApp</div>
+                <div class="alert-desc">O token de autenticação expirou. Reconecte sua conta nas configurações.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ TOASTS ══ -->
+      <section class="section" id="toasts">
+        <div class="section-header">
+          <h2 class="section-title">Toasts</h2>
+          <p class="section-desc">Notificações temporárias, aparecem no canto superior direito.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Toast Notifications</span></div>
+          <div class="component-preview" style="flex-direction:column;gap:12px;background:var(--bg-secondary)">
+            <div class="toast">
+              <span class="toast-icon">✅</span>
+              <div class="toast-body">
+                <div class="toast-title">Salvo com sucesso</div>
+                <div class="toast-message">As configurações foram aplicadas.</div>
+              </div>
+              <button class="toast-close" aria-label="Fechar">✕</button>
+            </div>
+            <div class="toast">
+              <span class="toast-icon">❌</span>
+              <div class="toast-body">
+                <div class="toast-title">Erro ao salvar</div>
+                <div class="toast-message">Verifique sua conexão e tente novamente.</div>
+              </div>
+              <button class="toast-close" aria-label="Fechar">✕</button>
+            </div>
+            <div class="toast">
+              <span class="toast-icon">⚠️</span>
+              <div class="toast-body">
+                <div class="toast-title">Atenção requerida</div>
+                <div class="toast-message">Esta ação afetará todos os usuários ativos.</div>
+              </div>
+              <button class="toast-close" aria-label="Fechar">✕</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="btn btn-primary btn-md" onclick="showToast()">Mostrar Toast de Demonstração</button>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ MODALS ══ -->
+      <section class="section" id="modals">
+        <div class="section-header">
+          <h2 class="section-title">Modais</h2>
+          <p class="section-desc">Diálogos que requerem ação ou confirmação do usuário.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Modal Preview</span></div>
+          <div class="component-preview modal-preview-backdrop">
+            <div class="modal" role="dialog" aria-labelledby="modal-title">
+              <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Confirmar exclusão</h2>
+                <button class="modal-close" aria-label="Fechar modal">✕</button>
+              </div>
+              <div class="modal-body">
+                <p>Você está prestes a excluir a automação <strong>"Atendimento WhatsApp Premium"</strong>. Esta ação não pode ser desfeita e todas as conversas ativas serão encerradas.</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-ghost btn-md">Cancelar</button>
+                <button class="btn btn-danger btn-md">Excluir permanentemente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="btn btn-secondary btn-md" onclick="document.getElementById('demo-modal').style.display='flex'">Abrir Modal</button>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ EMPTY STATES ══ -->
+      <section class="section" id="empty-states">
+        <div class="section-header">
+          <h2 class="section-title">Empty States</h2>
+          <p class="section-desc">Mensagens encorajadoras quando não há conteúdo disponível.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+          <div class="empty-state">
+            <div class="empty-icon">🤖</div>
+            <h3 class="empty-title">Nenhum agente criado</h3>
+            <p class="empty-desc">Crie seu primeiro agente de IA e comece a automatizar o atendimento.</p>
+            <button class="btn btn-primary btn-md">Criar primeiro agente</button>
+          </div>
+          <div class="empty-state">
+            <div class="empty-icon">📊</div>
+            <h3 class="empty-title">Sem dados ainda</h3>
+            <p class="empty-desc">Os relatórios aparecerão aqui após 24h de operação do seu agente.</p>
+            <button class="btn btn-secondary btn-md">Ver documentação</button>
+          </div>
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <h3 class="empty-title">Nenhum resultado encontrado</h3>
+            <p class="empty-desc">Tente outros termos ou ajuste os filtros da busca.</p>
+            <button class="btn btn-ghost btn-md">Limpar filtros</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ FORM PATTERNS ══ -->
+      <section class="section" id="form-patterns">
+        <div class="section-header">
+          <h2 class="section-title">Formulários</h2>
+          <p class="section-desc">Padrões completos de formulário com validação e feedback.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Complete Form Example</span></div>
+          <div class="component-preview" style="background:var(--bg-primary)">
+            <form style="width:100%;max-width:440px" onsubmit="return false">
+              <div style="margin-bottom:20px">
+                <h3 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:4px">Criar nova automação</h3>
+                <p style="font-size:0.875rem;color:var(--text-secondary)">Configure os parâmetros do seu agente de IA.</p>
+              </div>
+              <div class="form-group" style="width:100%;margin-bottom:16px">
+                <label class="form-label" for="f-name">Nome da automação <span class="required">*</span></label>
+                <input class="input" id="f-name" type="text" placeholder="ex: Atendimento Premium">
+              </div>
+              <div class="form-group" style="width:100%;margin-bottom:16px">
+                <label class="form-label" for="f-desc">Descrição</label>
+                <textarea class="input textarea" id="f-desc" placeholder="Descreva o objetivo desta automação..." style="min-height:80px"></textarea>
+                <span class="form-hint">Máximo 200 caracteres</span>
+              </div>
+              <div class="form-group" style="width:100%;margin-bottom:16px">
+                <label class="form-label" for="f-email">Email de notificações <span class="required">*</span></label>
+                <input class="input input-error" id="f-email" type="email" value="contato@" aria-invalid="true" aria-describedby="f-email-error">
+                <span class="form-error" id="f-email-error" role="alert">⚠ Email inválido — use o formato nome@empresa.com</span>
+              </div>
+              <div style="display:flex;gap:8px;justify-content:flex-end;padding-top:8px">
+                <button class="btn btn-ghost btn-md" type="button">Cancelar</button>
+                <button class="btn btn-primary btn-md" type="submit">Criar automação</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ TOGGLES ══ -->
+      <section class="section" id="toggles">
+        <div class="section-header">
+          <h2 class="section-title">Toggles & Checkboxes</h2>
+          <p class="section-desc">Controles de seleção binária e múltipla.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Controls</span></div>
+          <div class="component-preview" style="flex-direction:column;gap:16px;background:var(--bg-primary)">
+            <div class="toggle-wrapper" onclick="this.querySelector('.toggle').classList.toggle('on')">
+              <button class="toggle on" role="switch" aria-checked="true"></button>
+              <span class="toggle-label">Notificações ativas</span>
+            </div>
+            <div class="toggle-wrapper" onclick="this.querySelector('.toggle').classList.toggle('on')">
+              <button class="toggle" role="switch" aria-checked="false"></button>
+              <span class="toggle-label">Modo de manutenção</span>
+            </div>
+            <div class="toggle-wrapper" onclick="this.querySelector('.toggle').classList.toggle('on')">
+              <button class="toggle on" role="switch" aria-checked="true"></button>
+              <span class="toggle-label">Relatórios semanais</span>
+            </div>
+            <div style="height:1px;background:var(--border-subtle);margin:4px 0"></div>
+            <div class="checkbox-wrapper" onclick="this.querySelector('.checkbox').classList.toggle('checked')">
+              <div class="checkbox checked"></div>
+              <span style="font-size:0.9375rem;color:var(--text-primary)">Aceito os termos de uso</span>
+            </div>
+            <div class="checkbox-wrapper" onclick="this.querySelector('.checkbox').classList.toggle('checked')">
+              <div class="checkbox"></div>
+              <span style="font-size:0.9375rem;color:var(--text-primary)">Receber novidades por email</span>
+            </div>
+            <div class="checkbox-wrapper" onclick="this.querySelector('.checkbox').classList.toggle('checked')">
+              <div class="checkbox checked"></div>
+              <span style="font-size:0.9375rem;color:var(--text-primary)">Habilitar backups automáticos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Tags & Chips</span></div>
+          <div class="component-preview" style="flex-wrap:wrap;gap:8px">
+            <span class="tag">TypeScript</span>
+            <span class="tag tag-brand">n8n <button class="tag-close" aria-label="Remover">✕</button></span>
+            <span class="tag">Supabase <button class="tag-close" aria-label="Remover">✕</button></span>
+            <span class="tag">WhatsApp</span>
+            <span class="tag tag-brand">Claude AI <button class="tag-close" aria-label="Remover">✕</button></span>
+            <span class="tag">OpenAI</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ PROGRESS ══ -->
+      <section class="section" id="progress">
+        <div class="section-header">
+          <h2 class="section-title">Progresso</h2>
+          <p class="section-desc">Indicadores de progresso linear e stepped.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Progress Bar</span></div>
+          <div class="component-preview" style="flex-direction:column;gap:20px;background:var(--bg-primary);width:100%">
+            <div style="width:100%">
+              <div class="progress-label"><span style="font-size:0.875rem;color:var(--text-secondary)">Taxa de resolução</span><span style="font-size:0.875rem;font-weight:600;color:var(--text-primary)">94%</span></div>
+              <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:94%"></div></div>
+            </div>
+            <div style="width:100%">
+              <div class="progress-label"><span style="font-size:0.875rem;color:var(--text-secondary)">Mensagens usadas</span><span style="font-size:0.875rem;font-weight:600;color:var(--color-feedback-warning-text)">87%</span></div>
+              <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:87%;background:linear-gradient(90deg,#F59E0B,#EF4444)"></div></div>
+            </div>
+            <div style="width:100%">
+              <div class="progress-label"><span style="font-size:0.875rem;color:var(--text-secondary)">Configuração inicial</span><span style="font-size:0.875rem;font-weight:600;color:var(--color-feedback-success-text)">100%</span></div>
+              <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:100%;background:linear-gradient(90deg,#22C55E,#15803D)"></div></div>
+            </div>
+            <div style="width:100%">
+              <div class="progress-label"><span style="font-size:0.875rem;color:var(--text-secondary)">Análise em andamento</span><span style="font-size:0.875rem;font-weight:600;color:var(--text-brand)">42%</span></div>
+              <div class="progress-bar-outer" style="height:12px"><div class="progress-bar-inner" style="width:42%"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ══ SKELETON ══ -->
+      <section class="section" id="skeleton">
+        <div class="section-header">
+          <h2 class="section-title">Skeleton Loading</h2>
+          <p class="section-desc">Placeholders animados durante carregamento de conteúdo.</p>
+        </div>
+        <div class="component-block">
+          <div class="component-header"><span class="component-name">Skeleton Patterns</span></div>
+          <div class="component-preview" style="flex-direction:column;gap:24px;background:var(--bg-primary)">
+            <!-- Card Skeleton -->
+            <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:12px;padding:20px 24px;width:100%;max-width:400px">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+                <div class="skeleton" style="width:40px;height:40px;border-radius:50%;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <div class="skeleton" style="height:14px;width:60%;margin-bottom:6px"></div>
+                  <div class="skeleton" style="height:12px;width:40%"></div>
+                </div>
+              </div>
+              <div class="skeleton" style="height:14px;width:100%;margin-bottom:6px"></div>
+              <div class="skeleton" style="height:14px;width:85%;margin-bottom:6px"></div>
+              <div class="skeleton" style="height:14px;width:70%;margin-bottom:16px"></div>
+              <div style="display:flex;gap:8px">
+                <div class="skeleton" style="height:36px;width:100px;border-radius:8px"></div>
+                <div class="skeleton" style="height:36px;width:80px;border-radius:8px"></div>
+              </div>
+            </div>
+
+            <!-- List Skeleton -->
+            <div style="width:100%;max-width:400px">
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-subtle)">
+                <div class="skeleton" style="width:32px;height:32px;border-radius:8px;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <div class="skeleton" style="height:13px;width:55%;margin-bottom:5px"></div>
+                  <div class="skeleton" style="height:11px;width:35%"></div>
+                </div>
+                <div class="skeleton" style="height:22px;width:60px;border-radius:999px"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-subtle)">
+                <div class="skeleton" style="width:32px;height:32px;border-radius:8px;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <div class="skeleton" style="height:13px;width:70%;margin-bottom:5px"></div>
+                  <div class="skeleton" style="height:11px;width:45%"></div>
+                </div>
+                <div class="skeleton" style="height:22px;width:60px;border-radius:999px"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 0">
+                <div class="skeleton" style="width:32px;height:32px;border-radius:8px;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <div class="skeleton" style="height:13px;width:45%;margin-bottom:5px"></div>
+                  <div class="skeleton" style="height:11px;width:30%"></div>
+                </div>
+                <div class="skeleton" style="height:22px;width:60px;border-radius:999px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Demo Modal -->
+  <div id="demo-modal" style="display:none;position:fixed;inset:0;background:rgba(15,31,92,0.5);z-index:40;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dm-title" style="animation:scaleIn 0.2s cubic-bezier(0.34,1.56,0.64,1) both">
+      <div class="modal-header">
+        <h2 class="modal-title" id="dm-title">Excluir automação</h2>
+        <button class="modal-close" onclick="document.getElementById('demo-modal').style.display='none'" aria-label="Fechar">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>Você está prestes a excluir a automação <strong>"Atendimento WhatsApp"</strong>. Esta ação não pode ser desfeita.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost btn-md" onclick="document.getElementById('demo-modal').style.display='none'">Cancelar</button>
+        <button class="btn btn-danger btn-md" onclick="document.getElementById('demo-modal').style.display='none'">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container" style="position:fixed;top:20px;right:20px;z-index:45;display:flex;flex-direction:column;gap:8px;pointer-events:none"></div>
+
+  <style>
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes toastIn { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes toastOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(110%); opacity: 0; } }
+  </style>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('theme-label').textContent = isDark ? 'Dark Mode' : 'Light Mode';
+    }
+
+    function showToast() {
+      const toasts = [
+        { icon: '✅', title: 'Automação criada', msg: 'Seu agente está operacional.', color: '#22C55E' },
+        { icon: '❌', title: 'Erro ao conectar', msg: 'Verifique as configurações.', color: '#EF4444' },
+        { icon: '⚠️', title: 'Limite próximo', msg: '87% do limite mensal usado.', color: '#F59E0B' },
+        { icon: 'ℹ️', title: 'Atualização disponível', msg: 'v2.3.0 será instalada hoje.', color: '#2D52EF' }
+      ];
+      const t = toasts[Math.floor(Math.random() * toasts.length)];
+      const container = document.getElementById('toast-container');
+      const el = document.createElement('div');
+      el.className = 'toast';
+      el.style.cssText = 'pointer-events:all;animation:toastIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both';
+      el.innerHTML = `<span class="toast-icon">${t.icon}</span><div class="toast-body"><div class="toast-title">${t.title}</div><div class="toast-message">${t.msg}</div></div><button class="toast-close" onclick="removeToast(this.parentElement)">✕</button>`;
+      container.appendChild(el);
+      setTimeout(() => removeToast(el), 4000);
+    }
+
+    function removeToast(el) {
+      el.style.animation = 'toastOut 0.3s ease forwards';
+      setTimeout(() => el.remove(), 300);
+    }
+
+    // Sidebar active state on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+      navLinks.forEach(l => {
+        l.classList.remove('active');
+        if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

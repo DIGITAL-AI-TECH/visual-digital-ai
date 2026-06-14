@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital AI — Identidade Visual</title>
+  <meta name="description" content="Plataforma de identidade visual de Digital AI. Acesse logos, paleta de cores, tipografia, social kit e design tokens.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Digital AI — Identidade Visual">
+  <meta property="og:description" content="Plataforma de identidade visual completa. Logos, cores, tipografia, social kit e design tokens.">
+  <meta property="og:image" content="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/og-image.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/symbol-only.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== BRAND TOKENS (sempre disponíveis) ==================== */
+    :root {
+      --brand-primary:   #2D52EF;
+      --brand-secondary: #3B2FC9;
+      --brand-accent:    #E8EEFF;
+      --brand-dark:      #0F1F5C;
+      --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      /* Layout & Motion */
+      --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 24px;
+      --shadow-glow: 0 0 40px rgba(45, 82, 239, 0.15);
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+      --space-xs: 0.25rem; --space-sm: 0.5rem; --space-md: 1rem;
+      --space-lg: 1.5rem; --space-xl: 2rem; --space-2xl: 3rem;
+      --space-3xl: 4rem; --space-4xl: 6rem;
+      --container-max: 1280px; --nav-height: 64px;
+    }
+
+    /* ==================== DARK MODE (padrão) ==================== */
+    /* Fundos neutros quase-pretos — marca aparece nos acentos, gradientes e hero */
+    :root,
+    [data-theme="dark"] {
+      --bg-base:       #0d0d10;
+      --bg-surface:    #141418;
+      --bg-card:       #1a1a20;
+      --bg-card-hover: #202028;
+      --bg-elevated:   #1e1e26;
+      --text-primary:   #f0f0f8;
+      --text-secondary: rgba(240,240,248,0.62);
+      --text-muted:     rgba(240,240,248,0.38);
+      --border-subtle:  rgba(240,240,248,0.07);
+      --border-medium:  rgba(240,240,248,0.13);
+      --border-accent:  var(--brand-primary);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.5);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.6);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.7);
+      --btn-primary-fg:  #ffffff;
+      --nav-bg:          rgba(13,13,16,0.92);
+      --nav-menu-bg:     rgba(13,13,16,0.97);
+      --logo-bg-dark:    rgba(255,255,255,0.06);
+      --logo-bg-light:   rgba(255,255,255,0.03);
+      --hero-gradient:   linear-gradient(135deg, #0d0d10 0%, color-mix(in srgb, #3B2FC9 40%, #0d0d10 60%) 50%, color-mix(in srgb, #2D52EF 25%, #0d0d10 75%) 100%);
+      --scrollbar-thumb: rgba(240,240,248,0.12);
+      --scrollbar-hover: rgba(240,240,248,0.22);
+      /* Design System surface tokens */
+      --surface-secondary: var(--bg-surface);
+      --surface-raised: var(--bg-elevated);
+      --accent-primary: var(--brand-primary);
+      --border-default: var(--border-subtle);
+    }
+
+    /* ==================== LIGHT MODE ==================== */
+    /* Zero hardcode — tudo derivado das cores da marca via color-mix */
+    [data-theme="light"] {
+      /* Backgrounds: tint sutil do accent da marca sobre branco */
+      --bg-base:       color-mix(in srgb, #E8EEFF 12%, #FFFFFF 88%);
+      --bg-surface:    color-mix(in srgb, #E8EEFF  5%, #FFFFFF 95%);
+      --bg-card:       color-mix(in srgb, #E8EEFF  3%, #FFFFFF 97%);
+      --bg-card-hover: color-mix(in srgb, #2D52EF 7%, #FFFFFF 93%);
+      --bg-elevated:   color-mix(in srgb, #E8EEFF 18%, #FFFFFF 82%);
+      /* Texto derivado do dark da marca */
+      --text-primary:   #0F1F5C;
+      --text-secondary: rgba(15, 31, 92, 0.65);
+      --text-muted:     rgba(15, 31, 92, 0.40);
+      /* Bordas */
+      --border-subtle:  rgba(15, 31, 92, 0.07);
+      --border-medium:  rgba(15, 31, 92, 0.13);
+      --border-accent:  var(--brand-primary);
+      /* Sombras tintadas com dark da marca */
+      --shadow-sm: 0 1px 3px  rgba(15, 31, 92, 0.08);
+      --shadow-md: 0 4px 12px rgba(15, 31, 92, 0.10);
+      --shadow-lg: 0 8px 32px rgba(15, 31, 92, 0.12);
+      /* Botão primário: accent da marca como cor de texto */
+      --btn-primary-fg:  color-mix(in srgb, #E8EEFF 90%, #FFFFFF 10%);
+      /* Nav: tint do accent com transparência para backdrop blur */
+      --nav-bg:      color-mix(in srgb, #E8EEFF 20%, transparent 80%);
+      --nav-menu-bg: color-mix(in srgb, #E8EEFF 25%, #FFFFFF 75%);
+      /* Logos */
+      --logo-bg-dark:  #0F1F5C;
+      --logo-bg-light: color-mix(in srgb, #2D52EF 5%, #FFFFFF 95%);
+      /* Hero: degradê do accent suave ao branco */
+      --hero-gradient: linear-gradient(135deg,
+        #E8EEFF 0%,
+        color-mix(in srgb, #E8EEFF 30%, #FFFFFF 70%) 40%,
+        color-mix(in srgb, #2D52EF 6%, #FFFFFF 94%) 100%);
+      /* Scrollbar */
+      --scrollbar-thumb: rgba(15, 31, 92, 0.15);
+      --scrollbar-hover: rgba(15, 31, 92, 0.28);
+      /* Design System surface tokens */
+      --surface-secondary: var(--bg-surface);
+      --surface-raised: var(--bg-elevated);
+      --accent-primary: var(--brand-primary);
+      --border-default: var(--border-subtle);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 1rem);
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden; /* fallback */
+      overflow-x: clip;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-base);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color var(--transition-base), color var(--transition-base);
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    a {
+      color: var(--brand-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    a:hover { color: var(--brand-secondary); }
+    a:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; border-radius: 2px; }
+    button:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; border-radius: var(--radius-sm); }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-lg); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* --- Navigation --- */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 1000;
+      transition: background var(--transition-base), border-color var(--transition-base);
+    }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-lg);
+    }
+    .nav__brand { display: flex; align-items: center; gap: var(--space-sm); }
+    .nav__brand img { height: 28px; width: auto; }
+    .nav__brand-name { font-family: var(--font-heading); font-weight: 700; font-size: 0.95rem; color: var(--text-primary); letter-spacing: -0.01em; }
+    .nav__links { display: flex; align-items: center; gap: var(--space-xs); list-style: none; overflow-x: auto; scrollbar-width: none; }
+    .nav__links::-webkit-scrollbar { display: none; }
+    .nav__link {
+      display: inline-flex; align-items: center; padding: var(--space-xs) var(--space-sm);
+      font-size: 0.8rem; font-weight: 500; color: var(--text-secondary);
+      border-radius: var(--radius-sm); white-space: nowrap;
+      transition: color var(--transition-fast), background var(--transition-fast);
+    }
+    .nav__link:hover, .nav__link--active { color: var(--text-primary); background: var(--border-subtle); }
+    .nav__mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); cursor: pointer; padding: var(--space-sm); }
+    .nav__controls { display: flex; align-items: center; gap: var(--space-sm); flex-shrink: 0; }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      border: 1px solid var(--border-medium);
+      background: var(--bg-card); color: var(--text-secondary);
+      cursor: pointer; font-size: 13px; font-family: var(--font-body);
+      transition: all var(--transition-fast); white-space: nowrap;
+    }
+    .theme-toggle:hover { border-color: var(--brand-primary); color: var(--text-primary); }
+    .theme-toggle__icon { font-size: 14px; line-height: 1; }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .nav__mobile-toggle { display: flex; }
+      .theme-toggle__label { display: none; }
+      .nav__links--open {
+        display: flex; flex-direction: column; position: absolute;
+        top: var(--nav-height); left: 0; right: 0;
+        background: var(--nav-menu-bg); backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: var(--space-md); gap: var(--space-xs);
+      }
+    }
+
+    /* --- Section --- */
+    .section { padding: var(--space-4xl) 0; border-bottom: 1px solid var(--border-subtle); }
+    .section:last-of-type { border-bottom: none; }
+    .section__header { margin-bottom: var(--space-2xl); }
+    .section__label { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-primary); margin-bottom: var(--space-sm); }
+    .section__title { font-size: clamp(1.5rem, 3vw, 2.25rem); letter-spacing: -0.02em; margin-bottom: var(--space-sm); }
+    .section__description { font-size: 1rem; color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm);
+      padding: 0.625rem 1.25rem; font-family: var(--font-body); font-size: 0.875rem; font-weight: 600;
+      border-radius: var(--radius-md); border: none; cursor: pointer;
+      transition: all var(--transition-fast); text-decoration: none; white-space: nowrap; line-height: 1.4;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn--primary { background: var(--brand-primary); color: var(--btn-primary-fg); }
+    .btn--primary:hover { filter: brightness(1.15); box-shadow: var(--shadow-glow); color: var(--btn-primary-fg); }
+    .btn--secondary { background: var(--border-subtle); color: var(--text-primary); border: 1px solid var(--border-medium); }
+    .btn--secondary:hover { background: var(--border-medium); border-color: var(--border-medium); color: var(--text-primary); }
+    .btn--ghost { background: transparent; color: var(--text-secondary); padding: 0.375rem 0.75rem; font-size: 0.8rem; }
+    .btn--ghost:hover { color: var(--text-primary); background: var(--border-subtle); }
+    .btn--sm { padding: 0.375rem 0.75rem; font-size: 0.8rem; border-radius: var(--radius-sm); }
+    .btn__icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* --- Tooltip --- */
+    .tooltip { position: relative; }
+    .tooltip__text {
+      position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+      background: var(--brand-primary); color: #fff; padding: 4px 10px;
+      border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;
+      white-space: nowrap; opacity: 0; pointer-events: none;
+      transition: opacity var(--transition-fast); z-index: 10;
+    }
+    .tooltip__text::after {
+      content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 4px solid transparent; border-top-color: var(--brand-primary);
+    }
+    .tooltip--visible .tooltip__text { opacity: 1; }
+
+    /* --- Hero --- */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-height) + var(--space-3xl)) var(--space-lg) var(--space-3xl);
+      position: relative; overflow: hidden;
+      background: var(--hero-gradient);
+      transition: background var(--transition-slow);
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; left: -25%; width: 150%; height: 150%;
+      background: radial-gradient(ellipse at center, rgba(45, 82, 239, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero__content { position: relative; z-index: 1; width: 100%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
+    .hero__logo { display: block; width: 900px; max-width: 92vw; height: auto; margin: 0 auto var(--space-xl); filter: drop-shadow(0 8px 32px rgba(45, 82, 239,0.28)); }
+    .hero__watermark { position: absolute; bottom: var(--space-xl); right: var(--space-xl); width: 180px; max-width: 30vw; height: auto; opacity: 1; pointer-events: none; filter: invert(1) brightness(2) opacity(0.06); }
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: var(--space-sm);
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero__subtitle { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-secondary); font-weight: 400; margin-bottom: var(--space-xl); }
+    .hero__meta { display: flex; align-items: center; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-2xl); flex-wrap: wrap; }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
+      background: var(--border-subtle); border: 1px solid var(--border-subtle);
+      border-radius: 999px; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary);
+    }
+    .hero__badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand-primary); }
+    .hero__actions { display: flex; align-items: center; justify-content: center; gap: var(--space-md); flex-wrap: wrap; }
+
+    /* --- Grid --- */
+    .grid { display: grid; gap: var(--space-lg); }
+    .grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .grid--3 { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 1024px) { .grid--3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .grid--2, .grid--3 { grid-template-columns: 1fr; } }
+
+    /* --- Card --- */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+    }
+    .card:hover { border-color: var(--border-medium); background: var(--bg-card-hover); box-shadow: var(--shadow-md); }
+    .card__preview {
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--space-2xl); min-height: 180px; background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle); position: relative;
+    }
+    .card__preview--checkered {
+      background-image:
+        linear-gradient(45deg, var(--border-subtle) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--border-subtle) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--border-subtle) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--border-subtle) 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+    /* Logo cards — fundos adaptativos por tema */
+    .card__preview--needs-dark  { background: var(--logo-bg-dark)  !important; }
+    .card__preview--needs-light { background: var(--logo-bg-light) !important; }
+    .card__preview img { max-height: 80px; width: auto; object-fit: contain; }
+    .card__body { padding: var(--space-lg); }
+    .card__title { font-size: 0.95rem; font-weight: 600; margin-bottom: var(--space-xs); }
+    .card__subtitle { font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-md); }
+    .card__actions { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+
+    /* Palette Expanded Shades */
+    .palette-shades { margin-top: var(--space-2xl); }
+    .palette-shades__toggle { display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; padding: var(--space-md) 0; border: none; background: none; color: var(--text-secondary); font-size: 0.875rem; font-weight: 600; font-family: var(--font-body); }
+    .palette-shades__toggle:hover { color: var(--text-primary); }
+    .palette-shades__toggle-icon { transition: transform var(--transition-fast); font-style: normal; }
+    .palette-shades__toggle-icon--open { transform: rotate(90deg); }
+    .palette-shades__content { display: none; }
+    .palette-shades__content--open { display: block; }
+    .shade-group { margin-bottom: var(--space-xl); }
+    .shade-group__name { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: var(--space-sm); }
+    .shade-strip { display: grid; grid-template-columns: repeat(10, 1fr); border-radius: var(--radius-lg); overflow: hidden; }
+    @media(max-width:600px){ .shade-strip { grid-template-columns: repeat(5,1fr); } }
+    .shade-chip { aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 4px 2px; cursor: pointer; transition: transform var(--transition-fast); position: relative; }
+    .shade-chip:hover { transform: scaleY(1.08); z-index: 1; }
+    .shade-chip__label { font-size: 9px; font-weight: 700; text-align: center; line-height: 1.2; opacity: 0.8; }
+    .shade-chip__step { font-size: 8px; opacity: 0.6; }
+
+    /* Contrast Checker */
+    .contrast-checker { margin-top: var(--space-xl); padding: var(--space-xl); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); }
+    .contrast-checker__title { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-lg); }
+    .contrast-checker__inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-lg); align-items: end; }
+    @media(max-width:600px){ .contrast-checker__inputs { grid-template-columns: 1fr 1fr; } }
+    .contrast-checker__field { display: flex; flex-direction: column; gap: var(--space-xs); }
+    .contrast-checker__label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); }
+    .contrast-checker__color-row { display: flex; align-items: center; gap: var(--space-sm); }
+    .contrast-checker__swatch { width: 36px; height: 36px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); flex-shrink: 0; }
+    .contrast-checker__hex { padding: var(--space-sm) var(--space-md); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: 0.875rem; color: var(--text-primary); font-family: monospace; width: 100%; }
+    .contrast-picker { width: 36px; height: 36px; border: none; border-radius: var(--radius-md); cursor: pointer; padding: 0; overflow: hidden; }
+    .contrast-result { padding: var(--space-lg); border-radius: var(--radius-lg); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 100px; transition: background var(--transition-fast); }
+    .contrast-result__ratio { font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: var(--space-xs); }
+    .contrast-result__label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .contrast-badges { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg); }
+    .contrast-badge { padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
+    .contrast-badge--pass { background: rgba(34,197,94,0.15); color: #15803d; }
+    .contrast-badge--fail { background: rgba(239,68,68,0.15); color: #dc2626; }
+    .contrast-preview { margin-top: var(--space-lg); padding: var(--space-md) var(--space-lg); border-radius: var(--radius-md); font-size: 1rem; font-weight: 400; }
+    .contrast-preview strong { font-weight: 700; display: block; font-size: 1.25rem; }
+
+    /* --- Swatches --- */
+    .swatch-grid { display: grid; gap: var(--space-lg); grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    .swatch {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); overflow: hidden; cursor: pointer;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-fast);
+    }
+    .swatch:hover { border-color: var(--border-medium); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .swatch__color { height: 120px; width: 100%; position: relative; }
+    .swatch__role {
+      position: absolute; top: var(--space-sm); left: var(--space-sm);
+      padding: 2px 8px; background: rgba(0,0,0,0.35); backdrop-filter: blur(4px);
+      border-radius: 999px; font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em; color: #fff;
+    }
+    .swatch__info { padding: var(--space-md); }
+    .swatch__name { font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600; margin-bottom: var(--space-xs); }
+    .swatch__values { display: flex; flex-direction: column; gap: 2px; }
+    .swatch__value {
+      font-size: 0.75rem; font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+      color: var(--text-muted); display: flex; align-items: center; gap: var(--space-xs);
+    }
+    .swatch__value-label { font-weight: 600; color: var(--text-secondary); text-transform: uppercase; font-size: 0.65rem; min-width: 32px; }
+    .swatch__copy-hint { margin-top: var(--space-sm); font-size: 0.7rem; color: var(--text-muted); opacity: 0; transition: opacity var(--transition-fast); }
+    .swatch:hover .swatch__copy-hint { opacity: 1; }
+
+    /* --- Typography --- */
+    .type-specimen { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-2xl); margin-bottom: var(--space-lg); }
+    .type-specimen__header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); }
+    .type-specimen__name { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--brand-primary); }
+    .type-specimen__font { font-size: 0.85rem; color: var(--text-secondary); }
+    .type-specimen__sample { margin-bottom: var(--space-lg); }
+    .type-specimen__sample--heading { font-family: var(--font-heading); font-weight: 700; font-size: clamp(1.75rem, 4vw, 3rem); letter-spacing: -0.02em; line-height: 1.15; }
+    .type-specimen__sample--body { font-family: var(--font-body); font-weight: 400; font-size: 1rem; line-height: 1.8; color: var(--text-secondary); max-width: 640px; }
+    .type-specimen__weights { display: flex; gap: var(--space-lg); flex-wrap: wrap; margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--border-subtle); }
+    .type-specimen__weight { display: flex; flex-direction: column; gap: 2px; }
+    .type-specimen__weight-name { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .type-specimen__weight-sample { font-size: 1.25rem; }
+
+    /* --- Social --- */
+    .social-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; transition: border-color var(--transition-base), box-shadow var(--transition-base); }
+    .social-card:hover { border-color: var(--border-medium); box-shadow: var(--shadow-md); }
+    .social-card__preview { position: relative; overflow: hidden; background: var(--bg-surface); }
+    .social-card__preview img { width: 100%; height: auto; display: block; }
+    .social-card__body { padding: var(--space-lg); }
+    .social-card__title { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+    .social-card__dimensions { font-size: 0.75rem; color: var(--text-muted); margin-bottom: var(--space-md); }
+    .social-card__actions { display: flex; gap: var(--space-sm); }
+
+    /* --- Tokens --- */
+    .tokens-tabs { display: flex; gap: 2px; margin-bottom: var(--space-lg); background: var(--bg-card); border-radius: var(--radius-md); padding: 3px; border: 1px solid var(--border-subtle); width: fit-content; }
+    .tokens-tab { padding: var(--space-sm) var(--space-lg); font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); background: transparent; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: all var(--transition-fast); font-family: var(--font-body); }
+    .tokens-tab--active { background: var(--brand-primary); color: #fff; }
+    .tokens-tab:hover:not(.tokens-tab--active) { color: var(--text-primary); background: var(--border-subtle); }
+    .tokens-panel { display: none; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+    .tokens-panel--active { display: block; }
+    .tokens-panel__header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-md) var(--space-lg); border-bottom: 1px solid var(--border-subtle); background: var(--bg-surface); }
+    .tokens-panel__title { font-size: 0.85rem; font-weight: 600; }
+    .tokens-panel__code { padding: var(--space-lg); overflow-x: auto; max-height: 480px; overflow-y: auto; }
+    .tokens-panel__code pre { font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace; font-size: 0.8rem; line-height: 1.7; color: var(--text-secondary); white-space: pre; margin: 0; }
+
+    /* --- Documents --- */
+    .doc-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-xl); display: flex; align-items: flex-start; gap: var(--space-lg); transition: border-color var(--transition-base), box-shadow var(--transition-base); }
+    .doc-card:hover { border-color: var(--border-medium); box-shadow: var(--shadow-md); }
+    .doc-card__icon { width: 48px; height: 48px; border-radius: var(--radius-md); background: rgba(45, 82, 239, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .doc-card__icon svg { width: 24px; height: 24px; color: var(--brand-primary); }
+    .doc-card__content { flex: 1; min-width: 0; }
+    .doc-card__title { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .doc-card__description { font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-md); }
+    .doc-card__actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+
+    /* --- Download Table --- */
+    .dl-table-wrapper { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+    .dl-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .dl-table thead { background: var(--bg-surface); }
+    .dl-table th { padding: var(--space-md) var(--space-lg); text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border-subtle); }
+    .dl-table td { padding: var(--space-md) var(--space-lg); border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); vertical-align: middle; }
+    .dl-table tr:last-child td { border-bottom: none; }
+    .dl-table tr:hover td { background: var(--border-subtle); }
+    .dl-table__filename { font-weight: 500; color: var(--text-primary); }
+    .dl-table__category { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; background: var(--border-subtle); border-radius: 999px; display: inline-block; }
+    .dl-table__highlight { background: rgba(45, 82, 239, 0.04); }
+    .dl-table__highlight td { border-bottom-color: rgba(45, 82, 239, 0.1); }
+    .dl-table__actions { display: flex; gap: var(--space-sm); align-items: center; }
+    @media (max-width: 768px) {
+      .dl-table { font-size: 0.8rem; }
+      .dl-table th, .dl-table td { padding: var(--space-sm) var(--space-md); }
+      .dl-table__hide-mobile { display: none; }
+    }
+
+    /* --- Footer --- */
+    .footer { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-subtle); text-align: center; }
+    .footer__text { font-size: 0.8rem; color: var(--text-muted); }
+    .footer__text a { color: var(--text-secondary); }
+    .footer__text a:hover { color: var(--brand-primary); }
+    .footer__meta { margin-top: var(--space-sm); font-size: 0.7rem; color: var(--text-muted); }
+
+    /* --- Animations --- */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-in { opacity: 0; animation: fadeInUp 0.6s var(--transition-slow) forwards; }
+    .animate-in:nth-child(1) { animation-delay: 0ms; }
+    .animate-in:nth-child(2) { animation-delay: 80ms; }
+    .animate-in:nth-child(3) { animation-delay: 160ms; }
+    .animate-in:nth-child(4) { animation-delay: 240ms; }
+    .animate-in:nth-child(5) { animation-delay: 320ms; }
+    .animate-in:nth-child(6) { animation-delay: 400ms; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+
+    /* === DESIGN SYSTEM Section === */
+    .ds-motion-demo {
+      background: var(--surface-raised);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-md);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .ds-motion-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      transform: translateX(-40px);
+      transition: transform var(--dur, 200ms) cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .ds-motion-demo:hover .ds-motion-dot {
+      transform: translateX(40px);
+    }
+    .ds-motion-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .ds-easing-demo {
+      background: var(--surface-raised);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-md);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      overflow: hidden;
+    }
+    .ds-easing-bar {
+      height: 8px;
+      width: 40%;
+      background: var(--accent-primary);
+      border-radius: 999px;
+      transition: width var(--dur, 300ms) var(--ease, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+    .ds-easing-demo:hover .ds-easing-bar {
+      width: 100%;
+    }
+    /* === EMAIL SIGNATURE Section === */
+    .sig-install-card {
+      background: var(--surface-raised, var(--bg-elevated));
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg, 12px);
+      padding: var(--space-xl) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .sig-install-card__icon { margin-bottom: var(--space-xs); }
+    .sig-install-card__title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0; }
+    .sig-install-card__steps { font-size: 0.85rem; color: var(--text-secondary); padding-left: var(--space-lg); margin: 0; line-height: 2; }
+    .sig-install-card__steps li { margin-bottom: 2px; }
+    .sig-install-card__steps code { background: var(--bg-secondary); padding: 1px 5px; border-radius: 3px; font-size: 0.8em; }
+    /* DS Section Cards */
+    /* ── DS Brand Overview ── */
+    .ds-brand-overview{display:flex;flex-wrap:wrap;gap:var(--space-xl);align-items:center;padding:var(--space-xl) var(--space-2xl);background:var(--bg-card);border:1px solid var(--border-default);border-radius:var(--radius-lg);margin-bottom:var(--space-2xl);}
+    .ds-brand-overview__block{display:flex;flex-direction:column;gap:4px;}
+    .ds-brand-overview__label{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);}
+    .ds-brand-overview__colors{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+    .ds-brand-overview__swatch{width:28px;height:28px;border-radius:6px;border:1px solid rgba(0,0,0,0.08);flex-shrink:0;}
+    .ds-brand-overview__font{font-size:1.1rem;font-weight:600;color:var(--text-primary);}
+    .ds-brand-overview__name{font-size:1rem;font-weight:700;color:var(--text-primary);}
+    .ds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: var(--space-lg); margin-bottom: var(--space-2xl); }
+    .ds-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-sm); transition: border-color var(--transition-fast), transform var(--transition-fast); cursor: pointer; text-decoration: none; }
+    .ds-card:hover { border-color: var(--brand-primary); transform: translateY(-2px); }
+    .ds-card__icon { width: 48px; height: 48px; border-radius: var(--radius-lg); background: rgba(var(--brand-primary-rgb),0.1); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: var(--space-xs); flex-shrink: 0; }
+    .ds-card__title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+    .ds-card__desc { font-size: 0.875rem; color: var(--text-secondary); margin: 0; flex: 1; line-height: 1.5; }
+    .ds-card__cta { font-size: 0.875rem; font-weight: 600; color: var(--brand-primary); margin-top: auto; padding-top: var(--space-sm); display: flex; align-items: center; gap: 4px; }
+    .ds-token-downloads { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: var(--space-xl); margin-bottom: var(--space-2xl); }
+    .ds-token-downloads__title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-md); }
+    .ds-token-downloads__grid { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .ds-secondary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: var(--space-md); }
+    .ds-secondary-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-xs); transition: border-color var(--transition-fast); }
+    .ds-secondary-card:hover { border-color: var(--brand-primary); }
+    .ds-secondary-card__label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); }
+    .ds-secondary-card__name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+    .ds-secondary-card__actions { display: flex; gap: var(--space-xs); margin-top: var(--space-sm); flex-wrap: wrap; }
+    /* Signature Personalization Form */
+    .sig-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--space-md); margin-bottom: var(--space-xl); padding: var(--space-lg); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+    .sig-form__field { display: flex; flex-direction: column; gap: var(--space-xs); }
+    .sig-form__label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-tertiary); }
+    .sig-form__input { padding: var(--space-sm) var(--space-md); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-primary); font-family: var(--font-body); transition: border-color var(--transition-fast); outline: none; }
+    .sig-form__input:focus { border-color: var(--brand-primary); box-shadow: 0 0 0 3px rgba(45, 82, 239,0.15); }
+    .sig-form__hint { font-size: 0.75rem; color: var(--text-tertiary); margin-top: 2px; }
+    /* DS Inline Page */
+    .ds-page{max-width:1100px;margin:0 auto;padding:var(--space-2xl) var(--space-xl);}
+    .ds-page__nav{display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-bottom:var(--space-2xl);border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-lg);}
+    .ds-page__section{display:none;}
+    .ds-page__section--active{display:block;}
+    .ds-sec-title{font-size:1.4rem;font-weight:700;color:var(--text-primary);margin:0 0 var(--space-xs);}
+    .ds-sec-desc{font-size:0.9rem;color:var(--text-secondary);margin:0 0 var(--space-2xl);}
+    .ds-sub-title{font-size:0.95rem;font-weight:600;color:var(--text-primary);margin:var(--space-2xl) 0 var(--space-lg);padding-bottom:var(--space-xs);border-bottom:1px solid var(--border-subtle);}
+    .ds-sub-title:first-child{margin-top:0;}
+    .ds-color-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:var(--space-sm);margin-bottom:var(--space-2xl);}
+    .ds-color-chip{border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-subtle);}
+    .ds-color-chip__sw{height:64px;}
+    .ds-color-chip__info{padding:var(--space-xs) var(--space-sm);background:var(--bg-card);}
+    .ds-color-chip__name{font-size:0.75rem;font-weight:600;color:var(--text-primary);}
+    .ds-color-chip__hex{font-size:0.68rem;color:var(--text-muted);font-family:monospace;}
+    .ds-comp-box{padding:var(--space-xl);background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border-subtle);margin-bottom:var(--space-lg);}
+    .ds-comp-row{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-md);margin-bottom:var(--space-md);padding-bottom:var(--space-md);border-bottom:1px solid var(--border-subtle);}
+    .ds-comp-row:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+    .ds-comp-lbl{font-size:0.72rem;color:var(--text-muted);font-family:monospace;min-width:80px;}
+    .ds-comp-group{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-sm);}
+    .ds-badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;font-size:0.72rem;font-weight:600;letter-spacing:0.02em;}
+    .ds-badge--primary{background:color-mix(in srgb,#2D52EF 15%,transparent);color:#2D52EF;}
+    .ds-badge--dark{background:color-mix(in srgb,#0F1F5C 15%,transparent);color:#0F1F5C;}
+    .ds-badge--success{background:#dcfce7;color:#166534;}
+    .ds-badge--warning{background:#fef9c3;color:#854d0e;}
+    .ds-badge--error{background:#fee2e2;color:#991b1b;}
+    .ds-badge--neutral{background:var(--bg-surface);color:var(--text-secondary);border:1px solid var(--border-default);}
+    .ds-alert{padding:var(--space-md) var(--space-lg);border-radius:var(--radius-md);border:1px solid;font-size:0.875rem;margin-bottom:var(--space-sm);}
+    .ds-alert--info{background:color-mix(in srgb,#2D52EF 8%,transparent);border-color:color-mix(in srgb,#2D52EF 25%,transparent);color:var(--text-primary);}
+    .ds-alert--success{background:#f0fdf4;border-color:#bbf7d0;color:#166534;}
+    .ds-alert--warning{background:#fefce8;border-color:#fde68a;color:#854d0e;}
+    .ds-alert--error{background:#fef2f2;border-color:#fecaca;color:#991b1b;}
+    .ds-input{padding:8px 14px;border:1.5px solid var(--border-default);border-radius:var(--radius-md);font-size:0.875rem;background:var(--bg-card);color:var(--text-primary);outline:none;transition:border-color .15s;font-family:inherit;width:220px;}
+    .ds-input:focus{border-color:#2D52EF;box-shadow:0 0 0 3px color-mix(in srgb,#2D52EF 15%,transparent);}
+    .ds-input--err{border-color:#ef4444!important;}
+    .ds-input:disabled{opacity:.5;cursor:not-allowed;}
+    .ds-spacing-row{display:flex;align-items:center;gap:var(--space-lg);margin-bottom:var(--space-sm);}
+    .ds-spacing-bar{background:#2D52EF;border-radius:2px;height:20px;opacity:.75;}
+    .ds-spacing-lbl{font-size:0.72rem;color:var(--text-muted);font-family:monospace;min-width:160px;}
+    .ds-radius-grid{display:flex;gap:var(--space-xl);flex-wrap:wrap;align-items:flex-end;padding:var(--space-lg) 0;}
+    .ds-radius-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-sm);}
+    .ds-radius-box{width:60px;height:60px;background:color-mix(in srgb,#2D52EF 12%,var(--bg-surface) 88%);border:2px solid #2D52EF;}
+    .ds-radius-item span{font-size:0.68rem;color:var(--text-muted);font-family:monospace;}
+    .ds-shadow-grid{display:flex;gap:var(--space-2xl);flex-wrap:wrap;padding:var(--space-lg) 0;}
+    .ds-shadow-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-md);}
+    .ds-shadow-box{width:72px;height:72px;border-radius:var(--radius-lg);background:var(--bg-base);}
+    .ds-shadow-item span{font-size:0.68rem;color:var(--text-muted);font-family:monospace;}
+    .ds-code-block{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-lg);font-family:monospace;font-size:0.75rem;color:var(--text-secondary);overflow-x:auto;white-space:pre;max-height:420px;overflow-y:auto;}
+    /* ==================== Logo Usage Guidelines ==================== */
+    .logo-usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-lg);
+    }
+    .usage-card {
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: box-shadow var(--transition-base);
+    }
+    .usage-card:hover { box-shadow: var(--shadow-md); }
+    .usage-card__preview {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+    }
+    .usage-card__preview--light { background: #F8FAFC; }
+    .usage-card__preview--dark { background: #0F1F5C; }
+    .usage-card__preview--gradient { background: linear-gradient(135deg, #0F1F5C 0%, #2D52EF 100%); }
+    .usage-card__preview--neutral { background: var(--bg-surface); }
+    .usage-card__body { padding: var(--space-lg); }
+    .usage-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xs);
+    }
+    .usage-card__desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+    }
+    .usage-card__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .usage-card__list--do li::before { content: "\2713 "; color: #16a34a; font-weight: 700; }
+    .usage-card__list li { font-size: 0.875rem; color: var(--text-secondary); }
+    .usage-dont-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .usage-dont-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-md);
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.20);
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      color: #dc2626;
+    }
+    .usage-dont-icon { font-size: 1rem; }
+
+    /* ==================== Changelog ==================== */
+    .changelog-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+    .changelog-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      border-radius: 9999px;
+      padding: 6px 16px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background var(--transition-base), color var(--transition-base);
+    }
+    .changelog-toggle:hover {
+      background: rgba(255,255,255,0.20);
+      color: #fff;
+    }
+    .changelog-toggle svg {
+      transition: transform var(--transition-base);
+      flex-shrink: 0;
+    }
+    .changelog-panel {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      max-width: 480px;
+      width: 100%;
+      text-align: left;
+    }
+    .changelog-entry { display: flex; flex-direction: column; gap: 4px; }
+    .changelog-version {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .changelog-date {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+    .changelog-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.6;
+      margin-top: var(--space-xs);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Navegacao principal">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__brand" aria-label="Digital AI — Voltar ao topo">
+        <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/symbol-only.svg" alt="" width="28" height="28" loading="eager">
+        <span class="nav__brand-name">Digital AI</span>
+      </a>
+      <button class="nav__mobile-toggle" aria-label="Abrir menu de navegacao" aria-expanded="false" onclick="toggleMobileNav()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <ul class="nav__links" id="navLinks" role="menubar">
+        <li role="none"><a href="#logos" class="nav__link" role="menuitem">Logos</a></li>
+        <li role="none"><a href="#colors" class="nav__link" role="menuitem">Cores</a></li>
+        <li role="none"><a href="#typography" class="nav__link" role="menuitem">Tipografia</a></li>
+        <li role="none"><a href="#social" class="nav__link" role="menuitem">Social Kit</a></li>
+        <li role="none"><a href="#tokens" class="nav__link" role="menuitem">Tokens</a></li>
+        <li role="none"><a href="#docs" class="nav__link" role="menuitem">Docs</a></li>
+        <li role="none"><a href="#design-system" class="nav__link" role="menuitem">Design System</a></li>
+        <li role="none"><a href="#email-signature" class="nav__link" role="menuitem">Assinatura Email</a></li>
+        <li role="none"><a href="#downloads" class="nav__link" role="menuitem">Downloads</a></li>
+      </ul>
+      <div class="nav__controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo de cor" title="Alternar Light/Dark">
+          <span class="theme-toggle__icon">🌙</span>
+          <span class="theme-toggle__label">Light Mode</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg" alt="" class="hero__watermark" aria-hidden="true" loading="eager">
+    <div class="hero__content">
+      <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg" alt="Digital AI logo" class="hero__logo" width="629" height="110" loading="eager">
+      <h1 class="hero__title">Digital AI</h1>
+      <p class="hero__subtitle">Identidade Visual</p>
+      <div class="hero__meta">
+        <span class="hero__badge"><span class="hero__badge-dot" aria-hidden="true"></span> v1</span>
+        <span class="hero__badge">14 de junho de 2026</span>
+      </div>
+      <!-- Changelog toggle -->
+      <div class="changelog-wrapper">
+        <button class="changelog-toggle" onclick="toggleChangelog(this)" aria-expanded="false">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Ver changelog
+        </button>
+        <div class="changelog-panel" id="changelogPanel" hidden>
+          <div class="changelog-entry">
+            <span class="changelog-version">v1.0.0</span>
+            <span class="changelog-date">Jun 2026</span>
+            <p class="changelog-desc">Lançamento inicial da plataforma de identidade visual. Inclui sistema de cores, tipografia, logos, componentes e design tokens completos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero__actions">
+        <a href="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/digital-ai-identidade-visual-20260610.zip" download="digital-ai-identidade-visual-20260610.zip" class="btn btn--primary btn--sm" aria-label="Baixar pacote completo em ZIP">↓ Download</a>
+        <a href="#logos" class="btn btn--secondary btn--sm">Ver Assets</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO SYSTEM -->
+  <section class="section" id="logos">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">01 / Logo System</span>
+        <h2 class="section__title">Variantes do Logo</h2>
+        <p class="section__description">Todas as variantes aprovadas para uso em diferentes contextos e fundos. Clique para baixar ou copiar a URL CDN.</p>
+      </div>
+      <div class="grid grid--3" id="logoGrid"></div>
+
+      <!-- Logo Usage Guidelines -->
+      <div class="logo-usage-grid" style="margin-top: var(--space-2xl);">
+        <h3 style="grid-column:1/-1; font-size:1.25rem; font-weight:700; color:var(--text-primary); margin-bottom:var(--space-lg);">Como usar cada variante</h3>
+
+        <div class="usage-card">
+          <div class="usage-card__preview usage-card__preview--light">
+            <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg" alt="Logo Primary" style="height:40px;width:auto;">
+          </div>
+          <div class="usage-card__body">
+            <h4 class="usage-card__title">Primária</h4>
+            <p class="usage-card__desc">Use em fundos brancos e tons claros. É a versão padrão para materiais impressos, apresentações e interfaces digitais com fundo claro.</p>
+            <ul class="usage-card__list usage-card__list--do">
+              <li>Documentos e apresentações</li>
+              <li>Fundos brancos e cinzas claros</li>
+              <li>Email marketing</li>
+              <li>Interface de produto (light mode)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-card__preview usage-card__preview--dark">
+            <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg" alt="Logo White" style="height:40px;width:auto;filter:brightness(0) invert(1);">
+          </div>
+          <div class="usage-card__body">
+            <h4 class="usage-card__title">Negativa / Branca</h4>
+            <p class="usage-card__desc">Use em fundos escuros, fotografias com fundo escuro e materiais onde a versão primária não teria contraste suficiente.</p>
+            <ul class="usage-card__list usage-card__list--do">
+              <li>Fundos escuros e dark mode</li>
+              <li>Sobre fotografias escuras</li>
+              <li>Rodapé de sites</li>
+              <li>Brindes e merchandising escuro</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-card__preview usage-card__preview--gradient">
+            <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg" alt="Logo Profundidade" style="height:40px;width:auto;filter:brightness(0) invert(1);">
+          </div>
+          <div class="usage-card__body">
+            <h4 class="usage-card__title">Profundidade</h4>
+            <p class="usage-card__desc">Versão especial com elemento visual de profundidade. Use em contextos de destaque onde a marca deve ter impacto visual máximo.</p>
+            <ul class="usage-card__list usage-card__list--do">
+              <li>Capas de apresentações</li>
+              <li>Materiais de alto impacto</li>
+              <li>Fundos com gradiente</li>
+              <li>Conteúdo premium e editorial</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-card__preview usage-card__preview--neutral">
+            <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/symbol-only.svg" alt="Logo Symbol" style="height:56px;width:auto;">
+          </div>
+          <div class="usage-card__body">
+            <h4 class="usage-card__title">Símbolo / Ícone</h4>
+            <p class="usage-card__desc">Use quando o espaço é restrito ou a marca já é conhecida no contexto. Ideal para avatares, favicons e espaços quadrados.</p>
+            <ul class="usage-card__list usage-card__list--do">
+              <li>Foto de perfil e avatares</li>
+              <li>Favicon do site</li>
+              <li>App icon</li>
+              <li>Espaços muito pequenos (&lt;120px)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Don't do -->
+        <div class="usage-dont-grid" style="grid-column:1/-1; margin-top:var(--space-xl);">
+          <h4 style="font-size:1.125rem; font-weight:700; color:var(--text-primary); margin-bottom:var(--space-md);">&#10060; Não faça</h4>
+          <div class="usage-dont-cards">
+            <div class="usage-dont-card"><span class="usage-dont-icon">&#x1F504;</span><span>Rotacionar a logo</span></div>
+            <div class="usage-dont-card"><span class="usage-dont-icon">&#x2194;&#xFE0F;</span><span>Distorcer proporções</span></div>
+            <div class="usage-dont-card"><span class="usage-dont-icon">&#x1F3A8;</span><span>Alterar as cores</span></div>
+            <div class="usage-dont-card"><span class="usage-dont-icon">&#x1F32B;&#xFE0F;</span><span>Usar com opacidade reduzida</span></div>
+            <div class="usage-dont-card"><span class="usage-dont-icon">&#x1F4E6;</span><span>Adicionar sombras ou efeitos</span></div>
+            <div class="usage-dont-card"><span class="usage-dont-icon">&#x270F;&#xFE0F;</span><span>Redigitar o texto manualmente</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR PALETTE -->
+  <section class="section" id="colors">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">02 / Paleta de Cores</span>
+        <h2 class="section__title">Cores da Marca</h2>
+        <p class="section__description">Cada cor com seus valores exatos. Clique em qualquer swatch para copiar o valor hexadecimal.</p>
+      </div>
+      <div class="swatch-grid" id="paletteGrid"></div>
+
+      <!-- Contrast Checker -->
+      <div class="contrast-checker animate-in">
+        <p class="contrast-checker__title">⚡ Verificador de Contraste WCAG</p>
+        <div class="contrast-checker__inputs">
+          <div class="contrast-checker__field">
+            <label class="contrast-checker__label" for="ccFg">Texto (foreground)</label>
+            <div class="contrast-checker__color-row">
+              <input type="color" class="contrast-picker" id="ccFgPicker" value="#FFFFFF" oninput="syncColor('fg',this.value)">
+              <input type="text" class="contrast-checker__hex" id="ccFg" value="#FFFFFF" maxlength="7" oninput="syncColor('fg',this.value)" placeholder="#FFFFFF">
+            </div>
+          </div>
+          <div class="contrast-checker__field">
+            <label class="contrast-checker__label" for="ccBg">Fundo (background)</label>
+            <div class="contrast-checker__color-row">
+              <input type="color" class="contrast-picker" id="ccBgPicker" value="#2D52EF" oninput="syncColor('bg',this.value)">
+              <input type="text" class="contrast-checker__hex" id="ccBg" value="#2D52EF" maxlength="7" oninput="syncColor('bg',this.value)" placeholder="#000000">
+            </div>
+          </div>
+          <div id="contrastResult" class="contrast-result" style="background:#2D52EF;color:#FFFFFF;">
+            <span class="contrast-result__ratio" id="contrastRatio">—</span>
+            <span class="contrast-result__label" id="contrastLabel">Calculando...</span>
+          </div>
+        </div>
+        <div class="contrast-badges" id="contrastBadges"></div>
+        <div id="contrastPreview" class="contrast-preview" style="background:#2D52EF;color:#FFFFFF;">
+          <strong>Texto Grande (18pt / 14pt bold)</strong>Texto normal — exemplo de leitura com este par de cores.
+        </div>
+      </div>
+
+      <!-- Expanded Shades -->
+      <div class="palette-shades animate-in">
+        <button class="palette-shades__toggle" onclick="toggleShades(this)" aria-expanded="false" aria-controls="shadesContent">
+          <em class="palette-shades__toggle-icon" aria-hidden="true">▶</em>
+          Ver escala completa de tons (50–900)
+        </button>
+        <div class="palette-shades__content" id="shadesContent" aria-hidden="true">
+          <div id="shadesGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="section" id="typography">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">03 / Tipografia</span>
+        <h2 class="section__title">Sistema Tipografico</h2>
+        <p class="section__description">Fontes selecionadas para titulos e texto corrido. Carregadas via Google Fonts para garantir consistencia cross-platform.</p>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__header">
+          <span class="type-specimen__name">Heading</span>
+          <span class="type-specimen__font">Plus Jakarta Sans
+            <button class="btn btn--ghost btn--sm tooltip" onclick="copyToClipboard('Plus Jakarta Sans', this)" aria-label="Copiar nome da fonte">Copiar<span class="tooltip__text">Copiado!</span></button>
+          </span>
+        </div>
+        <div class="type-specimen__sample type-specimen__sample--heading">O crescimento tem metodo.</div>
+        <div class="type-specimen__weights" id="headingWeights"></div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-specimen__header">
+          <span class="type-specimen__name">Body</span>
+          <span class="type-specimen__font">DM Sans
+            <button class="btn btn--ghost btn--sm tooltip" onclick="copyToClipboard('DM Sans', this)" aria-label="Copiar nome da fonte">Copiar<span class="tooltip__text">Copiado!</span></button>
+          </span>
+        </div>
+        <div class="type-specimen__sample type-specimen__sample--body">A identidade visual e o primeiro contato entre a marca e seu publico. Cada detalhe — das cores a tipografia, do espacamento ao contraste — comunica valores, posicionamento e profissionalismo. Uma identidade consistente constroi confianca e diferenciacao no mercado.</div>
+        <div class="type-specimen__weights" id="bodyWeights"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL KIT -->
+  <section class="section" id="social">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">04 / Social Kit</span>
+        <h2 class="section__title">Templates Sociais</h2>
+        <p class="section__description">Covers prontas para uso nas principais plataformas. Dimensoes otimizadas conforme especificacao de cada rede.</p>
+      </div>
+      <div class="grid grid--3" id="socialGrid"></div>
+    </div>
+  </section>
+
+  <!-- DESIGN TOKENS -->
+  <section class="section" id="tokens">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">05 / Design Tokens</span>
+        <h2 class="section__title">Tokens de Design</h2>
+        <p class="section__description">Variaveis de design exportaveis para CSS e JSON. Integre diretamente no seu codigo.</p>
+      </div>
+      <div class="tokens-tabs" role="tablist" aria-label="Formatos de tokens">
+        <button class="tokens-tab tokens-tab--active" role="tab" aria-selected="true" aria-controls="panel-css" id="tab-css" onclick="switchTokenTab('css')">CSS Variables</button>
+        <button class="tokens-tab" role="tab" aria-selected="false" aria-controls="panel-json" id="tab-json" onclick="switchTokenTab('json')">JSON</button>
+      </div>
+      <div class="tokens-panel tokens-panel--active" id="panel-css" role="tabpanel" aria-labelledby="tab-css">
+        <div class="tokens-panel__header">
+          <span class="tokens-panel__title">tokens.css</span>
+          <div style="display:flex;gap:var(--space-sm);">
+            <button class="btn btn--ghost btn--sm tooltip" onclick="copyTokens('css')" aria-label="Copiar tokens CSS">Copiar tudo<span class="tooltip__text">Copiado!</span></button>
+            <a href="" download="tokens.css" class="btn btn--ghost btn--sm" aria-label="Baixar tokens.css" onclick="var h=this.getAttribute('href');if(!h||h==='')this.setAttribute('href','./design-system/tokens/design-tokens.css')">Download</a>
+          </div>
+        </div>
+        <div class="tokens-panel__code"><pre id="tokensCssContent">/* Loading tokens... */</pre></div>
+      </div>
+      <div class="tokens-panel" id="panel-json" role="tabpanel" aria-labelledby="tab-json">
+        <div class="tokens-panel__header">
+          <span class="tokens-panel__title">tokens.json</span>
+          <div style="display:flex;gap:var(--space-sm);">
+            <button class="btn btn--ghost btn--sm tooltip" onclick="copyTokens('json')" aria-label="Copiar tokens JSON">Copiar tudo<span class="tooltip__text">Copiado!</span></button>
+            <a href="" download="tokens.json" class="btn btn--ghost btn--sm" aria-label="Baixar tokens.json" onclick="var h=this.getAttribute('href');if(!h||h==='')this.setAttribute('href','./design-system/tokens/tokens-primitive.json')">Download</a>
+          </div>
+        </div>
+        <div class="tokens-panel__code"><pre id="tokensJsonContent">/* Loading tokens... */</pre></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTATION -->
+  <section class="section" id="docs">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">06 / Documentacao</span>
+        <h2 class="section__title">Documentos da Marca</h2>
+        <p class="section__description">Manuais e apresentacoes com todas as regras de uso da identidade visual.</p>
+      </div>
+      <div class="grid grid--2">
+        <div class="doc-card">
+          <div class="doc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <div class="doc-card__content">
+            <h3 class="doc-card__title">Brand Manual</h3>
+            <p class="doc-card__description">Guia completo com regras de uso do logo, paleta, tipografia e aplicacoes.</p>
+            <div class="doc-card__actions">
+              <a href="./brand-manual/index.html" class="btn btn--secondary btn--sm">Abrir</a>
+              <a href="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-manual.html" download class="btn btn--ghost btn--sm">Download</a>
+              <button class="btn btn--ghost btn--sm tooltip" onclick="copyToClipboard('https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-manual.html', this)" aria-label="Copiar URL do Brand Manual">Copiar URL<span class="tooltip__text">Copiado!</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="doc-card__content">
+            <h3 class="doc-card__title">Apresentacao</h3>
+            <p class="doc-card__description">Deck interativo apresentando a identidade visual completa da marca.</p>
+            <div class="doc-card__actions">
+              <a href="./brand-presentation/index.html" class="btn btn--secondary btn--sm">Abrir</a>
+              <a href="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-presentation.html" download class="btn btn--ghost btn--sm">Download</a>
+              <button class="btn btn--ghost btn--sm tooltip" onclick="copyToClipboard('https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-presentation.html', this)" aria-label="Copiar URL da Apresentacao">Copiar URL<span class="tooltip__text">Copiado!</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL SIGNATURE -->
+  <section class="section" id="email-signature">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">07 / Assinatura de Email</span>
+        <h2 class="section__title">Assinatura de Email</h2>
+        <p class="section__description">Template HTML para assinatura de email corporativo. Compatível com Gmail, Outlook, Apple Mail. Copie o código e configure no seu cliente de email.</p>
+      </div>
+
+      <!-- Personalization Form -->
+      <div class="sig-form" aria-label="Personalizar assinatura">
+        <div class="sig-form__field">
+          <label class="sig-form__label" for="sigFieldName">Nome completo</label>
+          <input class="sig-form__input" id="sigFieldName" type="text" placeholder="Seu Nome Completo" value="Seu Nome Completo" oninput="updateSignature()" />
+        </div>
+        <div class="sig-form__field">
+          <label class="sig-form__label" for="sigFieldRole">Cargo</label>
+          <input class="sig-form__input" id="sigFieldRole" type="text" placeholder="Seu Cargo" value="Seu Cargo" oninput="updateSignature()" />
+        </div>
+        <div class="sig-form__field">
+          <label class="sig-form__label" for="sigFieldPhone">Telefone</label>
+          <input class="sig-form__input" id="sigFieldPhone" type="tel" placeholder="+55 (64) 9XXXX-XXXX" value="+55 (64) 9XXXX-XXXX" oninput="updateSignature()" />
+        </div>
+        <div class="sig-form__field">
+          <label class="sig-form__label" for="sigFieldEmail">Email</label>
+          <input class="sig-form__input" id="sigFieldEmail" type="email" placeholder="seu@digital-ai.tech" value="seu@digital-ai.tech" oninput="updateSignature()" />
+          <span class="sig-form__hint">Edite os campos acima — o preview atualiza em tempo real ↓</span>
+        </div>
+      </div>
+      <!-- Signature Tabs -->
+      <div class="tokens-tabs" role="tablist" aria-label="Opções de assinatura de email" style="margin-bottom: var(--space-xl);">
+        <button class="tokens-tab tokens-tab--active" role="tab" aria-selected="true" aria-controls="sig-panel-preview" id="sig-tab-preview" onclick="switchSigTab('preview')">Preview</button>
+        <button class="tokens-tab" role="tab" aria-selected="false" aria-controls="sig-panel-code" id="sig-tab-code" onclick="switchSigTab('code')">Código HTML</button>
+        <button class="tokens-tab" role="tab" aria-selected="false" aria-controls="sig-panel-guide" id="sig-tab-guide" onclick="switchSigTab('guide')">Como instalar</button>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="tokens-panel tokens-panel--active" id="sig-panel-preview" role="tabpanel" aria-labelledby="sig-tab-preview">
+        <div class="tokens-panel__header">
+          <span class="tokens-panel__title">Preview — Assinatura corporativa</span>
+          <button class="btn btn--ghost btn--sm" onclick="openSigPreview()" aria-label="Abrir preview em nova aba">Abrir em nova aba</button>
+        </div>
+        <div style="background:#f5f5f5;padding:24px 16px;border-radius:var(--radius-lg);border:1px solid var(--border-default);">
+          <div style="background:white;padding:24px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);max-width:600px;margin:0 auto;">
+            <p style="font-size:0.75rem;color:#888;margin:0 0 16px;font-family:monospace;">— Corpo do email aqui —</p>
+            <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+              <div id="sigPreviewContainer"></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.85rem;color:var(--text-tertiary);margin-top:var(--space-sm);">Preview renderizado com dados de exemplo. Edite o código HTML para personalizar nome, cargo e contatos.</p>
+      </div>
+
+      <!-- Code Panel -->
+      <div class="tokens-panel" id="sig-panel-code" role="tabpanel" aria-labelledby="sig-tab-code">
+        <div class="tokens-panel__header">
+          <span class="tokens-panel__title">email-signature.html</span>
+          <div style="display:flex;gap:var(--space-sm);">
+            <button class="btn btn--secondary btn--sm tooltip" onclick="copySigCode(this)" aria-label="Copiar código HTML da assinatura">Copiar HTML<span class="tooltip__text">Copiado!</span></button>
+            <a href="./email-signature.html" download="email-signature.html" class="btn btn--ghost btn--sm" aria-label="Baixar arquivo HTML da assinatura">Download</a>
+          </div>
+        </div>
+        <div class="tokens-panel__code" style="max-height:500px;overflow-y:auto;">
+          <pre id="sigCodeContent" style="font-size:0.78rem;white-space:pre-wrap;">Carregando código...</pre>
+        </div>
+      </div>
+
+      <!-- Guide Panel -->
+      <div class="tokens-panel" id="sig-panel-guide" role="tabpanel" aria-labelledby="sig-tab-guide">
+        <div class="tokens-panel__header">
+          <span class="tokens-panel__title">Guia de instalação</span>
+        </div>
+        <div style="padding:var(--space-xl);">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-xl);">
+            <div class="sig-install-card">
+              <div class="sig-install-card__icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#EA4335"/><path d="M6 10l10 8 10-8M6 10h20v14H6V10z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h4 class="sig-install-card__title">Gmail</h4>
+              <ol class="sig-install-card__steps">
+                <li>Abra Gmail → ⚙️ → <strong>Ver todas as configurações</strong></li>
+                <li>Aba <strong>Geral</strong> → role até <strong>Assinatura</strong></li>
+                <li>Clique em <strong>Criar nova</strong></li>
+                <li>No editor, clique em <strong>&lt;&gt;</strong> (código-fonte)</li>
+                <li>Cole o HTML copiado da aba "Código HTML"</li>
+                <li>Clique em <strong>Ok</strong> → <strong>Salvar alterações</strong></li>
+              </ol>
+            </div>
+            <div class="sig-install-card">
+              <div class="sig-install-card__icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078D4"/><path d="M7 9h18l-9 9L7 9zM7 9v14h18V9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h4 class="sig-install-card__title">Outlook</h4>
+              <ol class="sig-install-card__steps">
+                <li>Arquivo → <strong>Opções</strong> → <strong>Email</strong> → <strong>Assinaturas</strong></li>
+                <li>Clique em <strong>Novo</strong> e nomeie a assinatura</li>
+                <li>No editor, clique em <strong>Editar no HTML</strong></li>
+                <li>Cole o código HTML da aba "Código HTML"</li>
+                <li>Clique em <strong>OK</strong> e salve</li>
+                <li>Selecione a assinatura padrão para novos emails</li>
+              </ol>
+            </div>
+            <div class="sig-install-card">
+              <div class="sig-install-card__icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1C1C1E"/><path d="M8 10h16M8 16h16M8 22h10" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <h4 class="sig-install-card__title">Apple Mail</h4>
+              <ol class="sig-install-card__steps">
+                <li>Salve o HTML como arquivo <code>.html</code></li>
+                <li>Abra o Terminal: <code>open ~/Library/Mail/V10/MailData/Signatures/</code></li>
+                <li>Copie o arquivo <code>.html</code> para a pasta</li>
+                <li>Em Mail → <strong>Preferências</strong> → <strong>Assinaturas</strong></li>
+                <li>Crie nova assinatura e cole o HTML no campo</li>
+              </ol>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-2xl);padding:var(--space-xl);background:var(--bg-brand-subtle);border-radius:var(--radius-lg);border:1px solid var(--border-brand);">
+            <h4 style="font-size:1rem;font-weight:600;color:var(--text-primary);margin:0 0 var(--space-sm);">⚡ Personalizar a assinatura</h4>
+            <p style="font-size:0.875rem;color:var(--text-secondary);margin:0 0 var(--space-sm);">No código HTML, substitua os seguintes campos:</p>
+            <ul style="font-size:0.875rem;color:var(--text-secondary);padding-left:var(--space-lg);margin:0;line-height:1.8;">
+              <li><code style="background:var(--bg-secondary);padding:1px 6px;border-radius:4px;">SEU NOME COMPLETO</code> → seu nome</li>
+              <li><code style="background:var(--bg-secondary);padding:1px 6px;border-radius:4px;">Seu Cargo</code> → seu cargo</li>
+              <li><code style="background:var(--bg-secondary);padding:1px 6px;border-radius:4px;">+55 (64) 9XXXX-XXXX</code> → seu telefone</li>
+              <li><code style="background:var(--bg-secondary);padding:1px 6px;border-radius:4px;">seu@email.com.br</code> → seu email</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section class="section" id="design-system">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">08 / Design System</span>
+        <h2 class="section__title">Design System</h2>
+        <p class="section__description">Tokens W3C DTCG, biblioteca de componentes, tipografia, espaçamento, motion e acessibilidade — sistema completo aplicado com a identidade visual da Digital AI.</p>
+      </div>
+
+      <!-- Brand Overview (inline, no click required) -->
+      <div class="ds-brand-overview animate-in">
+        <div class="ds-brand-overview__block">
+          <span class="ds-brand-overview__label">Identidade Visual</span>
+          <div class="ds-brand-overview__colors" id="dsBrandColorRow"></div>
+        </div>
+        <div class="ds-brand-overview__block">
+          <span class="ds-brand-overview__label">Tipografia Principal</span>
+          <span class="ds-brand-overview__font" style="font-family:'Plus Jakarta Sans',sans-serif;">Plus Jakarta Sans</span>
+        </div>
+        <div class="ds-brand-overview__block">
+          <span class="ds-brand-overview__label">Tipografia Secundária</span>
+          <span class="ds-brand-overview__font" style="font-family:'DM Sans',sans-serif;">DM Sans</span>
+        </div>
+        <div class="ds-brand-overview__block">
+          <span class="ds-brand-overview__label">Marca</span>
+          <span class="ds-brand-overview__name">Digital AI</span>
+        </div>
+      </div>
+
+      <!-- Primary DS Docs (todos inline — plataforma única) -->
+      <div class="ds-grid">
+        <!-- Component Library -->
+        <a class="ds-card animate-in" href="./design-system/index.html#components">
+          <div class="ds-card__icon" aria-hidden="true">⚛</div>
+          <p class="ds-card__title">Component Library</p>
+          <p class="ds-card__desc">Todos os componentes com variantes, estados (hover, active, disabled, loading), dark mode e acessibilidade WCAG 2.2. Botões, inputs, badges, alertas, cards, tabelas e mais.</p>
+          <span class="ds-card__cta">Explorar Componentes →</span>
+        </a>
+
+        <!-- Design Tokens Reference -->
+        <a class="ds-card animate-in" href="./design-system/index.html#tokens-css">
+          <div class="ds-card__icon" aria-hidden="true">🎨</div>
+          <p class="ds-card__title">Design Tokens</p>
+          <p class="ds-card__desc">Tokens primitivos, semânticos e por componente no formato W3C DTCG. Referência completa de cores, tipografia, espaçamento, sombras, z-index, opacidade e border-radius.</p>
+          <span class="ds-card__cta">Ver Tokens →</span>
+        </a>
+
+        <!-- DS Overview Inline -->
+        <a class="ds-card animate-in" href="./design-system/index.html#colors">
+          <div class="ds-card__icon" aria-hidden="true">📐</div>
+          <p class="ds-card__title">Visão Geral Interativa</p>
+          <p class="ds-card__desc">Explorador interativo com paleta de cores, escala tipográfica, espaçamento, componentes base, sistema de motion e tokens CSS — tudo em uma tela.</p>
+          <span class="ds-card__cta">Abrir Visão Geral →</span>
+        </a>
+      </div>
+
+      <!-- Token Downloads -->
+      <div class="ds-token-downloads animate-in">
+        <p class="ds-token-downloads__title">⬇ Exportar Tokens</p>
+        <div class="ds-token-downloads__grid">
+          <a href="./design-system/tokens/design-tokens.css" download="digital-ai-design-tokens.css" class="btn btn--secondary btn--sm">CSS Variables</a>
+          <a href="./design-system/tokens/tokens-primitive.json" download="digital-ai-tokens-primitive.json" class="btn btn--secondary btn--sm">JSON Primitivo (W3C DTCG)</a>
+          <a href="./design-system/tokens/tokens-semantic.json" download="digital-ai-tokens-semantic.json" class="btn btn--secondary btn--sm">JSON Semântico</a>
+          <a href="./design-system/tokens/tokens-components.json" download="digital-ai-tokens-components.json" class="btn btn--secondary btn--sm">JSON Componentes</a>
+          <a href="./design-system/tokens/tokens-dark.json" download="digital-ai-tokens-dark.json" class="btn btn--ghost btn--sm">Dark Mode</a>
+          <a href="./design-system/tokens/tokens-hc.json" download="digital-ai-tokens-hc.json" class="btn btn--ghost btn--sm">High Contrast</a>
+        </div>
+      </div>
+
+      <!-- Secondary DS Sections -->
+      <div class="ds-secondary-grid">
+        <!-- Motion -->
+        <div class="ds-secondary-card animate-in">
+          <span class="ds-secondary-card__label">Motion</span>
+          <span class="ds-secondary-card__name">Sistema de Animação</span>
+          <div class="ds-secondary-card__actions">
+            <a href="./design-system/motion/motion-system.css" target="_blank" class="btn btn--ghost btn--sm">Ver CSS</a>
+            <a href="./design-system/motion/motion-system.css" download="digital-ai-motion.css" class="btn btn--ghost btn--sm">Download</a>
+          </div>
+        </div>
+
+        <!-- Layout -->
+        <div class="ds-secondary-card animate-in">
+          <span class="ds-secondary-card__label">Layout</span>
+          <span class="ds-secondary-card__name">Grid & Tipografia Fluida</span>
+          <div class="ds-secondary-card__actions">
+            <a href="./design-system/layout/grid.css" download="digital-ai-grid.css" class="btn btn--ghost btn--sm">Grid CSS</a>
+            <a href="./design-system/layout/fluid-typography.css" download="digital-ai-fluid-typography.css" class="btn btn--ghost btn--sm">Typography CSS</a>
+          </div>
+        </div>
+
+        <!-- Accessibility -->
+        <div class="ds-secondary-card animate-in">
+          <span class="ds-secondary-card__label">Acessibilidade</span>
+          <span class="ds-secondary-card__name">Relatório WCAG 2.2</span>
+          <div class="ds-secondary-card__actions">
+            <a href="./design-system/accessibility/contrast-report.md" target="_blank" class="btn btn--ghost btn--sm">Ver Relatório</a>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="ds-secondary-card animate-in">
+          <span class="ds-secondary-card__label">Conteúdo</span>
+          <span class="ds-secondary-card__name">Guia de Voz & Tom</span>
+          <div class="ds-secondary-card__actions">
+            <a href="./design-system/content/content-style-guide.md" target="_blank" class="btn btn--ghost btn--sm">Ver Guia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD CENTER -->
+  <section class="section" id="downloads">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">09 / Download Center</span>
+        <h2 class="section__title">Todos os Arquivos</h2>
+        <p class="section__description">Acesso direto a todos os assets da identidade visual. Baixe individualmente ou o pacote completo.</p>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-md);margin-bottom:var(--space-xl);">
+        <a href="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/digital-ai-identidade-visual-20260610.zip" download="digital-ai-identidade-visual-20260610.zip" class="btn btn--primary btn--sm" aria-label="Baixar pacote ZIP completo">↓ Download ZIP Completo</a>
+        <div style="display:flex;align-items:center;gap:var(--space-sm);">
+          <input id="dlSearch" type="search" placeholder="Filtrar arquivos..." oninput="filterDownloads(this.value)"
+            style="padding:var(--space-sm) var(--space-md);background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);font-size:0.875rem;color:var(--text-primary);font-family:var(--font-body);outline:none;width:220px;transition:border-color var(--transition-fast);"
+            onfocus="this.style.borderColor='var(--brand-primary)'" onblur="this.style.borderColor='var(--border-subtle)'"
+            aria-label="Filtrar lista de downloads" />
+          <span id="dlCount" style="font-size:0.8rem;color:var(--text-tertiary);white-space:nowrap;"></span>
+        </div>
+      </div>
+      <div class="dl-table-wrapper">
+        <table class="dl-table" id="downloadTable">
+          <thead><tr><th>Arquivo</th><th class="dl-table__hide-mobile">Categoria</th><th class="dl-table__hide-mobile">Tipo</th><th>Acoes</th></tr></thead>
+          <tbody id="downloadTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">Identidade visual criada por <a href="https://digital-ai.tech" target="_blank" rel="noopener noreferrer">Digital AI</a></p>
+      <p class="footer__meta">v1 &middot; 14 de junho de 2026 &middot; <a href="https://github.com/DIGITAL-AI-TECH/visual-digital-ai" target="_blank" rel="noopener noreferrer" aria-label="Repositorio no GitHub">GitHub</a></p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    /* === DATA (injected at build time) === */
+    const PALETTE = [{"name":"Profundidade","hex":"#0F1F5C","rgb":"15, 31, 92","role":"dark"},{"name":"Visão","hex":"#3B2FC9","rgb":"59, 47, 201","role":"secondary"},{"name":"Precisão","hex":"#2D52EF","rgb":"45, 82, 239","role":"primary"},{"name":"Névoa","hex":"#E8EEFF","rgb":"232, 238, 255","role":"accent"}];
+    const LOGOS = [{"name":"Logo Principal","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.png","variant":"primary","bg":"light"},{"name":"Logo Branco","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-negative.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-negative.png","variant":"white","bg":"dark"},{"name":"Logo Escuro (Profundidade)","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-profundidade.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-profundidade.png","variant":"dark","bg":"light"},{"name":"Logo Horizontal","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-horizontal.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-horizontal.png","variant":"horizontal","bg":"light"},{"name":"Logo Vertical","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-vertical.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-vertical.png","variant":"vertical","bg":"light"},{"name":"Logo Secundário","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-secondary.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-secondary.png","variant":"secondary","bg":"dark"},{"name":"Símbolo/Ícone","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/symbol-only.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/symbol-only.png","variant":"symbol","bg":"dark"},{"name":"Favicon","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/favicon-32.svg","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/favicon-32.png","variant":"favicon","bg":"dark"}];
+    const SOCIAL_ITEMS = [{"name":"LinkedIn Capa Corporativa","dimensions":"1128 x 191 px","url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/png/linkedin-company-cover.png","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/png/linkedin-company-cover.png","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/svg/linkedin-company-cover.svg"},{"name":"LinkedIn Capa Pessoal","dimensions":"1584 x 396 px","url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/png/linkedin-cover.png","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/png/linkedin-cover.png","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/svg/linkedin-cover.svg"},{"name":"Facebook Capa","dimensions":"820 x 312 px","url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/png/facebook-cover.png","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/png/facebook-cover.png","svg_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/svg/facebook-cover.svg"},{"name":"Avatar Instagram","dimensions":"400 x 400 px","url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/avatar-instagram.png","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/avatar-instagram.png","svg_url":""},{"name":"Open Graph (OG Image)","dimensions":"1200 x 630 px","url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/og-image.png","png_url":"https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/social/og-image.png","svg_url":""}];
+    const TOKENS_CSS_URL = '';
+    const TOKENS_JSON_URL = '';
+
+    /* === ESCAPING === */
+    function escapeHtml(str) {
+      if (!str) return '';
+      const d = document.createElement('div');
+      d.appendChild(document.createTextNode(str));
+      return d.innerHTML;
+    }
+    function escapeAttr(str) {
+      if (!str) return '';
+      return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+    function escapeJs(str) {
+      if (!str) return '';
+      return str.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');
+    }
+
+    /* === CLIPBOARD === */
+    async function copyToClipboard(text, triggerEl) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showCopyFeedback(triggerEl);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;left:-9999px;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showCopyFeedback(triggerEl);
+      }
+    }
+
+    function showCopyFeedback(el) {
+      if (!el) return;
+      el.classList.add('tooltip--visible');
+      setTimeout(function() { el.classList.remove('tooltip--visible'); }, 1500);
+    }
+
+    /* === COPY URL (alias para botoes ⊕ URL) === */
+    async function copyUrl(url, btn) {
+      const original = btn ? btn.textContent : '';
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.cssText = 'position:fixed;left:-9999px;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      if (btn) {
+        btn.textContent = '✓ Copiado!';
+        setTimeout(function() { btn.textContent = original; }, 2000);
+      }
+    }
+
+
+    /* === DOWNLOAD === */
+    async function downloadFile(url, filename) {
+      try {
+        const resp = await fetch(url, { mode: 'cors' });
+        if (!resp.ok) throw new Error('fetch failed');
+        const blob = await resp.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(blobUrl);
+      } catch (_) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    }
+
+    /* === COLOR CONVERSION === */
+    function hexToRgb(hex) {
+      const h = hex.replace('#','');
+      return { r: parseInt(h.substring(0,2),16), g: parseInt(h.substring(2,4),16), b: parseInt(h.substring(4,6),16) };
+    }
+
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r,g,b), min = Math.min(r,g,b);
+      let h = 0, s = 0;
+      const l = (max + min) / 2;
+      if (max !== min) {
+        const d = max - min;
+        s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+        switch (max) {
+          case r: h = ((g-b)/d + (g < b ? 6 : 0))/6; break;
+          case g: h = ((b-r)/d + 2)/6; break;
+          case b: h = ((r-g)/d + 4)/6; break;
+        }
+      }
+      return { h: Math.round(h*360), s: Math.round(s*100), l: Math.round(l*100) };
+    }
+
+    function rgbToOklch(r, g, b) {
+      const toLinear = function(c) { c/=255; return c<=0.04045 ? c/12.92 : Math.pow((c+0.055)/1.055,2.4); };
+      const lr=toLinear(r), lg=toLinear(g), lb=toLinear(b);
+      const l_=0.4122214708*lr+0.5363325363*lg+0.0514459929*lb;
+      const m_=0.2119034982*lr+0.6806995451*lg+0.1073969566*lb;
+      const s_=0.0883024619*lr+0.2817188376*lg+0.6299787005*lb;
+      const lc=Math.cbrt(l_), mc=Math.cbrt(m_), sc=Math.cbrt(s_);
+      const L=0.2104542553*lc+0.7936177850*mc-0.0040720468*sc;
+      const a=1.9779984951*lc-2.4285922050*mc+0.4505937099*sc;
+      const bk=0.0259040371*lc+0.7827717662*mc-0.8086757660*sc;
+      const C=Math.sqrt(a*a+bk*bk);
+      let H=Math.atan2(bk,a)*180/Math.PI;
+      if(H<0) H+=360;
+      return { l:(L*100).toFixed(1), c:(C*100).toFixed(2), h:H.toFixed(1) };
+    }
+
+    /* === RENDER: Logos === */
+    function renderLogos() {
+      const grid = document.getElementById('logoGrid');
+      if (!grid || !LOGOS || !LOGOS.length) return;
+      grid.innerHTML = LOGOS.map(function(logo) {
+        // bg: 'dark' → logo claro que precisa de fundo escuro → needs-dark
+        // bg: 'light' → logo escuro que precisa de fundo claro → needs-light
+        const bg = logo.bg || (logo.variant==='white'||logo.variant==='inverted'||logo.variant==='reversed' ? 'dark' : 'light');
+        const useCheckered = (logo.variant==='symbol'||logo.variant==='favicon'||logo.variant==='icon');
+        const cls = useCheckered ? 'card__preview card__preview--checkered' : (bg === 'dark' ? 'card__preview card__preview--needs-dark' : 'card__preview card__preview--needs-light');
+        const svg = logo.svg_url||'', png = logo.png_url||'';
+        const name = escapeHtml(logo.name);
+        const variant = escapeHtml(logo.variant||'default');
+        const slug = name.toLowerCase().replace(/\s+/g,'-');
+        return '<div class="card animate-in">' +
+          '<div class="'+cls+'">'+(svg?'<img src="'+escapeAttr(svg)+'" alt="'+name+'" loading="lazy">':'')+'</div>' +
+          '<div class="card__body"><h3 class="card__title">'+name+'</h3><p class="card__subtitle">'+variant+'</p>' +
+          '<div class="card__actions">' +
+            (svg?'<button class="btn btn--secondary btn--sm" onclick="downloadFile(\''+escapeJs(svg)+'\',\''+slug+'.svg\')" aria-label="Baixar SVG">SVG</button>':'') +
+            (png?'<button class="btn btn--secondary btn--sm" onclick="downloadFile(\''+escapeJs(png)+'\',\''+slug+'.png\')" aria-label="Baixar PNG">PNG</button>':'') +
+            (svg?'<button class="btn btn--ghost btn--sm tooltip" onclick="copyToClipboard(\''+escapeJs(svg)+'\',this)" aria-label="Copiar URL">URL<span class="tooltip__text">Copiado!</span></button>':'') +
+          '</div></div></div>';
+      }).join('');
+    }
+
+    /* === RENDER: Palette === */
+    function getLuminance(hex) {
+      var rgb = hexToRgbArr(hex);
+      var sRGB = rgb.map(function(v){ v = v/255; return v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055,2.4); });
+      return 0.2126*sRGB[0]+0.7152*sRGB[1]+0.0722*sRGB[2];
+    }
+
+    function getContrastRatio(hex1, hex2) {
+      var l1 = getLuminance(hex1), l2 = getLuminance(hex2);
+      var lighter = Math.max(l1,l2), darker = Math.min(l1,l2);
+      return (lighter+0.05)/(darker+0.05);
+    }
+
+    function syncColor(which, value) {
+      var isHex = /^#[0-9A-Fa-f]{6}$/.test(value);
+      if (which==='fg') {
+        document.getElementById('ccFg').value = value;
+        if(isHex) document.getElementById('ccFgPicker').value = value;
+      } else {
+        document.getElementById('ccBg').value = value;
+        if(isHex) document.getElementById('ccBgPicker').value = value;
+      }
+      if(isHex || (which==='fg' && /^#[0-9A-Fa-f]{6}$/.test(document.getElementById('ccBg').value)) || (which==='bg' && /^#[0-9A-Fa-f]{6}$/.test(document.getElementById('ccFg').value))) {
+        updateContrast();
+      }
+    }
+
+    function updateContrast() {
+      var fg = document.getElementById('ccFg').value;
+      var bg = document.getElementById('ccBg').value;
+      if (!/^#[0-9A-Fa-f]{6}$/.test(fg) || !/^#[0-9A-Fa-f]{6}$/.test(bg)) return;
+      var ratio = getContrastRatio(fg, bg);
+      var ratioStr = ratio.toFixed(2) + ':1';
+      var result = document.getElementById('contrastResult');
+      var ratioEl = document.getElementById('contrastRatio');
+      var labelEl = document.getElementById('contrastLabel');
+      var badgesEl = document.getElementById('contrastBadges');
+      var previewEl = document.getElementById('contrastPreview');
+      if (result) { result.style.background = bg; result.style.color = fg; }
+      if (ratioEl) ratioEl.textContent = ratioStr;
+      var aaLarge = ratio >= 3, aa = ratio >= 4.5, aaaLarge = ratio >= 4.5, aaa = ratio >= 7;
+      if (labelEl) labelEl.textContent = aa ? '✓ Passa AA' : (aaLarge ? '⚠ Passa AA (grande)' : '✗ Falha WCAG');
+      if (badgesEl) badgesEl.innerHTML = [
+        '<span class="contrast-badge contrast-badge--'+(aaLarge?'pass':'fail')+'">AA Grande '+(aaLarge?'✓':'✗')+' (≥3:1)</span>',
+        '<span class="contrast-badge contrast-badge--'+(aa?'pass':'fail')+'">AA Normal '+(aa?'✓':'✗')+' (≥4.5:1)</span>',
+        '<span class="contrast-badge contrast-badge--'+(aaaLarge?'pass':'fail')+'">AAA Grande '+(aaaLarge?'✓':'✗')+' (≥4.5:1)</span>',
+        '<span class="contrast-badge contrast-badge--'+(aaa?'pass':'fail')+'">AAA Normal '+(aaa?'✓':'✗')+' (≥7:1)</span>',
+      ].join('');
+      if (previewEl) { previewEl.style.background = bg; previewEl.style.color = fg; }
+    }
+
+    function toggleShades(btn) {
+      var content = document.getElementById('shadesContent');
+      var icon = btn.querySelector('.palette-shades__toggle-icon');
+      var isOpen = content.classList.contains('palette-shades__content--open');
+      content.classList.toggle('palette-shades__content--open', !isOpen);
+      content.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      if (icon) icon.classList.toggle('palette-shades__toggle-icon--open', !isOpen);
+      if (!isOpen && !content.dataset.rendered) {
+        renderShades();
+        content.dataset.rendered = '1';
+      }
+    }
+
+    function hexToRgbArr(hex) {
+      var h = (hex || '#000').replace('#','');
+      if (h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+      return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+    }
+
+    function rgbToHsl2(r,g,b) {
+      r/=255; g/=255; b/=255;
+      var max=Math.max(r,g,b), min=Math.min(r,g,b), h=0, s=0, l=(max+min)/2;
+      if(max!==min){ var d=max-min; s=l>0.5?d/(2-max-min):d/(max+min);
+        if(max===r) h=((g-b)/d+(g<b?6:0))/6;
+        else if(max===g) h=((b-r)/d+2)/6;
+        else h=((r-g)/d+4)/6; }
+      return {h:Math.round(h*360), s:Math.round(s*100), l:Math.round(l*100)};
+    }
+
+    function hsl2Hex(h,s,l) {
+      s/=100; l/=100;
+      var a=s*Math.min(l,1-l), f=function(n){ var k=(n+h/30)%12; return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))); };
+      return '#'+[f(0),f(8),f(4)].map(function(x){return ('0'+x.toString(16)).slice(-2);}).join('');
+    }
+
+    function generateShades(hex) {
+      var rgb = hexToRgbArr(hex);
+      var hsl = rgbToHsl2(rgb[0],rgb[1],rgb[2]);
+      var steps = [50,100,200,300,400,500,600,700,800,900];
+      var lightnesses = [97,93,85,74,62,hsl.l,42,32,22,12];
+      return steps.map(function(step, i) {
+        var l = lightnesses[i];
+        var s = i < 4 ? Math.min(hsl.s, 60) : (i > 5 ? Math.min(hsl.s, 80) : hsl.s);
+        var shadeHex = hsl2Hex(hsl.h, s, l);
+        var lum = (0.299*hexToRgbArr(shadeHex)[0]+0.587*hexToRgbArr(shadeHex)[1]+0.114*hexToRgbArr(shadeHex)[2])/255;
+        return { step: step, hex: shadeHex, textColor: lum > 0.5 ? '#1a1a2e' : '#ffffff' };
+      });
+    }
+
+    function renderShades() {
+      var grid = document.getElementById('shadesGrid');
+      if (!grid || !PALETTE) return;
+      grid.innerHTML = PALETTE.map(function(color) {
+        var shades = generateShades(color.hex);
+        var chips = shades.map(function(s) {
+          return '<div class="shade-chip tooltip" style="background-color:'+s.hex+';" onclick="copyToClipboard(\''+s.hex+'\',this)" title="'+s.hex+'" tabindex="0" role="button" aria-label="Copiar '+s.hex+'">'+
+            '<span class="tooltip__text">Copiado!</span>'+
+            '<span class="shade-chip__label" style="color:'+s.textColor+';">'+s.hex+'</span>'+
+            '<span class="shade-chip__step" style="color:'+s.textColor+';">'+s.step+'</span>'+
+            '</div>';
+        }).join('');
+        return '<div class="shade-group"><div class="shade-group__name">'+escapeHtml(color.name)+' — '+color.hex.toUpperCase()+'</div>'+
+               '<div class="shade-strip">'+chips+'</div></div>';
+      }).join('');
+    }
+
+    function renderPalette() {
+      const grid = document.getElementById('paletteGrid');
+      if (!grid || !PALETTE || !PALETTE.length) return;
+      grid.innerHTML = PALETTE.map(function(c) {
+        const rgb = hexToRgb(c.hex);
+        const hsl = rgbToHsl(rgb.r,rgb.g,rgb.b);
+        const oklch = rgbToOklch(rgb.r,rgb.g,rgb.b);
+        const hex = c.hex.toUpperCase();
+        const hslS = 'hsl('+hsl.h+', '+hsl.s+'%, '+hsl.l+'%)';
+        const oklchS = 'oklch('+oklch.l+'% '+oklch.c+' '+oklch.h+')';
+        const name = escapeHtml(c.name);
+        const role = c.role ? escapeHtml(c.role) : '';
+        const lum = (0.299*rgb.r+0.587*rgb.g+0.114*rgb.b)/255;
+        const tc = lum>0.5?'rgba(0,0,0,0.7)':'rgba(255,255,255,0.85)';
+        return '<div class="swatch tooltip" onclick="copyToClipboard(\''+escapeJs(hex)+'\',this)" tabindex="0" role="button" aria-label="Copiar '+name+': '+hex+'">' +
+          '<span class="tooltip__text">Copiado!</span>' +
+          '<div class="swatch__color" style="background-color:'+escapeAttr(c.hex)+';">'+(role?'<span class="swatch__role" style="color:'+tc+';">'+role+'</span>':'')+'</div>' +
+          '<div class="swatch__info"><div class="swatch__name">'+name+'</div>' +
+          '<div class="swatch__values">' +
+            '<div class="swatch__value"><span class="swatch__value-label">HEX</span> '+hex+'</div>' +
+            '<div class="swatch__value"><span class="swatch__value-label">HSL</span> '+hslS+'</div>' +
+            '<div class="swatch__value"><span class="swatch__value-label">OKLCH</span> '+oklchS+'</div>' +
+          '</div><div class="swatch__copy-hint">Clique para copiar HEX</div></div></div>';
+      }).join('');
+    }
+
+    /* === RENDER: Typography Weights === */
+    function renderTypographyWeights() {
+      const hEl = document.getElementById('headingWeights');
+      const bEl = document.getElementById('bodyWeights');
+      const hW = [{name:'Regular',w:400},{name:'Medium',w:500},{name:'Semi Bold',w:600},{name:'Bold',w:700},{name:'Extra Bold',w:800}];
+      const bW = [{name:'Light',w:300},{name:'Regular',w:400},{name:'Medium',w:500},{name:'Semi Bold',w:600},{name:'Bold',w:700}];
+      function renderW(el, weights, font) {
+        if (!el) return;
+        el.innerHTML = weights.map(function(w) {
+          return '<div class="type-specimen__weight"><span class="type-specimen__weight-name">'+w.name+' ('+w.w+')</span>' +
+            '<span class="type-specimen__weight-sample" style="font-family:var('+font+');font-weight:'+w.w+';">Aa Bb Cc</span></div>';
+        }).join('');
+      }
+      renderW(hEl, hW, '--font-heading');
+      renderW(bEl, bW, '--font-body');
+    }
+
+    /* === RENDER: Social === */
+    function renderSocial() {
+      const grid = document.getElementById('socialGrid');
+      if (!grid) return;
+      grid.innerHTML = SOCIAL_ITEMS.filter(function(s){return s.url;}).map(function(item) {
+        const fn = item.name.toLowerCase().replace(/\s+/g,'-')+'.png';
+        const name = escapeHtml(item.name);
+        return '<div class="social-card animate-in">' +
+          '<div class="social-card__preview"><img src="'+escapeAttr(item.url)+'" alt="'+name+'" loading="lazy"></div>' +
+          '<div class="social-card__body"><h3 class="social-card__title">'+name+'</h3>' +
+          '<p class="social-card__dimensions">'+escapeHtml(item.dimensions)+'</p>' +
+          '<div class="social-card__actions">' +
+            '<button class="btn btn--secondary btn--sm" onclick="downloadFile(\''+escapeJs(item.url)+'\',\''+escapeJs(fn)+'\')" aria-label="Baixar '+name+'">Download</button>' +
+            '<button class="btn btn--ghost btn--sm tooltip" onclick="copyToClipboard(\''+escapeJs(item.url)+'\',this)" aria-label="Copiar URL">URL<span class="tooltip__text">Copiado!</span></button>' +
+          '</div></div></div>';
+      }).join('');
+    }
+
+    /* === RENDER: Tokens === */
+    async function loadTokens() {
+      const cssEl  = document.getElementById('tokensCssContent');
+      const jsonEl = document.getElementById('tokensJsonContent');
+      // Sempre usa fallback local se URL externa nao definida
+      const cssUrl  = (TOKENS_CSS_URL  && TOKENS_CSS_URL  !== '') ? TOKENS_CSS_URL  : './design-system/tokens/design-tokens.css';
+      const jsonUrl = (TOKENS_JSON_URL && TOKENS_JSON_URL !== '') ? TOKENS_JSON_URL : './design-system/tokens/tokens-primitive.json';
+
+      if (cssEl) {
+        try {
+          const r = await fetch(cssUrl);
+          if (r.ok) {
+            cssEl.textContent = await r.text();
+          } else {
+            cssEl.textContent = '/* HTTP ' + r.status + ' ao carregar ' + cssUrl + ' */';
+          }
+        } catch(e) {
+          cssEl.textContent = '/* Erro de rede: ' + e + ' */';
+        }
+      }
+
+      if (jsonEl) {
+        try {
+          const r = await fetch(jsonUrl);
+          if (r.ok) {
+            const t = await r.text();
+            try { jsonEl.textContent = JSON.stringify(JSON.parse(t), null, 2); }
+            catch(_) { jsonEl.textContent = t; }
+          } else {
+            jsonEl.textContent = '/* HTTP ' + r.status + ' ao carregar ' + jsonUrl + ' */';
+          }
+        } catch(e) {
+          jsonEl.textContent = '/* Erro de rede: ' + e + ' */';
+        }
+      }
+    }
+
+    function switchTokenTab(tab) {
+      document.querySelectorAll('.tokens-tab').forEach(function(t){t.classList.remove('tokens-tab--active');t.setAttribute('aria-selected','false');});
+      document.querySelectorAll('.tokens-panel').forEach(function(p){p.classList.remove('tokens-panel--active');});
+      const tabEl=document.getElementById('tab-'+tab), panelEl=document.getElementById('panel-'+tab);
+      if(tabEl){tabEl.classList.add('tokens-tab--active');tabEl.setAttribute('aria-selected','true');}
+      if(panelEl) panelEl.classList.add('tokens-panel--active');
+    }
+
+    function copyTokens(format) {
+      const id='tokens'+format.charAt(0).toUpperCase()+format.slice(1)+'Content';
+      const el=document.getElementById(id); if(!el) return;
+      const btn=el.closest('.tokens-panel').querySelector('.tooltip');
+      copyToClipboard(el.textContent,btn);
+    }
+
+    /* === RENDER: Download Table === */
+    function filterDownloads(query) {
+      var q = (query || '').toLowerCase().trim();
+      var rows = document.querySelectorAll('#downloadTableBody tr');
+      var visible = 0;
+      rows.forEach(function(row) {
+        var text = row.textContent.toLowerCase();
+        var show = !q || text.indexOf(q) !== -1;
+        row.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      var countEl = document.getElementById('dlCount');
+      if (countEl) {
+        var total = rows.length;
+        countEl.textContent = q ? (visible + ' de ' + total + ' arquivos') : (total + ' arquivos');
+      }
+    }
+
+    function renderDownloadTable() {
+      const tbody = document.getElementById('downloadTableBody');
+      if (!tbody) return;
+      const rows = [];
+      rows.push({filename:'digital-ai-identidade-visual-20260610.zip',category:'Pacote',type:'ZIP',url:'https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/digital-ai-identidade-visual-20260610.zip',highlight:true});
+      if(LOGOS&&LOGOS.length) LOGOS.forEach(function(l){
+        if(l.svg_url) rows.push({filename:l.name+'.svg',category:'Logo',type:'SVG',url:l.svg_url});
+        if(l.png_url) rows.push({filename:l.name+'.png',category:'Logo',type:'PNG',url:l.png_url});
+      });
+      SOCIAL_ITEMS.forEach(function(s){if(s.url) rows.push({filename:s.name+'.png',category:'Social',type:'PNG',url:s.url});});
+      if(TOKENS_CSS_URL) rows.push({filename:'tokens.css',category:'Tokens',type:'CSS',url:TOKENS_CSS_URL});
+      if(TOKENS_JSON_URL) rows.push({filename:'tokens.json',category:'Tokens',type:'JSON',url:TOKENS_JSON_URL});
+      if('https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-manual.html') rows.push({filename:'Brand Manual',category:'Docs',type:'HTML',url:'https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-manual.html'});
+      if('https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-presentation.html') rows.push({filename:'Apresentacao',category:'Docs',type:'HTML',url:'https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-presentation.html'});
+      tbody.innerHTML = rows.map(function(row){
+        const trCls = row.highlight ? ' class="dl-table__highlight"' : '';
+        const fn = row.filename.toLowerCase().replace(/\s+/g,'-');
+        const name = escapeHtml(row.filename);
+        return '<tr'+trCls+'><td><span class="dl-table__filename">'+name+'</span></td>' +
+          '<td class="dl-table__hide-mobile"><span class="dl-table__category">'+escapeHtml(row.category)+'</span></td>' +
+          '<td class="dl-table__hide-mobile">'+escapeHtml(row.type)+'</td>' +
+          '<td><div class="dl-table__actions">' +
+            '<button class="btn btn--secondary btn--sm" onclick="downloadFile(\''+escapeJs(row.url)+'\',\''+escapeJs(fn)+'\')" aria-label="Baixar '+name+'">Download</button>' +
+            '<button class="btn btn--ghost btn--sm tooltip" onclick="copyToClipboard(\''+escapeJs(row.url)+'\',this)" aria-label="Copiar URL">URL<span class="tooltip__text">Copiado!</span></button>' +
+          '</div></td></tr>';
+      }).join('');
+      filterDownloads('');
+    }
+
+    /* === NAV: Mobile toggle === */
+    function toggleMobileNav() {
+      const links=document.getElementById('navLinks'), toggle=document.querySelector('.nav__mobile-toggle');
+      if(!links||!toggle) return;
+      const isOpen=links.classList.toggle('nav__links--open');
+      toggle.setAttribute('aria-expanded',String(isOpen));
+    }
+    document.addEventListener('click',function(e){
+      if(e.target.closest('.nav__link')){
+        const l=document.getElementById('navLinks'); if(l) l.classList.remove('nav__links--open');
+        const t=document.querySelector('.nav__mobile-toggle'); if(t) t.setAttribute('aria-expanded','false');
+      }
+    });
+
+    /* === NAV: Scroll spy === */
+    function setupScrollSpy() {
+      const sections=document.querySelectorAll('.section[id],.hero[id]');
+      const navLinks=document.querySelectorAll('.nav__link');
+      if(!sections.length||!navLinks.length) return;
+      const obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            navLinks.forEach(function(l){l.classList.remove('nav__link--active');});
+            const al=document.querySelector('.nav__link[href="#'+entry.target.id+'"]');
+            if(al) al.classList.add('nav__link--active');
+          }
+        });
+      },{rootMargin:'-40% 0px -55% 0px'});
+      sections.forEach(function(s){obs.observe(s);});
+    }
+
+    /* === ANIMATIONS === */
+    function setupAnimations() {
+      const els=document.querySelectorAll('.animate-in');
+      if(!els.length) return;
+      const obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){entry.target.style.animationPlayState='running';obs.unobserve(entry.target);}
+        });
+      },{threshold:0.1});
+      els.forEach(function(el){el.style.animationPlayState='paused';obs.observe(el);});
+    }
+
+    /* === KEYBOARD: Enter on swatch === */
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Enter'&&e.target.classList.contains('swatch')) e.target.click();
+    });
+
+    /* === THEME TOGGLE === */
+    const THEME_KEY = 'idv-platform-theme';
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem(THEME_KEY, theme);
+      const themeToggle = document.getElementById('themeToggle');
+      if (!themeToggle) return;
+      const isDark = theme === 'dark';
+      themeToggle.querySelector('.theme-toggle__icon').textContent = isDark ? '☀️' : '🌙';
+      themeToggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    // Inicializa antes do DOMContentLoaded para evitar flash de tema errado
+    (function() {
+      const saved = localStorage.getItem(THEME_KEY);
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (systemDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+
+    /* === EMAIL SIGNATURE === */
+    var SIG_HTML_CODE = '';
+
+    function buildSignatureHTML(logoUrl, brandColor, brandDark, sigName, sigRole, sigPhone, sigEmail) {
+      var c  = brandColor || '#2D52EF';
+      var d  = brandDark  || '#0F1F5C';
+      var a  = '#E8EEFF';
+      var lc = '#E8ECFD' !== '{{' + 'BRAND_LIGHT}}' ? '#E8ECFD' : '#E8EEFF';
+      var site      = 'https://digital-ai.tech';
+      var siteShort = site.replace(/^https?:\/\//,'');
+      var nome  = sigName  || 'SEU NOME COMPLETO';
+      var cargo = sigRole  || 'Seu Cargo';
+      var tel   = sigPhone || '+55 (64) 9XXXX-XXXX';
+      var mail  = sigEmail || 'seu@digital-ai.tech';
+      var lin       = 'https://linkedin.com/company/digital-ai';
+      var insta     = 'https://instagram.com/digital-ai';
+      // Compute intermediate gradient color (blend of c and a)
+      function h2n(h,s){return parseInt((h||'#000000').replace('#','').substr(s,2),16)||0;}
+      function hex2(n){return ('0'+Math.round(n).toString(16)).slice(-2);}
+      var mid = '#'+hex2((h2n(c,0)+h2n(a,0))/2)+hex2((h2n(c,2)+h2n(a,2))/2)+hex2((h2n(c,4)+h2n(a,4))/2);
+      var lines = [
+        '<!-- Digital AI \u2014 Email Signature | table-based, 100% inline CSS -->',
+        '<!-- Personalizar: SEU NOME COMPLETO | Seu Cargo | +55 (64) 9XXXX-XXXX | seu@digital-ai.tech -->',
+        '<table cellpadding="0" cellspacing="0" border="0" style="width:500px;max-width:500px;font-family:Arial,Helvetica,sans-serif;border-collapse:collapse;background-color:#ffffff;"><tbody>',
+
+        '<!-- Barra superior gradiente (3 colunas Outlook-safe) -->',
+        '<tr>',
+        '  <td width="167" height="4" style="height:4px;font-size:0;line-height:0;background-color:' + c + ';border-radius:3px 0 0 3px;">&nbsp;</td>',
+        '  <td width="166" height="4" style="height:4px;font-size:0;line-height:0;background-color:' + mid + ';">&nbsp;</td>',
+        '  <td width="167" height="4" style="height:4px;font-size:0;line-height:0;background-color:' + a + ';border-radius:0 3px 3px 0;">&nbsp;</td>',
+        '</tr>',
+
+        '<!-- Conteudo principal -->',
+        '<tr><td colspan="3" style="padding:20px 0 0 0;">',
+        '  <table cellpadding="0" cellspacing="0" border="0" style="width:500px;border-collapse:collapse;"><tbody><tr>',
+
+        '  <!-- Coluna esquerda: Logo + subtitulo -->',
+        '  <td valign="top" width="164" style="width:164px;padding:0 20px 0 0;border-right:1px solid ' + lc + ';">',
+        '    <a href="' + site + '" target="_blank" style="display:block;text-decoration:none;line-height:0;">',
+        '      <img src="' + logoUrl + '" alt="Digital AI" width="144" height="25" style="display:block;width:144px;height:25px;border:0;outline:0;line-height:0;" />',
+        '    </a>',
+        '    <table cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;border-collapse:collapse;"><tbody>',
+        '      <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:bold;color:' + d + ';letter-spacing:0.08em;text-transform:uppercase;line-height:1.5;white-space:nowrap;">AI-as-a-Service</td></tr>',
+        '      <tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#6B7CA4;letter-spacing:0.03em;padding-top:2px;white-space:nowrap;">Itumbiara &middot; GO &middot; Brasil</td></tr>',
+        '    </tbody></table>',
+        '  </td>',
+
+        '  <td width="20" style="width:20px;">&nbsp;</td>',
+
+        '  <!-- Coluna direita: Dados de contato -->',
+        '  <td valign="top" width="296" style="width:296px;">',
+        '    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">',
+        '      <tbody><tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:bold;color:' + d + ';line-height:1.2;letter-spacing:-0.01em;padding-bottom:3px;">'+escapeHtml(nome)+'</td></tr></tbody>',
+        '    </table>',
+        '    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">',
+        '      <tbody><tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;color:' + c + ';letter-spacing:0.06em;text-transform:uppercase;padding-bottom:12px;">'+escapeHtml(cargo)+'</td></tr></tbody>',
+        '    </table>',
+        '    <!-- Micro-barra decorativa -->',
+        '    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody>',
+        '      <tr><td width="36" height="2" style="width:36px;height:2px;font-size:0;line-height:0;background-color:' + c + ';border-radius:2px;">&nbsp;</td><td width="8" style="width:8px;font-size:0;">&nbsp;</td><td width="18" height="2" style="width:18px;height:2px;font-size:0;line-height:0;background-color:' + a + ';border-radius:2px;">&nbsp;</td></tr>',
+        '      <tr><td colspan="3" height="12" style="height:12px;font-size:0;line-height:0;">&nbsp;</td></tr>',
+        '    </tbody></table>',
+        '    <!-- Telefone -->',
+        '    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-bottom:5px;"><tbody><tr>',
+        '      <td valign="middle" width="23" style="width:23px;padding-right:7px;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr><td width="16" height="16" align="center" valign="middle" style="width:16px;height:16px;background-color:' + lc + ';border-radius:4px;"><span style="font-family:Arial,Helvetica,sans-serif;font-size:9px;color:' + d + ';line-height:1;display:block;text-align:center;">&#9990;</span></td></tr></tbody></table></td>',
+        '      <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#3D4B6E;line-height:1.4;"><a href="tel:+5564900000000" style="color:#3D4B6E;text-decoration:none;">'+escapeHtml(tel)+'</a></td>',
+        '    </tr></tbody></table>',
+        '    <!-- Email -->',
+        '    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-bottom:5px;"><tbody><tr>',
+        '      <td valign="middle" width="23" style="width:23px;padding-right:7px;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr><td width="16" height="16" align="center" valign="middle" style="width:16px;height:16px;background-color:' + lc + ';border-radius:4px;"><span style="font-family:Arial,Helvetica,sans-serif;font-size:9px;color:' + d + ';line-height:1;display:block;text-align:center;">&#9993;</span></td></tr></tbody></table></td>',
+        '      <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:' + c + ';line-height:1.4;"><a href="mailto:'+escapeHtml(mail)+'" style="color:' + c + ';text-decoration:none;">'+escapeHtml(mail)+'</a></td>',
+        '    </tr></tbody></table>',
+        '    <!-- Website -->',
+        '    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr>',
+        '      <td valign="middle" width="23" style="width:23px;padding-right:7px;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr><td width="16" height="16" align="center" valign="middle" style="width:16px;height:16px;background-color:' + lc + ';border-radius:4px;"><span style="font-family:Arial,Helvetica,sans-serif;font-size:9px;color:' + d + ';line-height:1;display:block;text-align:center;">&#9825;</span></td></tr></tbody></table></td>',
+        '      <td valign="middle" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:' + c + ';line-height:1.4;"><a href="' + site + '" target="_blank" style="color:' + c + ';text-decoration:none;">' + siteShort + '</a></td>',
+        '    </tr></tbody></table>',
+        '  </td>',
+
+        '  </tr></tbody></table>',
+        '</td></tr>',
+
+        '<tr><td colspan="3" height="16" style="height:16px;font-size:0;line-height:0;">&nbsp;</td></tr>',
+
+        '<!-- Rodape: Redes sociais + tagline -->',
+        '<tr><td colspan="3" style="border-top:1px solid ' + lc + ';padding-top:14px;">',
+        '  <table cellpadding="0" cellspacing="0" border="0" style="width:500px;border-collapse:collapse;"><tbody><tr>',
+        '    <td valign="middle">',
+        '      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr>',
+        '        <td style="padding-right:8px;"><a href="' + lin + '" target="_blank" style="text-decoration:none;display:block;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr><td width="28" height="28" align="center" valign="middle" style="width:28px;height:28px;background-color:' + d + ';border-radius:6px;"><span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;color:#ffffff;line-height:1;display:block;text-align:center;letter-spacing:-0.03em;">in</span></td></tr></tbody></table></a></td>',
+        '        <td style="padding-right:8px;"><a href="' + insta + '" target="_blank" style="text-decoration:none;display:block;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr><td width="28" height="28" align="center" valign="middle" style="width:28px;height:28px;background-color:' + c + ';border-radius:6px;"><span style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:bold;color:#ffffff;line-height:1;display:block;text-align:center;">IG</span></td></tr></tbody></table></a></td>',
+        '        <td><a href="' + site + '" target="_blank" style="text-decoration:none;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tbody><tr><td height="28" style="height:28px;padding:0 12px;background-color:' + lc + ';border-radius:6px;vertical-align:middle;"><span style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;color:' + d + ';letter-spacing:0.02em;white-space:nowrap;">' + siteShort + '</span></td></tr></tbody></table></a></td>',
+        '      </tr></tbody></table>',
+        '    </td>',
+        '    <td valign="middle" align="right" style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#9AABFF;font-style:italic;letter-spacing:0.02em;padding-left:12px;">Intelig&ecirc;ncia que transforma opera&ccedil;&atilde;o em resultado.</td>',
+        '  </tr></tbody></table>',
+        '</td></tr>',
+
+        '<tr><td colspan="3" height="16" style="height:16px;font-size:0;line-height:0;">&nbsp;</td></tr>',
+        '</tbody></table>'
+      ];
+      return lines.join('\n');
+    }
+
+    function updateSignature() {
+      var logoUrl = 'https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.png';
+      var brandColor = '#2D52EF';
+      var brandDark = '#0F1F5C';
+      var name  = (document.getElementById('sigFieldName')  || {value:''}).value || 'SEU NOME COMPLETO';
+      var role  = (document.getElementById('sigFieldRole')  || {value:''}).value || 'Seu Cargo';
+      var phone = (document.getElementById('sigFieldPhone') || {value:''}).value || '+55 (64) 9XXXX-XXXX';
+      var email = (document.getElementById('sigFieldEmail') || {value:''}).value || 'seu@digital-ai.tech';
+      SIG_HTML_CODE = buildSignatureHTML(logoUrl, brandColor, brandDark, name, role, phone, email);
+      var preview = document.getElementById('sigPreviewContainer');
+      if (preview) preview.innerHTML = SIG_HTML_CODE;
+      var codeEl = document.getElementById('sigCodeContent');
+      if (codeEl) codeEl.textContent = SIG_HTML_CODE;
+    }
+
+    function initSignature() {
+      updateSignature();
+    }
+
+    function switchSigTab(tab) {
+      document.querySelectorAll('[id^="sig-tab-"]').forEach(function(t) {
+        t.classList.remove('tokens-tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('[id^="sig-panel-"]').forEach(function(p) {
+        p.classList.remove('tokens-panel--active');
+      });
+      var at = document.getElementById('sig-tab-' + tab);
+      var ap = document.getElementById('sig-panel-' + tab);
+      if (at) { at.classList.add('tokens-tab--active'); at.setAttribute('aria-selected', 'true'); }
+      if (ap) ap.classList.add('tokens-panel--active');
+    }
+
+    function copySigCode(btn) {
+      if (!SIG_HTML_CODE) return;
+      navigator.clipboard.writeText(SIG_HTML_CODE).catch(function() {
+        var ta = document.createElement('textarea');
+        ta.value = SIG_HTML_CODE;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      });
+      if(btn){var orig=btn.textContent;btn.textContent='Copiado!';btn.style.color='var(--color-success,#22c55e)';setTimeout(function(){btn.textContent=orig;btn.style.color='';},2000);}
+    }
+
+    function openSigPreview() {
+      var win = window.open('', '_blank');
+      if (win) {
+        win.document.write('<html><head><title>Email Signature Preview</title></head><body style="background:#f0f0f0;padding:40px;font-family:Arial,sans-serif;"><div style="background:white;padding:32px;max-width:600px;margin:0 auto;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.1);"><p style="color:#888;font-size:12px;margin:0 0 16px;">\u2014 Corpo do email aqui \u2014</p>' + SIG_HTML_CODE + '</div></body></html>');
+        win.document.close();
+      }
+    }
+
+
+
+    /* === INIT === */
+    document.addEventListener('DOMContentLoaded',function(){
+      // Inicializar theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (themeToggle) {
+        const isDark = currentTheme === 'dark';
+        themeToggle.querySelector('.theme-toggle__icon').textContent = isDark ? '☀️' : '🌙';
+        themeToggle.querySelector('.theme-toggle__label').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        themeToggle.addEventListener('click', function() {
+          const current = document.documentElement.getAttribute('data-theme');
+          applyTheme(current === 'dark' ? 'light' : 'dark');
+        });
+      }
+
+      initSignature();
+      updateContrast();
+      renderLogos();
+      renderPalette();
+      renderTypographyWeights();
+      renderSocial();
+      renderDownloadTable();
+      loadTokens();
+      setupScrollSpy();
+      requestAnimationFrame(function(){setupAnimations();});
+
+    });
+
+
+    /* === CHANGELOG TOGGLE === */
+    function toggleChangelog(btn) {
+      var panel = document.getElementById('changelogPanel');
+      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      panel.hidden = isExpanded;
+      btn.querySelector('svg').style.transform = isExpanded ? '' : 'rotate(45deg)';
+    }
+
+  </script>
+</body>
+</html>

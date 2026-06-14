@@ -1,0 +1,47 @@
+{
+  "$description": "Dark mode semantic token overrides. Apply via [data-theme=dark] selector.",
+  "color": {
+    "text": {
+      "primary": { "$value": "{color.neutral.50}", "$type": "color" },
+      "secondary": { "$value": "{color.neutral.400}", "$type": "color" },
+      "tertiary": { "$value": "{color.neutral.500}", "$type": "color" },
+      "disabled": { "$value": "{color.neutral.600}", "$type": "color" },
+      "inverse": { "$value": "{color.neutral.900}", "$type": "color" },
+      "on-action": { "$value": "{color.white}", "$type": "color" },
+      "brand": { "$value": "{color.brand.300}", "$type": "color" },
+      "link": { "$value": "{color.brand.300}", "$type": "color" },
+      "link-hover": { "$value": "{color.brand.200}", "$type": "color" }
+    },
+    "bg": {
+      "page": { "$value": "{color.brand.950}", "$type": "color" },
+      "primary": { "$value": "{color.brand.900}", "$type": "color" },
+      "secondary": { "$value": "#0D1847", "$type": "color" },
+      "elevated": { "$value": "#1A2870", "$type": "color" },
+      "overlay": { "$value": "rgba(0,0,0,0.7)", "$type": "color" },
+      "hover": { "$value": "rgba(45,82,239,0.1)", "$type": "color" },
+      "active": { "$value": "rgba(45,82,239,0.15)", "$type": "color" },
+      "disabled": { "$value": "#0D1847", "$type": "color" },
+      "brand": { "$value": "{color.brand.900}", "$type": "color" },
+      "brand-subtle": { "$value": "rgba(232,238,255,0.08)", "$type": "color" },
+      "status-success": { "$value": "#052E16", "$type": "color" },
+      "status-error": { "$value": "#1A0000", "$type": "color" },
+      "status-warning": { "$value": "#1A0E00", "$type": "color" },
+      "status-info": { "$value": "rgba(45,82,239,0.15)", "$type": "color" }
+    },
+    "border": {
+      "default": { "$value": "rgba(255,255,255,0.12)", "$type": "color" },
+      "subtle": { "$value": "rgba(255,255,255,0.08)", "$type": "color" },
+      "strong": { "$value": "rgba(255,255,255,0.20)", "$type": "color" },
+      "focus": { "$value": "{color.brand.400}", "$type": "color" },
+      "error": { "$value": "{color.feedback.error}", "$type": "color" },
+      "success": { "$value": "{color.feedback.success}", "$type": "color" },
+      "brand": { "$value": "{color.brand.400}", "$type": "color" }
+    },
+    "action": {
+      "primary": { "$value": "{color.brand.500}", "$type": "color" },
+      "primary-hover": { "$value": "{color.brand.400}", "$type": "color" },
+      "primary-active": { "$value": "{color.brand.300}", "$type": "color" },
+      "ghost-hover-bg": { "$value": "rgba(45,82,239,0.1)", "$type": "color" }
+    }
+  }
+}

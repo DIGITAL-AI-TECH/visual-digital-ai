@@ -1,0 +1,108 @@
+{
+  "color": {
+    "brand": {
+      "50": { "$value": "#EEF1FF", "$type": "color" },
+      "100": { "$value": "#E0E5FF", "$type": "color" },
+      "200": { "$value": "#C7CFFF", "$type": "color" },
+      "300": { "$value": "#A5B0FF", "$type": "color" },
+      "400": { "$value": "#7A88FF", "$type": "color" },
+      "500": { "$value": "#2D52EF", "$type": "color", "$description": "Primary — Precisão" },
+      "600": { "$value": "#2344D4", "$type": "color" },
+      "700": { "$value": "#1A35B8", "$type": "color" },
+      "800": { "$value": "#3B2FC9", "$type": "color", "$description": "Secondary — Visão" },
+      "900": { "$value": "#0F1F5C", "$type": "color", "$description": "Dark — Profundidade" },
+      "950": { "$value": "#080F2E", "$type": "color" }
+    },
+    "accent": {
+      "50": { "$value": "#F8F9FF", "$type": "color" },
+      "100": { "$value": "#E8EEFF", "$type": "color", "$description": "Névoa — accent" },
+      "200": { "$value": "#D4DCFF", "$type": "color" },
+      "300": { "$value": "#B8C4FF", "$type": "color" }
+    },
+    "neutral": {
+      "50": { "$value": "#F8F9FA", "$type": "color" },
+      "100": { "$value": "#F1F3F5", "$type": "color" },
+      "200": { "$value": "#E9ECEF", "$type": "color" },
+      "300": { "$value": "#DEE2E6", "$type": "color" },
+      "400": { "$value": "#CED4DA", "$type": "color" },
+      "500": { "$value": "#ADB5BD", "$type": "color" },
+      "600": { "$value": "#868E96", "$type": "color" },
+      "700": { "$value": "#495057", "$type": "color" },
+      "800": { "$value": "#343A40", "$type": "color" },
+      "900": { "$value": "#212529", "$type": "color" },
+      "950": { "$value": "#0D0F12", "$type": "color" }
+    },
+    "feedback": {
+      "success": { "$value": "#22C55E", "$type": "color" },
+      "success-bg": { "$value": "#F0FDF4", "$type": "color" },
+      "success-text": { "$value": "#15803D", "$type": "color" },
+      "error": { "$value": "#EF4444", "$type": "color" },
+      "error-bg": { "$value": "#FEF2F2", "$type": "color" },
+      "error-text": { "$value": "#DC2626", "$type": "color" },
+      "warning": { "$value": "#F59E0B", "$type": "color" },
+      "warning-bg": { "$value": "#FFFBEB", "$type": "color" },
+      "warning-text": { "$value": "#B45309", "$type": "color" },
+      "info": { "$value": "#2D52EF", "$type": "color" },
+      "info-bg": { "$value": "#E8EEFF", "$type": "color" },
+      "info-text": { "$value": "#1A35B8", "$type": "color" }
+    },
+    "white": { "$value": "#FFFFFF", "$type": "color" },
+    "black": { "$value": "#000000", "$type": "color" }
+  },
+  "spacing": {
+    "base": { "$value": "4px", "$type": "dimension" },
+    "1x": { "$value": "4px", "$type": "dimension" },
+    "2x": { "$value": "8px", "$type": "dimension" },
+    "3x": { "$value": "12px", "$type": "dimension" },
+    "4x": { "$value": "16px", "$type": "dimension" },
+    "5x": { "$value": "20px", "$type": "dimension" },
+    "6x": { "$value": "24px", "$type": "dimension" },
+    "8x": { "$value": "32px", "$type": "dimension" },
+    "10x": { "$value": "40px", "$type": "dimension" },
+    "12x": { "$value": "48px", "$type": "dimension" },
+    "16x": { "$value": "64px", "$type": "dimension" },
+    "20x": { "$value": "80px", "$type": "dimension" },
+    "24x": { "$value": "96px", "$type": "dimension" }
+  },
+  "typography": {
+    "family": {
+      "heading": { "$value": "'Plus Jakarta Sans', sans-serif", "$type": "fontFamily" },
+      "body": { "$value": "'DM Sans', sans-serif", "$type": "fontFamily" },
+      "mono": { "$value": "'JetBrains Mono', 'Fira Code', monospace", "$type": "fontFamily" }
+    },
+    "size": {
+      "xs": { "$value": "0.75rem", "$type": "dimension" },
+      "sm": { "$value": "0.875rem", "$type": "dimension" },
+      "md": { "$value": "1rem", "$type": "dimension" },
+      "lg": { "$value": "1.125rem", "$type": "dimension" },
+      "xl": { "$value": "1.25rem", "$type": "dimension" },
+      "2xl": { "$value": "1.5rem", "$type": "dimension" },
+      "3xl": { "$value": "1.875rem", "$type": "dimension" },
+      "4xl": { "$value": "2.25rem", "$type": "dimension" },
+      "5xl": { "$value": "3rem", "$type": "dimension" },
+      "6xl": { "$value": "3.75rem", "$type": "dimension" }
+    },
+    "weight": {
+      "regular": { "$value": "400", "$type": "fontWeight" },
+      "medium": { "$value": "500", "$type": "fontWeight" },
+      "semibold": { "$value": "600", "$type": "fontWeight" },
+      "bold": { "$value": "700", "$type": "fontWeight" },
+      "extrabold": { "$value": "800", "$type": "fontWeight" }
+    },
+    "lineHeight": {
+      "tight": { "$value": "1.2", "$type": "number" },
+      "snug": { "$value": "1.375", "$type": "number" },
+      "normal": { "$value": "1.5", "$type": "number" },
+      "relaxed": { "$value": "1.625", "$type": "number" },
+      "loose": { "$value": "2", "$type": "number" }
+    },
+    "letterSpacing": {
+      "tighter": { "$value": "-0.05em", "$type": "dimension" },
+      "tight": { "$value": "-0.025em", "$type": "dimension" },
+      "normal": { "$value": "0em", "$type": "dimension" },
+      "wide": { "$value": "0.025em", "$type": "dimension" },
+      "wider": { "$value": "0.05em", "$type": "dimension" },
+      "widest": { "$value": "0.1em", "$type": "dimension" }
+    }
+  }
+}

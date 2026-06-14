@@ -1,0 +1,41 @@
+{
+  "$description": "High Contrast mode overrides. Apply via @media (forced-colors: active) or .hc-mode class.",
+  "color": {
+    "text": {
+      "primary": { "$value": "CanvasText", "$type": "color" },
+      "secondary": { "$value": "CanvasText", "$type": "color" },
+      "tertiary": { "$value": "GrayText", "$type": "color" },
+      "disabled": { "$value": "GrayText", "$type": "color" },
+      "inverse": { "$value": "Canvas", "$type": "color" },
+      "on-action": { "$value": "ButtonText", "$type": "color" },
+      "brand": { "$value": "LinkText", "$type": "color" },
+      "link": { "$value": "LinkText", "$type": "color" }
+    },
+    "bg": {
+      "page": { "$value": "Canvas", "$type": "color" },
+      "primary": { "$value": "Canvas", "$type": "color" },
+      "elevated": { "$value": "Canvas", "$type": "color" },
+      "disabled": { "$value": "Canvas", "$type": "color" },
+      "hover": { "$value": "Highlight", "$type": "color" },
+      "active": { "$value": "Highlight", "$type": "color" }
+    },
+    "border": {
+      "default": { "$value": "CanvasText", "$type": "color" },
+      "subtle": { "$value": "CanvasText", "$type": "color" },
+      "focus": { "$value": "Highlight", "$type": "color" },
+      "error": { "$value": "LinkText", "$type": "color" }
+    },
+    "action": {
+      "primary": { "$value": "ButtonFace", "$type": "color" },
+      "primary-text": { "$value": "ButtonText", "$type": "color" }
+    }
+  },
+  "shadow": {
+    "xs": { "$value": "none", "$type": "shadow" },
+    "sm": { "$value": "none", "$type": "shadow" },
+    "md": { "$value": "none", "$type": "shadow" },
+    "lg": { "$value": "none", "$type": "shadow" },
+    "xl": { "$value": "none", "$type": "shadow" },
+    "2xl": { "$value": "none", "$type": "shadow" }
+  }
+}

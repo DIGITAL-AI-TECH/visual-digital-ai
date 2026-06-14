@@ -1,0 +1,92 @@
+/* =====================================================
+   Digital AI — Grid System
+   4/8/12 column grid with fluid containers
+   ===================================================== */
+
+/* ── Container ── */
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--spacing-4x);
+}
+
+@media (min-width: 640px) {
+  .container { max-width: 640px; padding-inline: var(--spacing-6x); }
+}
+@media (min-width: 768px) {
+  .container { max-width: 768px; }
+}
+@media (min-width: 1024px) {
+  .container { max-width: 1024px; padding-inline: var(--spacing-8x); }
+}
+@media (min-width: 1280px) {
+  .container { max-width: 1280px; }
+}
+@media (min-width: 1536px) {
+  .container { max-width: 1536px; }
+}
+
+.container-sm { max-width: 640px; margin-inline: auto; padding-inline: var(--spacing-4x); }
+.container-md { max-width: 768px; margin-inline: auto; padding-inline: var(--spacing-4x); }
+.container-lg { max-width: 1024px; margin-inline: auto; padding-inline: var(--spacing-4x); }
+.container-xl { max-width: 1280px; margin-inline: auto; padding-inline: var(--spacing-4x); }
+.container-full { width: 100%; padding-inline: var(--spacing-4x); }
+
+/* ── Grid ── */
+.grid { display: grid; gap: var(--spacing-4x); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-8 { grid-template-columns: repeat(8, 1fr); }
+.grid-12 { grid-template-columns: repeat(12, 1fr); }
+.grid-auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-auto-sm { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid-auto-lg { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+/* Gap variants */
+.gap-1 { gap: var(--spacing-1x); }
+.gap-2 { gap: var(--spacing-2x); }
+.gap-3 { gap: var(--spacing-3x); }
+.gap-4 { gap: var(--spacing-4x); }
+.gap-6 { gap: var(--spacing-6x); }
+.gap-8 { gap: var(--spacing-8x); }
+.gap-10 { gap: var(--spacing-10x); }
+.gap-12 { gap: var(--spacing-12x); }
+
+/* Span helpers */
+.col-span-1 { grid-column: span 1; }
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+.col-span-4 { grid-column: span 4; }
+.col-span-5 { grid-column: span 5; }
+.col-span-6 { grid-column: span 6; }
+.col-span-full { grid-column: 1 / -1; }
+
+/* Flex utilities */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-start { align-items: flex-start; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.flex-1 { flex: 1; }
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 639px) {
+  .grid-4, .grid-8, .grid-12 { grid-template-columns: 1fr; }
+  .col-span-2, .col-span-3, .col-span-4, .col-span-5, .col-span-6 { grid-column: span 1; }
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+  .grid-8, .grid-12 { grid-template-columns: repeat(4, 1fr); }
+  .hide-sm { display: none !important; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-12 { grid-template-columns: repeat(8, 1fr); }
+  .hide-md { display: none !important; }
+}
+@media (min-width: 1024px) {
+  .hide-desktop { display: none !important; }
+}

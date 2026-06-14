@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — Digital AI</title>
+  <meta name="description" content="Design System interativo de Digital AI: cores, tipografia, espaçamento, componentes e tokens." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === CSS VARS === */
+    :root {
+      --brand-primary: #2D52EF;
+      --brand-primary-rgb: 45, 82, 239;
+      --brand-secondary: #3B2FC9;
+      --brand-dark: #0F1F5C;
+      --brand-light: #E8ECFD;
+      --brand-accent: #E8EEFF;
+      --font-heading: Plus Jakarta Sans, sans-serif;
+      --font-body: DM Sans, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+      /* Light theme */
+      --bg-base: #ffffff;
+      --bg-surface: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --text-tertiary: #64748b;
+      --border-subtle: #f1f5f9;
+      --border-default: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 24px;
+      --space-2xl: 40px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --transition-fast: 150ms ease;
+    }
+    [data-theme="dark"] {
+      --bg-base: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-card: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-tertiary: #475569;
+      --border-subtle: #1e293b;
+      --border-default: #334155;
+      --border-strong: #475569;
+    }
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-base); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+    a { color: inherit; }
+
+    /* === NAV === */
+    .ds-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg-base); border-bottom: 1px solid var(--border-default);
+      height: 56px; display: flex; align-items: center;
+      padding: 0 var(--space-xl); gap: var(--space-md);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .ds-nav__back {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: none; border: 1.5px solid var(--border-strong);
+      color: var(--text-primary); border-radius: var(--radius-md);
+      padding: 6px 14px; font-size: 0.875rem; font-weight: 600;
+      cursor: pointer; transition: background var(--transition-fast);
+      text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    }
+    .ds-nav__back:hover { background: var(--bg-surface); }
+    .ds-nav__title {
+      font-weight: 700; font-size: 0.95rem; color: var(--text-primary);
+      flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .ds-nav__theme {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; background: var(--bg-surface);
+      border: 1.5px solid var(--border-default); border-radius: var(--radius-md);
+      cursor: pointer; font-size: 1rem; transition: all var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .ds-nav__theme:hover { background: var(--bg-card); border-color: var(--brand-primary); }
+    .ds-nav__logo { height: 28px; width: auto; flex-shrink: 0; object-fit: contain; }
+
+    /* === TAB BAR === */
+    .ds-tabs {
+      display: flex; gap: 4px; flex-wrap: wrap; padding: var(--space-lg) var(--space-xl);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-base);
+      position: sticky; top: 56px; z-index: 90;
+    }
+    .ds-tab {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--radius-md);
+      font-size: 0.875rem; font-weight: 600; cursor: pointer;
+      border: 1.5px solid transparent;
+      background: none; color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+    .ds-tab:hover { background: var(--bg-surface); color: var(--text-primary); }
+    .ds-tab[aria-selected="true"] {
+      background: var(--brand-primary);
+      color: #ffffff;
+      border-color: var(--brand-primary);
+    }
+
+    /* === PAGE LAYOUT === */
+    .ds-page { max-width: 1100px; margin: 0 auto; padding: var(--space-2xl) var(--space-xl); }
+    .ds-section { display: none; }
+    .ds-section--active { display: block; }
+
+    /* === TYPOGRAPHY IN DS === */
+    .ds-sec-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-xs); }
+    .ds-sec-desc { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 var(--space-2xl); }
+    .ds-sub-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin: var(--space-2xl) 0 var(--space-lg); padding-bottom: var(--space-xs); border-bottom: 1px solid var(--border-subtle); }
+    .ds-sub-title:first-child { margin-top: 0; }
+
+    /* === COLOR GRID === */
+    .ds-color-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(145px,1fr)); gap: var(--space-sm); margin-bottom: var(--space-2xl); }
+    .ds-color-chip { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle); }
+    .ds-color-chip__sw { height: 64px; }
+    .ds-color-chip__info { padding: var(--space-xs) var(--space-sm); background: var(--bg-card); }
+    .ds-color-chip__name { font-size: 0.75rem; font-weight: 600; color: var(--text-primary); }
+    .ds-color-chip__hex { font-size: 0.68rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+    /* === COMPONENT BOX === */
+    .ds-comp-box { padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); margin-bottom: var(--space-lg); }
+    .ds-comp-row { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 1px solid var(--border-subtle); }
+    .ds-comp-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .ds-comp-lbl { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); min-width: 80px; }
+    .ds-comp-group { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+
+    /* === BUTTONS === */
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 600; cursor: pointer; border: 1.5px solid transparent; transition: all var(--transition-fast); text-decoration: none; font-family: var(--font-body); }
+    .btn--primary { background: var(--brand-primary); color: #fff; border-color: var(--brand-primary); }
+    .btn--primary:hover { opacity: 0.9; }
+    .btn--secondary { background: var(--bg-surface); border-color: var(--border-default); color: var(--text-primary); }
+    .btn--secondary:hover { border-color: var(--brand-primary); }
+    .btn--ghost { background: none; border-color: var(--border-default); color: var(--text-secondary); }
+    .btn--ghost:hover { background: var(--bg-surface); }
+    .btn--sm { padding: 6px 12px; font-size: 0.8rem; }
+    .btn--lg { padding: 12px 24px; font-size: 1rem; }
+    .btn--danger { background: #dc2626; color: #fff; border-color: #dc2626; }
+    .btn--success { background: #16a34a; color: #fff; border-color: #16a34a; }
+    .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+    /* === BADGES === */
+    .ds-badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; }
+    .ds-badge--primary { background: color-mix(in srgb, #2D52EF 15%, transparent); color: #2D52EF; }
+    .ds-badge--dark { background: color-mix(in srgb, #0F1F5C 15%, transparent); color: #0F1F5C; }
+    .ds-badge--success { background: #dcfce7; color: #166534; }
+    .ds-badge--warning { background: #fef9c3; color: #854d0e; }
+    .ds-badge--error { background: #fee2e2; color: #991b1b; }
+    .ds-badge--neutral { background: var(--bg-surface); color: var(--text-secondary); border: 1px solid var(--border-default); }
+
+    /* === CODE BLOCK === */
+    .ds-code-block {
+      background: #0f172a; color: #e2e8f0; padding: var(--space-xl);
+      border-radius: var(--radius-lg); font-family: var(--font-mono);
+      font-size: 0.82rem; line-height: 1.7; overflow-x: auto;
+      white-space: pre-wrap; word-break: break-word;
+      max-height: 600px; overflow-y: auto;
+    }
+
+    /* === MOTION === */
+    .ds-motion-demo { display: flex; flex-direction: column; gap: var(--space-sm); align-items: flex-start; padding: var(--space-md); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; }
+    .ds-motion-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--brand-primary); transition: transform var(--dur, 200ms) ease; }
+    .ds-motion-demo:hover .ds-motion-dot { transform: translateX(80px); }
+    .ds-motion-label { font-size: 0.78rem; color: var(--text-secondary); font-family: var(--font-mono); }
+    .ds-easing-demo { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-md); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; overflow: hidden; }
+    .ds-easing-bar { width: 100%; height: 8px; border-radius: 4px; background: var(--brand-primary); transform: scaleX(0.1); transform-origin: left; transition: transform 300ms var(--ease, ease); }
+    .ds-easing-demo:hover .ds-easing-bar { transform: scaleX(1); }
+
+    /* === SPACING === */
+    .ds-spacing-row { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm); }
+    .ds-spacing-bar { background: var(--brand-primary); height: 20px; border-radius: 3px; opacity: 0.7; }
+    .ds-spacing-label { font-size: 0.78rem; color: var(--text-secondary); font-family: var(--font-mono); white-space: nowrap; }
+
+    /* === SKELETON KEYFRAME === */
+    @keyframes skeleton-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    /* === REDUCED MOTION === */
+    @media (prefers-reduced-motion: reduce) {
+      .ds-motion-dot, .ds-easing-bar { transition: none !important; }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+      .ds-page { padding: var(--space-xl) var(--space-md); }
+      .ds-tabs { padding: var(--space-md); }
+      .ds-nav { padding: 0 var(--space-md); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="ds-nav" aria-label="Navegação do Design System">
+    <a class="ds-nav__back" href="../index.html#design-system" aria-label="Voltar à Plataforma">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Plataforma
+    </a>
+    <img src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg" alt="Digital AI" class="ds-nav__logo" onerror="this.style.display='none'" />
+    <span class="ds-nav__title">Design System — Digital AI</span>
+    <button class="ds-nav__theme" id="themeToggle" aria-label="Alternar tema">☀️</button>
+  </nav>
+
+  <!-- TABS -->
+  <div class="ds-tabs" role="tablist" aria-label="Seções do Design System">
+    <button class="ds-tab" role="tab" aria-selected="true"  id="tab-colors"     aria-controls="sec-colors"     onclick="switchTab('colors')">🎨 Cores</button>
+    <button class="ds-tab" role="tab" aria-selected="false" id="tab-typography"  aria-controls="sec-typography"  onclick="switchTab('typography')">✍️ Tipografia</button>
+    <button class="ds-tab" role="tab" aria-selected="false" id="tab-spacing"     aria-controls="sec-spacing"     onclick="switchTab('spacing')">📐 Espaçamento</button>
+    <button class="ds-tab" role="tab" aria-selected="false" id="tab-components"  aria-controls="sec-components"  onclick="switchTab('components')">⚛ Componentes</button>
+    <button class="ds-tab" role="tab" aria-selected="false" id="tab-motion"      aria-controls="sec-motion"      onclick="switchTab('motion')">✨ Motion</button>
+    <button class="ds-tab" role="tab" aria-selected="false" id="tab-tokens-css"  aria-controls="sec-tokens-css"  onclick="switchTab('tokens-css')">🔧 Tokens CSS</button>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="ds-page" id="ds-main">
+
+    <!-- === COLORS === -->
+    <section class="ds-section ds-section--active" id="sec-colors" role="tabpanel" aria-labelledby="tab-colors">
+      <h2 class="ds-sec-title">Sistema de Cores</h2>
+      <p class="ds-sec-desc">Paleta completa com tokens primitivos e semânticos da identidade visual.</p>
+      <h3 class="ds-sub-title">Paleta da Marca</h3>
+      <div class="ds-color-grid" id="colorGrid"></div>
+      <h3 class="ds-sub-title">Tokens Semânticos</h3>
+      <div class="ds-color-grid" id="semanticGrid"></div>
+    </section>
+
+    <!-- === TYPOGRAPHY === -->
+    <section class="ds-section" id="sec-typography" role="tabpanel" aria-labelledby="tab-typography">
+      <h2 class="ds-sec-title">Tipografia</h2>
+      <p class="ds-sec-desc">Escala tipográfica com fontes, pesos e especimens de texto da marca.</p>
+      <div id="typographyContent"></div>
+    </section>
+
+    <!-- === SPACING === -->
+    <section class="ds-section" id="sec-spacing" role="tabpanel" aria-labelledby="tab-spacing">
+      <h2 class="ds-sec-title">Espaçamento &amp; Formas</h2>
+      <p class="ds-sec-desc">Escala de espaçamento, border radius e sombras do sistema.</p>
+      <div id="spacingContent"></div>
+    </section>
+
+    <!-- === COMPONENTS === -->
+    <section class="ds-section" id="sec-components" role="tabpanel" aria-labelledby="tab-components">
+      <h2 class="ds-sec-title">Componentes</h2>
+      <p class="ds-sec-desc">Biblioteca de componentes com a identidade visual da marca.</p>
+      <div id="componentsContent"></div>
+    </section>
+
+    <!-- === MOTION === -->
+    <section class="ds-section" id="sec-motion" role="tabpanel" aria-labelledby="tab-motion">
+      <h2 class="ds-sec-title">Motion System</h2>
+      <p class="ds-sec-desc">Durações, curvas de animação e princípios de movimento do design system.</p>
+      <h3 class="ds-sub-title">Durações</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-md);margin-bottom:var(--space-2xl);">
+        <div class="ds-motion-demo" style="--dur:100ms;"><div class="ds-motion-dot"></div><span class="ds-motion-label">Fast — 100ms</span></div>
+        <div class="ds-motion-demo" style="--dur:200ms;"><div class="ds-motion-dot"></div><span class="ds-motion-label">Normal — 200ms</span></div>
+        <div class="ds-motion-demo" style="--dur:300ms;"><div class="ds-motion-dot"></div><span class="ds-motion-label">Slow — 300ms</span></div>
+        <div class="ds-motion-demo" style="--dur:500ms;"><div class="ds-motion-dot"></div><span class="ds-motion-label">Slower — 500ms</span></div>
+      </div>
+      <h3 class="ds-sub-title">Easings (hover para animar)</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);">
+        <div class="ds-easing-demo" style="--ease:cubic-bezier(0.4,0,0.2,1);"><div class="ds-easing-bar"></div><span class="ds-motion-label">Default — cubic-bezier(0.4,0,0.2,1)</span></div>
+        <div class="ds-easing-demo" style="--ease:cubic-bezier(0,0,0.2,1);"><div class="ds-easing-bar"></div><span class="ds-motion-label">Ease Out — cubic-bezier(0,0,0.2,1)</span></div>
+        <div class="ds-easing-demo" style="--ease:cubic-bezier(0.4,0,1,1);"><div class="ds-easing-bar"></div><span class="ds-motion-label">Ease In — cubic-bezier(0.4,0,1,1)</span></div>
+        <div class="ds-easing-demo" style="--ease:cubic-bezier(0.34,1.56,0.64,1);"><div class="ds-easing-bar"></div><span class="ds-motion-label">Spring — cubic-bezier(0.34,1.56,0.64,1)</span></div>
+      </div>
+    </section>
+
+    <!-- === TOKENS CSS === -->
+    <section class="ds-section" id="sec-tokens-css" role="tabpanel" aria-labelledby="tab-tokens-css">
+      <h2 class="ds-sec-title">Tokens CSS</h2>
+      <p class="ds-sec-desc">Custom properties CSS completas para importar no seu projeto.</p>
+      <div style="display:flex;gap:var(--space-sm);margin-bottom:var(--space-lg);flex-wrap:wrap;">
+        <button class="btn btn--secondary btn--sm" onclick="copyTokensCss(this)">Copiar CSS</button>
+        <a href="../design-system/tokens/design-tokens.css" download="digital-ai-design-tokens.css" class="btn btn--ghost btn--sm">Download</a>
+      </div>
+      <pre class="ds-code-block" id="tokensCssContent">/* Carregando tokens... */</pre>
+    </section>
+
+  </main>
+
+  <script>
+    /* === DATA === */
+    const PALETTE = [{"name":"Profundidade","hex":"#0F1F5C","rgb":"15, 31, 92","role":"dark"},{"name":"Visão","hex":"#3B2FC9","rgb":"59, 47, 201","role":"secondary"},{"name":"Precisão","hex":"#2D52EF","rgb":"45, 82, 239","role":"primary"},{"name":"Névoa","hex":"#E8EEFF","rgb":"232, 238, 255","role":"accent"}];
+
+    /* === ESCAPE === */
+    function esc(str) {
+      if (!str) return '';
+      const d = document.createElement('div');
+      d.appendChild(document.createTextNode(str));
+      return d.innerHTML;
+    }
+    function escA(str) { return String(str||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    /* === TABS === */
+    const TABS = ['colors','typography','spacing','components','motion','tokens-css'];
+    function switchTab(id) {
+      TABS.forEach(function(t) {
+        var tab = document.getElementById('tab-'+t);
+        var sec = document.getElementById('sec-'+t);
+        if (tab) { tab.classList.remove('ds-tab--active'); tab.setAttribute('aria-selected','false'); }
+        if (sec) sec.classList.remove('ds-section--active');
+      });
+      var activeTab = document.getElementById('tab-'+id);
+      var activeSec = document.getElementById('sec-'+id);
+      if (activeTab) { activeTab.setAttribute('aria-selected','true'); }
+      if (activeSec) activeSec.classList.add('ds-section--active');
+      history.replaceState(null,'','#'+id);
+      if (id === 'tokens-css') loadTokensCss();
+    }
+
+    /* === INIT FROM HASH === */
+    function initFromHash() {
+      var hash = location.hash.replace('#','');
+      if (hash && TABS.indexOf(hash) >= 0) switchTab(hash);
+    }
+
+    /* === THEME === */
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('ds-theme', t);
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.textContent = t === 'dark' ? '☀️' : '🌙';
+    }
+
+    /* === COLORS === */
+    function renderColors() {
+      var grid = document.getElementById('colorGrid');
+      if (grid && PALETTE && PALETTE.length) {
+        grid.innerHTML = PALETTE.map(function(c) {
+          return '<div class="ds-color-chip">' +
+            '<div class="ds-color-chip__sw" style="background:'+escA(c.hex)+';"></div>' +
+            '<div class="ds-color-chip__info">' +
+              '<div class="ds-color-chip__name">'+esc(c.name||'')+'</div>' +
+              '<div class="ds-color-chip__hex">'+esc(c.hex.toUpperCase())+'</div>' +
+            '</div></div>';
+        }).join('');
+      }
+      var semTokens = [
+        {name:'Primária', token:'--brand-primary', val:'#2D52EF'},
+        {name:'Secundária', token:'--brand-secondary', val:'#3B2FC9'},
+        {name:'Profundidade', token:'--brand-dark', val:'#0F1F5C'},
+        {name:'Claridade', token:'--brand-light', val:'#E8ECFD'},
+        {name:'Acento', token:'--brand-accent', val:'#E8EEFF'},
+      ].filter(function(t){ return t.val && t.val[0]==='#'; });
+      var semGrid = document.getElementById('semanticGrid');
+      if (semGrid && semTokens.length) {
+        semGrid.innerHTML = semTokens.map(function(t) {
+          return '<div class="ds-color-chip">' +
+            '<div class="ds-color-chip__sw" style="background:'+escA(t.val)+';"></div>' +
+            '<div class="ds-color-chip__info">' +
+              '<div class="ds-color-chip__name">'+esc(t.name)+'</div>' +
+              '<div class="ds-color-chip__hex" style="font-size:.65rem;">'+esc(t.token)+'</div>' +
+              '<div class="ds-color-chip__hex">'+esc(t.val.toUpperCase())+'</div>' +
+            '</div></div>';
+        }).join('');
+      }
+    }
+
+    /* === TYPOGRAPHY === */
+    function renderTypography() {
+      var el = document.getElementById('typographyContent'); if (!el) return;
+      var pFont = 'Plus Jakarta Sans' || 'sans-serif';
+      var sFont = 'DM Sans' || 'sans-serif';
+      var hColor = '#0F1F5C'; var bColor = 'var(--text-secondary)';
+      var specs = [
+        {size:'2.5rem',weight:800,lh:'1.2',font:pFont,color:hColor,label:'Display / Heading 1'},
+        {size:'2rem',weight:700,lh:'1.25',font:pFont,color:hColor,label:'Title / Heading 2'},
+        {size:'1.5rem',weight:700,lh:'1.3',font:pFont,color:hColor,label:'Section / Heading 3'},
+        {size:'1.125rem',weight:600,lh:'1.4',font:pFont,color:hColor,label:'Sub / Heading 4'},
+        {size:'1rem',weight:400,lh:'1.6',font:sFont,color:bColor,label:'Body Regular — Para texto corrido e descrições.'},
+        {size:'0.875rem',weight:400,lh:'1.6',font:sFont,color:bColor,label:'Body Small — Texto secundário, labels, hints.'},
+        {size:'0.75rem',weight:500,lh:'1.5',font:sFont,color:'var(--text-muted)',label:'CAPTION — Metadados e anotações'},
+      ];
+      el.innerHTML = specs.map(function(s) {
+        return '<div style="border:1px solid var(--border-subtle);border-radius:var(--radius-md);overflow:hidden;margin-bottom:var(--space-md);">' +
+          '<div style="padding:var(--space-xl);background:var(--bg-card);">' +
+            '<div style="margin:0;font-size:'+s.size+';font-weight:'+s.weight+';line-height:'+s.lh+';font-family:\''+s.font+'\',sans-serif;color:'+s.color+';">'+esc(s.label)+'</div>' +
+          '</div>' +
+          '<div style="padding:var(--space-xs) var(--space-xl);background:var(--bg-surface);border-top:1px solid var(--border-subtle);display:flex;gap:var(--space-xl);font-size:0.7rem;color:var(--text-muted);font-family:monospace;flex-wrap:wrap;">' +
+            '<span>'+esc(s.font)+'</span><span>'+s.size+'</span><span>fw '+s.weight+'</span><span>lh '+s.lh+'</span>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    /* === SPACING === */
+    function renderSpacing() {
+      var el = document.getElementById('spacingContent'); if (!el) return;
+      var scale = [
+        ['--space-xs','4px','XS'],['--space-sm','8px','SM'],['--space-md','12px','MD'],
+        ['--space-lg','16px','LG'],['--space-xl','24px','XL'],['--space-2xl','40px','2XL'],
+        ['--space-3xl','64px','3XL'],
+      ];
+      var radii = [
+        ['--radius-sm','4px','SM'],['--radius-md','8px','MD'],['--radius-lg','12px','LG'],
+        ['--radius-xl','16px','XL'],['--radius-full','9999px','Full'],
+      ];
+      var html = '<h3 class="ds-sub-title">Escala de Espaçamento</h3>';
+      html += scale.map(function(s) {
+        return '<div class="ds-spacing-row">' +
+          '<div class="ds-spacing-bar" style="width:'+s[1]+';min-width:4px;flex-shrink:0;"></div>' +
+          '<span class="ds-spacing-label">'+s[0]+' — '+s[1]+' ('+s[2]+')</span>' +
+        '</div>';
+      }).join('');
+      html += '<h3 class="ds-sub-title">Border Radius</h3>';
+      html += '<div style="display:flex;gap:var(--space-md);flex-wrap:wrap;margin-bottom:var(--space-2xl);">';
+      html += radii.map(function(r) {
+        return '<div style="display:flex;flex-direction:column;align-items:center;gap:8px;">' +
+          '<div style="width:48px;height:48px;background:var(--brand-primary);border-radius:'+r[1]+';opacity:0.85;"></div>' +
+          '<span style="font-size:0.72rem;color:var(--text-muted);font-family:monospace;">'+r[2]+'<br>'+r[1]+'</span>' +
+        '</div>';
+      }).join('');
+      html += '</div>';
+      el.innerHTML = html;
+    }
+
+    /* === COMPONENTS === */
+    function renderComponents() {
+      var el = document.getElementById('componentsContent'); if (!el) return;
+      el.innerHTML =
+        '<h3 class="ds-sub-title">Botões</h3>' +
+        '<div class="ds-comp-box">' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Primary</span><div class="ds-comp-group">' +
+            '<button class="btn btn--primary">Primary</button>' +
+            '<button class="btn btn--primary btn--sm">Small</button>' +
+            '<button class="btn btn--primary btn--lg">Large</button>' +
+            '<button class="btn btn--primary" disabled>Disabled</button>' +
+          '</div></div>' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Secondary</span><div class="ds-comp-group">' +
+            '<button class="btn btn--secondary">Secondary</button>' +
+            '<button class="btn btn--secondary btn--sm">Small</button>' +
+            '<button class="btn btn--secondary" disabled>Disabled</button>' +
+          '</div></div>' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Ghost</span><div class="ds-comp-group">' +
+            '<button class="btn btn--ghost">Ghost</button>' +
+            '<button class="btn btn--ghost btn--sm">Small</button>' +
+          '</div></div>' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Semantic</span><div class="ds-comp-group">' +
+            '<button class="btn btn--danger">Danger</button>' +
+            '<button class="btn btn--success">Success</button>' +
+          '</div></div>' +
+        '</div>' +
+
+        '<h3 class="ds-sub-title">Badges</h3>' +
+        '<div class="ds-comp-box">' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">States</span><div class="ds-comp-group">' +
+            '<span class="ds-badge ds-badge--primary">Primary</span>' +
+            '<span class="ds-badge ds-badge--dark">Dark</span>' +
+            '<span class="ds-badge ds-badge--success">Success</span>' +
+            '<span class="ds-badge ds-badge--warning">Warning</span>' +
+            '<span class="ds-badge ds-badge--error">Error</span>' +
+            '<span class="ds-badge ds-badge--neutral">Neutral</span>' +
+          '</div></div>' +
+        '</div>' +
+
+        '<h3 class="ds-sub-title">Inputs</h3>' +
+        '<div class="ds-comp-box">' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Default</span>' +
+            '<input type="text" placeholder="Placeholder..." style="padding:8px 12px;border:1.5px solid var(--border-default);border-radius:var(--radius-md);font-size:0.9rem;color:var(--text-primary);background:var(--bg-card);font-family:var(--font-body);outline:none;min-width:200px;" />' +
+          '</div>' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Focus</span>' +
+            '<input type="text" value="Em foco" style="padding:8px 12px;border:1.5px solid var(--brand-primary);border-radius:var(--radius-md);font-size:0.9rem;color:var(--text-primary);background:var(--bg-card);font-family:var(--font-body);outline:none;box-shadow:0 0 0 3px rgba(45, 82, 239,0.15);min-width:200px;" />' +
+          '</div>' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Error</span>' +
+            '<input type="text" value="Valor inválido" style="padding:8px 12px;border:1.5px solid #dc2626;border-radius:var(--radius-md);font-size:0.9rem;color:var(--text-primary);background:var(--bg-card);font-family:var(--font-body);outline:none;min-width:200px;" />' +
+          '</div>' +
+        '</div>' +
+
+        '<h3 class="ds-sub-title">Cards</h3>' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-md);margin-bottom:var(--space-lg);">' +
+          '<div style="background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);padding:var(--space-xl);">' +
+            '<div style="font-size:1.5rem;margin-bottom:var(--space-sm);">⚡</div>' +
+            '<h4 style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Card Padrão</h4>' +
+            '<p style="font-size:0.85rem;color:var(--text-secondary);">Card com ícone, título e descrição. Border sutil, radius grande.</p>' +
+          '</div>' +
+          '<div style="background:var(--bg-card);border:1.5px solid var(--brand-primary);border-radius:var(--radius-xl);padding:var(--space-xl);">' +
+            '<div style="font-size:1.5rem;margin-bottom:var(--space-sm);">✨</div>' +
+            '<h4 style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Card Destacado</h4>' +
+            '<p style="font-size:0.85rem;color:var(--text-secondary);">Card com border na cor primária. Usado para item selecionado.</p>' +
+          '</div>' +
+        '</div>' +
+
+        '<h3 class="ds-sub-title">Avatares</h3>' +
+        '<div class="ds-comp-box">' +
+          '<div class="ds-comp-row"><span class="ds-comp-lbl">Initials</span><div class="ds-comp-group">' +
+            '<div style="width:40px;height:40px;border-radius:50%;background:#2D52EF;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.875rem;font-weight:700;">MT</div>' +
+            '<div style="width:40px;height:40px;border-radius:50%;background:#0F1F5C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.875rem;font-weight:700;">JD</div>' +
+          '</div></div>' +
+        '</div>';
+
+      // Skeleton keyframe
+      if (!document.getElementById('skeleton-style')) {
+        var s = document.createElement('style');
+        s.id = 'skeleton-style';
+        s.textContent = '@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}';
+        document.head.appendChild(s);
+      }
+    }
+
+    /* === TOKENS CSS === */
+    var _tokensLoaded = false;
+    function loadTokensCss() {
+      if (_tokensLoaded) return;
+      fetch('../design-system/tokens/design-tokens.css')
+        .then(function(r){ return r.ok ? r.text() : Promise.reject('HTTP '+r.status); })
+        .then(function(text){
+          var el = document.getElementById('tokensCssContent');
+          if (el) { el.textContent = text; _tokensLoaded = true; }
+        })
+        .catch(function(e){
+          var el = document.getElementById('tokensCssContent');
+          if (el) el.textContent = '/* Erro ao carregar: '+e+' — Baixe o arquivo via botão Download acima */';
+        });
+    }
+
+    function copyTokensCss(btn) {
+      var el = document.getElementById('tokensCssContent'); if (!el) return;
+      navigator.clipboard.writeText(el.textContent).then(function() {
+        btn.textContent = '✓ Copiado!';
+        setTimeout(function(){ btn.textContent = 'Copiar CSS'; }, 2000);
+      }).catch(function(){
+        var ta = document.createElement('textarea');
+        ta.value = el.textContent;
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        btn.textContent = '✓ Copiado!';
+        setTimeout(function(){ btn.textContent = 'Copiar CSS'; }, 2000);
+      });
+    }
+
+    /* === BOOT === */
+    document.addEventListener('DOMContentLoaded', function() {
+      // Theme
+      var saved = localStorage.getItem('ds-theme') || 'light';
+      applyTheme(saved);
+
+      // Theme toggle
+      var toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', function() {
+        var cur = document.documentElement.getAttribute('data-theme');
+        applyTheme(cur === 'dark' ? 'light' : 'dark');
+      });
+
+      // Render all sections
+      renderColors();
+      renderTypography();
+      renderSpacing();
+      renderComponents();
+
+      // Init from hash
+      initFromHash();
+    });
+  </script>
+</body>
+</html>

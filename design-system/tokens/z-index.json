@@ -1,0 +1,13 @@
+{
+  "z-index": {
+    "below": { "$value": "-1", "$type": "number", "$description": "Behind base" },
+    "base": { "$value": "0", "$type": "number", "$description": "Default stacking" },
+    "raised": { "$value": "1", "$type": "number", "$description": "Slightly above base" },
+    "dropdown": { "$value": "10", "$type": "number", "$description": "Dropdown menus" },
+    "sticky": { "$value": "20", "$type": "number", "$description": "Sticky headers/sidebars" },
+    "overlay": { "$value": "30", "$type": "number", "$description": "Overlays, backdrops" },
+    "modal": { "$value": "40", "$type": "number", "$description": "Modal dialogs" },
+    "notification": { "$value": "45", "$type": "number", "$description": "Toast notifications" },
+    "tooltip": { "$value": "50", "$type": "number", "$description": "Tooltips (topmost)" }
+  }
+}

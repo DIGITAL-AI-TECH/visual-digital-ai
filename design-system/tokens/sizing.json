@@ -1,0 +1,23 @@
+{
+  "sizing": {
+    "$description": "Component size scale — base 4px",
+    "xs": { "$value": "24px", "$type": "dimension" },
+    "sm": { "$value": "32px", "$type": "dimension" },
+    "md": { "$value": "40px", "$type": "dimension" },
+    "lg": { "$value": "48px", "$type": "dimension" },
+    "xl": { "$value": "56px", "$type": "dimension" },
+    "2xl": { "$value": "64px", "$type": "dimension" },
+    "3xl": { "$value": "80px", "$type": "dimension" },
+    "4xl": { "$value": "96px", "$type": "dimension" },
+    "icon-xs": { "$value": "12px", "$type": "dimension" },
+    "icon-sm": { "$value": "16px", "$type": "dimension" },
+    "icon-md": { "$value": "20px", "$type": "dimension" },
+    "icon-lg": { "$value": "24px", "$type": "dimension" },
+    "icon-xl": { "$value": "32px", "$type": "dimension" },
+    "avatar-sm": { "$value": "32px", "$type": "dimension" },
+    "avatar-md": { "$value": "40px", "$type": "dimension" },
+    "avatar-lg": { "$value": "56px", "$type": "dimension" },
+    "avatar-xl": { "$value": "80px", "$type": "dimension" },
+    "avatar-2xl": { "$value": "120px", "$type": "dimension" }
+  }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Manual — Digital AI</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; font-family: 'DM Sans', sans-serif; background: #f8fafc; }
+
+    /* === NAV === */
+    .viewer-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 56px; display: flex; align-items: center; gap: 16px;
+      padding: 0 24px;
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .viewer-nav__back {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 8px;
+      border: 1.5px solid #cbd5e1; background: none;
+      color: #1e293b; font-size: 0.875rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .viewer-nav__back:hover { background: #f1f5f9; border-color: #94a3b8; }
+    .viewer-nav__logo {
+      height: 32px; width: auto; flex-shrink: 0;
+    }
+    .viewer-nav__title {
+      font-size: 0.9rem; font-weight: 600; color: #1e293b;
+      flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .viewer-nav__badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 10px; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+      background: #2D52EF; color: #ffffff;
+      flex-shrink: 0;
+    }
+    .viewer-nav__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .viewer-nav__btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 12px; border-radius: 8px;
+      border: 1.5px solid #e2e8f0; background: #f8fafc;
+      color: #475569; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.15s;
+    }
+    .viewer-nav__btn:hover { background: #e2e8f0; border-color: #94a3b8; color: #1e293b; }
+
+    /* === IFRAME === */
+    .viewer-iframe {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
+      width: 100%; height: calc(100vh - 56px);
+      border: none; display: block; background: #ffffff;
+    }
+
+    /* === LOADING STATE === */
+    .viewer-loading {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px; background: #f8fafc; z-index: 50;
+      transition: opacity 0.3s;
+    }
+    .viewer-loading__spinner {
+      width: 40px; height: 40px;
+      border: 3px solid #e2e8f0;
+      border-top-color: #2D52EF;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .viewer-loading__text { font-size: 0.9rem; color: #64748b; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <nav class="viewer-nav" aria-label="Navegação do Brand Manual">
+    <a class="viewer-nav__back" href="../index.html#documentacao" aria-label="Voltar à plataforma">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Plataforma
+    </a>
+    <img class="viewer-nav__logo" src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/logos/logo-primary.svg" alt="Digital AI" onerror="this.style.display='none'" />
+    <span class="viewer-nav__title">Brand Manual — Digital AI</span>
+    <span class="viewer-nav__badge">📖 Manual</span>
+    <div class="viewer-nav__actions">
+      <a class="viewer-nav__btn" href="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-manual.html" download aria-label="Download Brand Manual">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7m0 0L4.5 6.5M7 9l2.5-2.5M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download
+      </a>
+      <a class="viewer-nav__btn" href="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-manual.html" target="_blank" rel="noopener" aria-label="Abrir em nova aba">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M6 2H2v10h10V8M8 2h4v4M8 6l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Nova aba
+      </a>
+    </div>
+  </nav>
+
+  <div class="viewer-loading" id="loadingState">
+    <div class="viewer-loading__spinner"></div>
+    <span class="viewer-loading__text">Carregando Brand Manual…</span>
+  </div>
+
+  <iframe
+    class="viewer-iframe"
+    id="contentFrame"
+    src="https://s3.amazonaws.com/cdn.digital-ai.tech/uploads/media-cortex/identity/digital-ai/brand-manual.html"
+    title="Brand Manual — Digital AI"
+    loading="eager"
+    onload="document.getElementById('loadingState').style.opacity='0';setTimeout(function(){document.getElementById('loadingState').style.display='none';},300);"
+  ></iframe>
+
+</body>
+</html>

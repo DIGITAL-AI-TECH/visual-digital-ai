@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital AI — Tokens Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-brand-50: #EEF1FF; --color-brand-100: #E0E5FF; --color-brand-200: #C7CFFF;
+      --color-brand-300: #A5B0FF; --color-brand-400: #7A88FF; --color-brand-500: #2D52EF;
+      --color-brand-600: #2344D4; --color-brand-700: #1A35B8; --color-brand-800: #3B2FC9;
+      --color-brand-900: #0F1F5C; --color-brand-950: #080F2E;
+      --color-accent-50: #F8F9FF; --color-accent-100: #E8EEFF;
+      --color-accent-200: #D4DCFF; --color-accent-300: #B8C4FF;
+      --color-neutral-50: #F8F9FA; --color-neutral-100: #F1F3F5;
+      --color-neutral-200: #E9ECEF; --color-neutral-300: #DEE2E6;
+      --color-neutral-400: #CED4DA; --color-neutral-500: #ADB5BD;
+      --color-neutral-600: #868E96; --color-neutral-700: #495057;
+      --color-neutral-800: #343A40; --color-neutral-900: #212529;
+      --color-neutral-950: #0D0F12;
+      --feedback-success: #22C55E; --feedback-success-bg: #F0FDF4; --feedback-success-text: #15803D;
+      --feedback-error: #EF4444; --feedback-error-bg: #FEF2F2; --feedback-error-text: #DC2626;
+      --feedback-warning: #F59E0B; --feedback-warning-bg: #FFFBEB; --feedback-warning-text: #B45309;
+      --feedback-info: #2D52EF; --feedback-info-bg: #E8EEFF; --feedback-info-text: #1A35B8;
+
+      --text-primary: #212529; --text-secondary: #868E96; --text-tertiary: #ADB5BD;
+      --text-disabled: #CED4DA; --text-on-action: #FFFFFF; --text-brand: #2D52EF;
+      --bg-page: #F8F9FA; --bg-primary: #FFFFFF; --bg-secondary: #F1F3F5;
+      --bg-elevated: #FFFFFF; --bg-hover: #F1F3F5; --bg-active: #E9ECEF;
+      --bg-brand: #0F1F5C; --bg-brand-subtle: #E8EEFF;
+      --border-default: #DEE2E6; --border-subtle: #E9ECEF; --border-focus: #2D52EF;
+      --action-primary: #2D52EF; --action-primary-hover: #2344D4;
+
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+      --shadow-xs: 0px 1px 2px 0px rgba(15,31,92,0.06);
+      --shadow-sm: 0px 1px 3px 0px rgba(15,31,92,0.10), 0px 1px 2px -1px rgba(15,31,92,0.10);
+      --shadow-md: 0px 4px 6px -1px rgba(15,31,92,0.10), 0px 2px 4px -2px rgba(15,31,92,0.08);
+      --shadow-lg: 0px 10px 15px -3px rgba(15,31,92,0.12), 0px 4px 6px -4px rgba(15,31,92,0.08);
+      --shadow-xl: 0px 20px 25px -5px rgba(15,31,92,0.14), 0px 8px 10px -6px rgba(15,31,92,0.08);
+      --shadow-2xl: 0px 25px 50px -12px rgba(15,31,92,0.25);
+      --shadow-brand: 0px 4px 20px -2px rgba(45,82,239,0.30);
+      --shadow-brand-strong: 0px 8px 32px -4px rgba(45,82,239,0.40);
+
+      --duration-fast: 100ms; --duration-normal: 200ms; --duration-slow: 300ms;
+      --easing-default: cubic-bezier(0.4,0,0.2,1);
+      --easing-spring: cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    [data-theme="dark"] {
+      --text-primary: #F8F9FA; --text-secondary: #CED4DA; --text-tertiary: #ADB5BD;
+      --text-brand: #A5B0FF;
+      --bg-page: #080F2E; --bg-primary: #0F1F5C; --bg-secondary: #0D1847;
+      --bg-elevated: #1A2870; --bg-hover: rgba(45,82,239,0.10); --bg-brand-subtle: rgba(232,238,255,0.08);
+      --border-default: rgba(255,255,255,0.12); --border-subtle: rgba(255,255,255,0.08);
+      --shadow-sm: 0px 1px 3px 0px rgba(0,0,0,0.30);
+      --shadow-md: 0px 4px 6px -1px rgba(0,0,0,0.30);
+      --shadow-lg: 0px 10px 15px -3px rgba(0,0,0,0.40);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+      background: var(--bg-page);
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--color-brand-900) 0%, var(--color-brand-800) 100%);
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-header-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+    .page-header-content p { color: rgba(255,255,255,0.7); font-size: 1rem; }
+    .page-header-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .header-badge {
+      padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;
+      background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .theme-toggle-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+      transition: all 0.2s;
+    }
+    .theme-toggle-btn:hover { background: rgba(255,255,255,0.2); }
+
+    .nav-tabs {
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0 40px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: var(--shadow-xs);
+    }
+    .nav-tab {
+      padding: 14px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .nav-tab:hover { color: var(--text-brand); }
+    .nav-tab.active { color: var(--text-brand); border-bottom-color: var(--color-brand-500); font-weight: 600; }
+
+    .content { padding: 40px; max-width: 1100px; margin: 0 auto; }
+    .section { margin-bottom: 56px; }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .section-sub { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 24px; }
+    .divider { height: 1px; background: var(--border-subtle); margin: 40px 0; }
+
+    /* ── Color Swatches ── */
+    .color-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .color-swatch {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+      border: 1px solid var(--border-subtle);
+    }
+    .swatch-color { height: 52px; }
+    .swatch-info { padding: 8px; background: var(--bg-primary); }
+    .swatch-name { font-size: 0.6875rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+    .swatch-hex { font-family: var(--font-mono); font-size: 0.625rem; color: var(--text-secondary); }
+    .swatch-token { font-family: var(--font-mono); font-size: 0.5625rem; color: var(--text-tertiary); margin-top: 1px; }
+    .group-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+    .group-label:first-child { margin-top: 0; }
+
+    /* ── Typography Scale ── */
+    .type-showcase { display: flex; flex-direction: column; gap: 0; }
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta-col { min-width: 110px; flex-shrink: 0; }
+    .type-token { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--color-brand-500); font-weight: 600; }
+    .type-size { font-size: 0.625rem; color: var(--text-tertiary); margin-top: 2px; }
+    .type-sample { flex: 1; color: var(--text-primary); }
+
+    /* ── Spacing bars ── */
+    .spacing-grid { display: flex; flex-direction: column; gap: 10px; }
+    .spacing-row { display: flex; align-items: center; gap: 16px; }
+    .spacing-meta { min-width: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+    .spacing-bar { border-radius: 3px; background: linear-gradient(90deg, var(--color-brand-500), var(--color-brand-800)); height: 18px; min-width: 4px; }
+    .spacing-value { font-size: 0.75rem; color: var(--text-tertiary); }
+
+    /* ── Shadow Cards ── */
+    .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 24px; }
+    .shadow-card {
+      background: var(--bg-primary);
+      border-radius: 12px;
+      height: 96px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .shadow-name { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600; color: var(--text-brand); }
+    .shadow-desc { font-size: 0.6875rem; color: var(--text-tertiary); text-align: center; padding: 0 8px; }
+
+    /* ── Radius Cards ── */
+    .radius-grid { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+    .radius-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .radius-box {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-800));
+    }
+    .radius-label { font-family: var(--font-mono); font-size: 0.625rem; color: var(--text-secondary); text-align: center; }
+
+    /* ── Motion demos ── */
+    .motion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .motion-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .motion-label { font-size: 0.8125rem; font-weight: 600; color: var(--text-secondary); }
+    .motion-sublabel { font-size: 0.6875rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+    .motion-demo-btn {
+      height: 40px; padding: 0 16px;
+      border-radius: 8px;
+      background: var(--action-primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      width: 100%;
+    }
+    .transition-fast { transition: all 100ms cubic-bezier(0.4,0,0.2,1); }
+    .transition-fast:hover { background: var(--action-primary-hover); transform: translateY(-2px); box-shadow: var(--shadow-brand); }
+    .transition-spring { transition: all 300ms cubic-bezier(0.34,1.56,0.64,1); }
+    .transition-spring:hover { background: var(--color-brand-800); transform: scale(1.05); }
+    .transition-slow { transition: all 500ms cubic-bezier(0.4,0,0.2,1); }
+    .transition-slow:hover { background: var(--color-brand-700); transform: translateY(-4px); box-shadow: var(--shadow-brand-strong); }
+
+    @keyframes pulse-demo { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes spin-demo { to { transform: rotate(360deg); } }
+    .pulse-el { animation: pulse-demo 2s ease infinite; }
+    .spin-el { animation: spin-demo 1s linear infinite; display: inline-block; font-size: 1.5rem; }
+
+    /* ── Semantic Tokens Table ── */
+    .token-table { width: 100%; border-collapse: collapse; }
+    .token-table th {
+      padding: 10px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      border-bottom: 1px solid var(--border-default);
+      text-align: left;
+      background: var(--bg-secondary);
+    }
+    .token-table td { padding: 10px 12px; font-size: 0.8125rem; border-bottom: 1px solid var(--border-subtle); vertical-align: middle; }
+    .token-table tr:last-child td { border-bottom: none; }
+    .token-table tr:hover td { background: var(--bg-hover); }
+    .token-name { font-family: var(--font-mono); color: var(--text-brand); }
+    .token-value { font-family: var(--font-mono); color: var(--text-secondary); }
+    .token-color-dot {
+      width: 20px; height: 20px;
+      border-radius: 4px;
+      display: inline-block;
+      border: 1px solid var(--border-subtle);
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .token-table-wrapper {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--color-neutral-300); border-radius: 3px; }
+
+    @media (max-width: 768px) {
+      .content { padding: 24px 16px; }
+      .page-header { padding: 32px 16px; flex-direction: column; gap: 16px; align-items: flex-start; }
+      .nav-tabs { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="page-header-content">
+      <h1>Design Tokens Reference</h1>
+      <p>Todos os tokens do Design System da Digital AI — W3C DTCG format</p>
+      <div class="page-header-badges" style="margin-top:12px">
+        <span class="header-badge">v1.0</span>
+        <span class="header-badge">W3C DTCG</span>
+        <span class="header-badge">Arquétipo: Sábio + Herói</span>
+        <span class="header-badge">WCAG 2.2 AA</span>
+      </div>
+    </div>
+    <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Alternar tema">
+      <span id="theme-icon">🌙</span> <span id="theme-label">Dark Mode</span>
+    </button>
+  </div>
+
+  <!-- Nav Tabs -->
+  <nav class="nav-tabs" aria-label="Categorias de tokens">
+    <a class="nav-tab active" href="#colors">Cores</a>
+    <a class="nav-tab" href="#typography">Tipografia</a>
+    <a class="nav-tab" href="#spacing">Espaçamento</a>
+    <a class="nav-tab" href="#shadows">Sombras</a>
+    <a class="nav-tab" href="#radius">Border Radius</a>
+    <a class="nav-tab" href="#motion">Motion</a>
+    <a class="nav-tab" href="#semantic">Tokens Semânticos</a>
+  </nav>
+
+  <main class="content">
+
+    <!-- ══ COLORS ══ -->
+    <section class="section" id="colors">
+      <h2 class="section-title">Cores</h2>
+      <p class="section-sub">Paleta primitiva completa. Tokens prefixados com <code style="font-family:var(--font-mono);font-size:0.875em;color:var(--text-brand)">--color-*</code></p>
+
+      <div class="group-label">Brand — Precisão (#2D52EF), Visão (#3B2FC9), Profundidade (#0F1F5C)</div>
+      <div class="color-row">
+        <div class="color-swatch"><div class="swatch-color" style="background:#EEF1FF"></div><div class="swatch-info"><div class="swatch-name">brand-50</div><div class="swatch-hex">#EEF1FF</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#E0E5FF"></div><div class="swatch-info"><div class="swatch-name">brand-100</div><div class="swatch-hex">#E0E5FF</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#C7CFFF"></div><div class="swatch-info"><div class="swatch-name">brand-200</div><div class="swatch-hex">#C7CFFF</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#A5B0FF"></div><div class="swatch-info"><div class="swatch-name">brand-300</div><div class="swatch-hex">#A5B0FF</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#7A88FF"></div><div class="swatch-info"><div class="swatch-name">brand-400</div><div class="swatch-hex">#7A88FF</div></div></div>
+        <div class="color-swatch" style="outline:2px solid var(--color-brand-500);outline-offset:2px"><div class="swatch-color" style="background:#2D52EF"></div><div class="swatch-info"><div class="swatch-name">brand-500 ★</div><div class="swatch-hex">#2D52EF</div><div class="swatch-token">Precisão</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#2344D4"></div><div class="swatch-info"><div class="swatch-name">brand-600</div><div class="swatch-hex">#2344D4</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#1A35B8"></div><div class="swatch-info"><div class="swatch-name">brand-700</div><div class="swatch-hex">#1A35B8</div></div></div>
+        <div class="color-swatch" style="outline:2px solid #3B2FC9;outline-offset:2px"><div class="swatch-color" style="background:#3B2FC9"></div><div class="swatch-info"><div class="swatch-name">brand-800 ★</div><div class="swatch-hex">#3B2FC9</div><div class="swatch-token">Visão</div></div></div>
+        <div class="color-swatch" style="outline:2px solid #0F1F5C;outline-offset:2px"><div class="swatch-color" style="background:#0F1F5C"></div><div class="swatch-info"><div class="swatch-name">brand-900 ★</div><div class="swatch-hex">#0F1F5C</div><div class="swatch-token">Profundidade</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#080F2E"></div><div class="swatch-info"><div class="swatch-name">brand-950</div><div class="swatch-hex">#080F2E</div></div></div>
+      </div>
+
+      <div class="group-label">Accent — Névoa (#E8EEFF)</div>
+      <div class="color-row" style="grid-template-columns:repeat(auto-fill,minmax(100px,1fr));max-width:440px">
+        <div class="color-swatch"><div class="swatch-color" style="background:#F8F9FF"></div><div class="swatch-info"><div class="swatch-name">accent-50</div><div class="swatch-hex">#F8F9FF</div></div></div>
+        <div class="color-swatch" style="outline:2px solid #E8EEFF;outline-offset:2px"><div class="swatch-color" style="background:#E8EEFF"></div><div class="swatch-info"><div class="swatch-name">accent-100 ★</div><div class="swatch-hex">#E8EEFF</div><div class="swatch-token">Névoa</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#D4DCFF"></div><div class="swatch-info"><div class="swatch-name">accent-200</div><div class="swatch-hex">#D4DCFF</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#B8C4FF"></div><div class="swatch-info"><div class="swatch-name">accent-300</div><div class="swatch-hex">#B8C4FF</div></div></div>
+      </div>
+
+      <div class="group-label">Neutral</div>
+      <div class="color-row">
+        <div class="color-swatch"><div class="swatch-color" style="background:#F8F9FA"></div><div class="swatch-info"><div class="swatch-name">neutral-50</div><div class="swatch-hex">#F8F9FA</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#F1F3F5"></div><div class="swatch-info"><div class="swatch-name">neutral-100</div><div class="swatch-hex">#F1F3F5</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#E9ECEF"></div><div class="swatch-info"><div class="swatch-name">neutral-200</div><div class="swatch-hex">#E9ECEF</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#DEE2E6"></div><div class="swatch-info"><div class="swatch-name">neutral-300</div><div class="swatch-hex">#DEE2E6</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#CED4DA"></div><div class="swatch-info"><div class="swatch-name">neutral-400</div><div class="swatch-hex">#CED4DA</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#ADB5BD"></div><div class="swatch-info"><div class="swatch-name">neutral-500</div><div class="swatch-hex">#ADB5BD</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#868E96"></div><div class="swatch-info"><div class="swatch-name">neutral-600</div><div class="swatch-hex">#868E96</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#495057"></div><div class="swatch-info"><div class="swatch-name">neutral-700</div><div class="swatch-hex">#495057</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#343A40"></div><div class="swatch-info"><div class="swatch-name">neutral-800</div><div class="swatch-hex">#343A40</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#212529"></div><div class="swatch-info"><div class="swatch-name">neutral-900</div><div class="swatch-hex">#212529</div></div></div>
+        <div class="color-swatch"><div class="swatch-color" style="background:#0D0F12"></div><div class="swatch-info"><div class="swatch-name">neutral-950</div><div class="swatch-hex">#0D0F12</div></div></div>
+      </div>
+
+      <div class="group-label">Feedback</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px">
+        <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden">
+          <div style="height:6px;background:#22C55E"></div>
+          <div style="padding:12px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <div style="width:36px;height:36px;border-radius:8px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">✅</div>
+              <div><div style="font-size:0.8125rem;font-weight:600;color:#15803D">Success</div><div style="font-size:0.6875rem;font-family:monospace;color:var(--text-tertiary)">#22C55E · bg:#F0FDF4 · text:#15803D</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden">
+          <div style="height:6px;background:#EF4444"></div>
+          <div style="padding:12px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <div style="width:36px;height:36px;border-radius:8px;background:#FEF2F2;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">❌</div>
+              <div><div style="font-size:0.8125rem;font-weight:600;color:#DC2626">Error</div><div style="font-size:0.6875rem;font-family:monospace;color:var(--text-tertiary)">#EF4444 · bg:#FEF2F2 · text:#DC2626</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden">
+          <div style="height:6px;background:#F59E0B"></div>
+          <div style="padding:12px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <div style="width:36px;height:36px;border-radius:8px;background:#FFFBEB;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">⚠️</div>
+              <div><div style="font-size:0.8125rem;font-weight:600;color:#B45309">Warning</div><div style="font-size:0.6875rem;font-family:monospace;color:var(--text-tertiary)">#F59E0B · bg:#FFFBEB · text:#B45309</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden">
+          <div style="height:6px;background:#2D52EF"></div>
+          <div style="padding:12px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <div style="width:36px;height:36px;border-radius:8px;background:#E8EEFF;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">ℹ️</div>
+              <div><div style="font-size:0.8125rem;font-weight:600;color:#1A35B8">Info</div><div style="font-size:0.6875rem;font-family:monospace;color:var(--text-tertiary)">#2D52EF · bg:#E8EEFF · text:#1A35B8</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ══ TYPOGRAPHY ══ -->
+    <section class="section" id="typography">
+      <h2 class="section-title">Tipografia</h2>
+      <p class="section-sub">Escala fluida usando <code style="font-family:var(--font-mono);font-size:0.875em;color:var(--text-brand)">clamp()</code>. Headings: Plus Jakarta Sans. Body: DM Sans.</p>
+
+      <div class="token-table-wrapper" style="margin-bottom:24px">
+        <div class="type-showcase" style="padding:0 20px">
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">--fluid-hero</div><div class="type-size">clamp(2.5rem → 5rem)</div></div>
+            <div class="type-sample" style="font-family:var(--font-heading);font-size:clamp(2.5rem,calc(1rem + 8vw),5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.05">Digital AI</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">H1 / --fluid-5xl</div><div class="type-size">clamp(2rem → 3rem)</div></div>
+            <div class="type-sample" style="font-family:var(--font-heading);font-size:clamp(2rem,calc(1.4rem + 5vw),3rem);font-weight:700;letter-spacing:-0.025em">Inteligência que transforma</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">H2 / --fluid-4xl</div><div class="type-size">clamp(1.75rem → 2.25rem)</div></div>
+            <div class="type-sample" style="font-family:var(--font-heading);font-size:clamp(1.75rem,calc(1.3rem + 3.5vw),2.25rem);font-weight:700;letter-spacing:-0.025em">Automação com precisão</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">H3 / --fluid-3xl</div><div class="type-size">clamp(1.5rem → 1.875rem)</div></div>
+            <div class="type-sample" style="font-family:var(--font-heading);font-size:clamp(1.5rem,calc(1.2rem + 2.5vw),1.875rem);font-weight:600">Resultados que importam</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">H4 / --fluid-2xl</div><div class="type-size">clamp(1.25rem → 1.5rem)</div></div>
+            <div class="type-sample" style="font-family:var(--font-heading);font-size:clamp(1.25rem,calc(1.1rem + 1.25vw),1.5rem);font-weight:600">Agentes de IA avançados</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">H5 / --fluid-xl</div><div class="type-size">clamp(1.125rem → 1.25rem)</div></div>
+            <div class="type-sample" style="font-family:var(--font-heading);font-size:clamp(1.125rem,calc(1.05rem + 0.75vw),1.25rem);font-weight:500">Fluxos automatizados</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">body-lg</div><div class="type-size">1.125rem / 18px</div></div>
+            <div class="type-sample" style="font-family:var(--font-body);font-size:1.125rem;color:var(--text-secondary)">A Digital AI conecta empresas com inteligência artificial de forma prática e eficiente.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">body-base</div><div class="type-size">1rem / 16px</div></div>
+            <div class="type-sample" style="font-family:var(--font-body);font-size:1rem">Configure seus fluxos em minutos e veja os resultados em tempo real no painel de controle.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">body-sm</div><div class="type-size">0.875rem / 14px</div></div>
+            <div class="type-sample" style="font-family:var(--font-body);font-size:0.875rem;color:var(--text-secondary)">Última sincronização há 2 minutos. Dados atualizados automaticamente.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">caption</div><div class="type-size">0.75rem / 12px</div></div>
+            <div class="type-sample" style="font-family:var(--font-body);font-size:0.75rem;color:var(--text-tertiary)">Atualizado em 11/06/2026 às 14:32</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">overline</div><div class="type-size">0.75rem uppercased</div></div>
+            <div class="type-sample" style="font-family:var(--font-body);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;color:var(--text-tertiary)">categoria · etiqueta</div>
+          </div>
+          <div class="type-row">
+            <div class="type-meta-col"><div class="type-token">mono</div><div class="type-size">JetBrains Mono</div></div>
+            <div class="type-sample" style="font-family:var(--font-mono);font-size:0.875rem;color:var(--text-brand);background:var(--bg-brand-subtle);padding:6px 10px;border-radius:6px">webhook.digital-ai.tech/api/v1</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Font weights -->
+      <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:12px;padding:20px 24px">
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:16px">Font Weight Scale — DM Sans</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:80px">400 regular</span>
+            <span style="font-family:var(--font-body);font-size:1.125rem;font-weight:400;color:var(--text-primary)">Automação inteligente para o seu negócio</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:80px">500 medium</span>
+            <span style="font-family:var(--font-body);font-size:1.125rem;font-weight:500;color:var(--text-primary)">Automação inteligente para o seu negócio</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:80px">600 semibold</span>
+            <span style="font-family:var(--font-body);font-size:1.125rem;font-weight:600;color:var(--text-primary)">Automação inteligente para o seu negócio</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:80px">700 bold</span>
+            <span style="font-family:var(--font-body);font-size:1.125rem;font-weight:700;color:var(--text-primary)">Automação inteligente para o seu negócio</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:80px">800 extrabold</span>
+            <span style="font-family:var(--font-heading);font-size:1.125rem;font-weight:800;color:var(--text-primary)">Automação inteligente para o seu negócio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ══ SPACING ══ -->
+    <section class="section" id="spacing">
+      <h2 class="section-title">Espaçamento</h2>
+      <p class="section-sub">Base 4px. Variáveis <code style="font-family:var(--font-mono);font-size:0.875em;color:var(--text-brand)">--spacing-Nx</code></p>
+      <div class="token-table-wrapper">
+        <div class="spacing-grid" style="padding:20px 24px">
+          <div class="spacing-row"><span class="spacing-meta">--spacing-1x</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-2x</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-3x</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-4x</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px — padding padrão</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-5x</span><div class="spacing-bar" style="width:20px"></div><span class="spacing-value">20px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-6x</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px — padding cards</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-8x</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px — seções</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-10x</span><div class="spacing-bar" style="width:40px"></div><span class="spacing-value">40px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-12x</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-16x</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-20x</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+          <div class="spacing-row"><span class="spacing-meta">--spacing-24x</span><div class="spacing-bar" style="width:96px"></div><span class="spacing-value">96px</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ══ SHADOWS ══ -->
+    <section class="section" id="shadows">
+      <h2 class="section-title">Sombras</h2>
+      <p class="section-sub">Baseadas no azul profundo da marca. Dark mode usa sombras pretas mais opacas.</p>
+      <div class="shadow-grid">
+        <div class="shadow-card" style="box-shadow:var(--shadow-xs)"><span class="shadow-name">--shadow-xs</span><span class="shadow-desc">Lift sutil. Borders, chips</span></div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-sm)"><span class="shadow-name">--shadow-sm</span><span class="shadow-desc">Cards e dropdowns</span></div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-md)"><span class="shadow-name">--shadow-md</span><span class="shadow-desc">Cards hover, popovers</span></div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-lg)"><span class="shadow-name">--shadow-lg</span><span class="shadow-desc">Menus, dialogs</span></div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-xl)"><span class="shadow-name">--shadow-xl</span><span class="shadow-desc">Modais, notificações</span></div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-2xl)"><span class="shadow-name">--shadow-2xl</span><span class="shadow-desc">Elevação máxima</span></div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-brand)"><span class="shadow-name">--shadow-brand</span><span class="shadow-desc">Glow azul do botão</span></div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-brand-strong)"><span class="shadow-name">--shadow-brand-strong</span><span class="shadow-desc">Glow intenso CTA</span></div>
+        <div class="shadow-card" style="box-shadow:inset 0px 2px 4px 0px rgba(15,31,92,0.06)"><span class="shadow-name">--shadow-inner</span><span class="shadow-desc">Inputs pressionados</span></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ══ BORDER RADIUS ══ -->
+    <section class="section" id="radius">
+      <h2 class="section-title">Border Radius</h2>
+      <p class="section-sub">Escala de arredondamento. Tokens <code style="font-family:var(--font-mono);font-size:0.875em;color:var(--text-brand)">--border-radius-*</code></p>
+      <div class="radius-grid">
+        <div class="radius-item"><div class="radius-box" style="border-radius:0"></div><div class="radius-label">none<br>0px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:2px"></div><div class="radius-label">xs<br>2px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-label">sm<br>4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-label">md<br>8px — btn/input</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-label">lg<br>12px — cards</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-label">xl<br>16px — modais</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:24px"></div><div class="radius-label">2xl<br>24px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:32px"></div><div class="radius-label">3xl<br>32px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px"></div><div class="radius-label">full<br>9999px — pills</div></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ══ MOTION ══ -->
+    <section class="section" id="motion">
+      <h2 class="section-title">Motion</h2>
+      <p class="section-sub">Arquétipo Sábio + Herói: preciso, proposital, confiante. Hover nos cards para demonstração.</p>
+
+      <div style="margin-bottom:24px">
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:12px">Durations</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:8px;padding:10px 16px;text-align:center">
+            <div style="font-family:var(--font-mono);font-size:0.875rem;font-weight:600;color:var(--text-primary)">0ms</div>
+            <div style="font-size:0.6875rem;color:var(--text-tertiary)">instant</div>
+          </div>
+          <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:8px;padding:10px 16px;text-align:center">
+            <div style="font-family:var(--font-mono);font-size:0.875rem;font-weight:600;color:var(--text-brand)">100ms</div>
+            <div style="font-size:0.6875rem;color:var(--text-tertiary)">fast ← cores</div>
+          </div>
+          <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:8px;padding:10px 16px;text-align:center">
+            <div style="font-family:var(--font-mono);font-size:0.875rem;font-weight:600;color:var(--text-brand)">200ms</div>
+            <div style="font-size:0.6875rem;color:var(--text-tertiary)">normal ← padrão</div>
+          </div>
+          <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:8px;padding:10px 16px;text-align:center">
+            <div style="font-family:var(--font-mono);font-size:0.875rem;font-weight:600;color:var(--text-primary)">300ms</div>
+            <div style="font-size:0.6875rem;color:var(--text-tertiary)">slow ← entrances</div>
+          </div>
+          <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:8px;padding:10px 16px;text-align:center">
+            <div style="font-family:var(--font-mono);font-size:0.875rem;font-weight:600;color:var(--text-primary)">500ms</div>
+            <div style="font-size:0.6875rem;color:var(--text-tertiary)">slower</div>
+          </div>
+          <div style="background:var(--bg-primary);border:1px solid var(--border-subtle);border-radius:8px;padding:10px 16px;text-align:center">
+            <div style="font-family:var(--font-mono);font-size:0.875rem;font-weight:600;color:var(--text-primary)">800ms</div>
+            <div style="font-size:0.6875rem;color:var(--text-tertiary)">slowest</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="motion-grid">
+        <div class="motion-card">
+          <button class="motion-demo-btn transition-fast">Hover me</button>
+          <div class="motion-label">Fast + Default easing</div>
+          <div class="motion-sublabel">100ms · cubic-bezier(0.4,0,0.2,1)</div>
+        </div>
+        <div class="motion-card">
+          <button class="motion-demo-btn transition-spring">Hover me</button>
+          <div class="motion-label">Slow + Spring easing</div>
+          <div class="motion-sublabel">300ms · cubic-bezier(0.34,1.56,0.64,1)</div>
+        </div>
+        <div class="motion-card">
+          <button class="motion-demo-btn transition-slow">Hover me</button>
+          <div class="motion-label">Slower + Out easing</div>
+          <div class="motion-sublabel">500ms · cubic-bezier(0,0,0.2,1)</div>
+        </div>
+        <div class="motion-card">
+          <div style="font-size:0.875rem;font-weight:600;color:var(--text-primary);margin-bottom:8px" class="pulse-el">Pulse Animation</div>
+          <div class="motion-label">animate-pulse</div>
+          <div class="motion-sublabel">2s · ease · infinite</div>
+        </div>
+        <div class="motion-card">
+          <span class="spin-el">⚙️</span>
+          <div class="motion-label">animate-spin</div>
+          <div class="motion-sublabel">1s · linear · infinite</div>
+        </div>
+        <div class="motion-card">
+          <div style="width:100%;height:12px;background:linear-gradient(90deg,var(--bg-secondary) 25%,var(--bg-active) 50%,var(--bg-secondary) 75%);background-size:200% 100%;animation:shimmer-demo 1.5s infinite;border-radius:6px"></div>
+          <div class="motion-label">Skeleton / Shimmer</div>
+          <div class="motion-sublabel">1.5s · linear · infinite</div>
+        </div>
+      </div>
+      <style>
+        @keyframes shimmer-demo { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+      </style>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ══ SEMANTIC TOKENS ══ -->
+    <section class="section" id="semantic">
+      <h2 class="section-title">Tokens Semânticos</h2>
+      <p class="section-sub">Use sempre os tokens semânticos no código — eles mudam automaticamente no dark mode.</p>
+
+      <div class="token-table-wrapper" style="margin-bottom:20px">
+        <div style="padding:12px 16px;background:var(--bg-secondary);border-bottom:1px solid var(--border-subtle)">
+          <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-tertiary)">Text Tokens</span>
+        </div>
+        <table class="token-table">
+          <thead><tr><th>Token</th><th>Light Value</th><th>Dark Value</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td class="token-name">--text-primary</td><td><span class="token-color-dot" style="background:#212529"></span><span class="token-value">#212529</span></td><td><span class="token-color-dot" style="background:#F8F9FA;border:1px solid #dee2e6"></span><span class="token-value">#F8F9FA</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Corpo principal, headings</td></tr>
+            <tr><td class="token-name">--text-secondary</td><td><span class="token-color-dot" style="background:#868E96"></span><span class="token-value">#868E96</span></td><td><span class="token-color-dot" style="background:#CED4DA"></span><span class="token-value">#CED4DA</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Subtítulos, metadados</td></tr>
+            <tr><td class="token-name">--text-tertiary</td><td><span class="token-color-dot" style="background:#ADB5BD"></span><span class="token-value">#ADB5BD</span></td><td><span class="token-color-dot" style="background:#ADB5BD"></span><span class="token-value">#ADB5BD</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Placeholders, captions</td></tr>
+            <tr><td class="token-name">--text-disabled</td><td><span class="token-color-dot" style="background:#CED4DA"></span><span class="token-value">#CED4DA</span></td><td><span class="token-color-dot" style="background:#868E96"></span><span class="token-value">#868E96</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Elementos desabilitados</td></tr>
+            <tr><td class="token-name">--text-brand</td><td><span class="token-color-dot" style="background:#2D52EF"></span><span class="token-value">#2D52EF</span></td><td><span class="token-color-dot" style="background:#A5B0FF"></span><span class="token-value">#A5B0FF</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Links, emphasis de marca</td></tr>
+            <tr><td class="token-name">--text-on-action</td><td><span class="token-color-dot" style="background:#FFFFFF;border:1px solid #dee2e6"></span><span class="token-value">#FFFFFF</span></td><td><span class="token-color-dot" style="background:#FFFFFF;border:1px solid #dee2e6"></span><span class="token-value">#FFFFFF</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Texto sobre botões coloridos</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="token-table-wrapper" style="margin-bottom:20px">
+        <div style="padding:12px 16px;background:var(--bg-secondary);border-bottom:1px solid var(--border-subtle)">
+          <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-tertiary)">Background Tokens</span>
+        </div>
+        <table class="token-table">
+          <thead><tr><th>Token</th><th>Light Value</th><th>Dark Value</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td class="token-name">--bg-page</td><td><span class="token-color-dot" style="background:#F8F9FA;border:1px solid #dee2e6"></span><span class="token-value">#F8F9FA</span></td><td><span class="token-color-dot" style="background:#080F2E"></span><span class="token-value">#080F2E</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Fundo da página</td></tr>
+            <tr><td class="token-name">--bg-primary</td><td><span class="token-color-dot" style="background:#FFFFFF;border:1px solid #dee2e6"></span><span class="token-value">#FFFFFF</span></td><td><span class="token-color-dot" style="background:#0F1F5C"></span><span class="token-value">#0F1F5C</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Cards, containers</td></tr>
+            <tr><td class="token-name">--bg-elevated</td><td><span class="token-color-dot" style="background:#FFFFFF;border:1px solid #dee2e6"></span><span class="token-value">#FFFFFF</span></td><td><span class="token-color-dot" style="background:#1A2870"></span><span class="token-value">#1A2870</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Dropdowns, modais</td></tr>
+            <tr><td class="token-name">--bg-brand</td><td><span class="token-color-dot" style="background:#0F1F5C"></span><span class="token-value">#0F1F5C</span></td><td><span class="token-color-dot" style="background:#0F1F5C"></span><span class="token-value">#0F1F5C</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Hero sections, banners</td></tr>
+            <tr><td class="token-name">--bg-brand-subtle</td><td><span class="token-color-dot" style="background:#E8EEFF"></span><span class="token-value">#E8EEFF</span></td><td><span class="token-color-dot" style="background:rgba(232,238,255,0.08)"></span><span class="token-value">rgba(232,238,255,0.08)</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Highlighted items</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="token-table-wrapper">
+        <div style="padding:12px 16px;background:var(--bg-secondary);border-bottom:1px solid var(--border-subtle)">
+          <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-tertiary)">Action & Border Tokens</span>
+        </div>
+        <table class="token-table">
+          <thead><tr><th>Token</th><th>Light Value</th><th>Dark Value</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td class="token-name">--action-primary</td><td><span class="token-color-dot" style="background:#2D52EF"></span><span class="token-value">#2D52EF</span></td><td><span class="token-color-dot" style="background:#2D52EF"></span><span class="token-value">#2D52EF</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Botão primário bg</td></tr>
+            <tr><td class="token-name">--action-primary-hover</td><td><span class="token-color-dot" style="background:#2344D4"></span><span class="token-value">#2344D4</span></td><td><span class="token-color-dot" style="background:#7A88FF"></span><span class="token-value">#7A88FF</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Hover state do primário</td></tr>
+            <tr><td class="token-name">--border-default</td><td><span class="token-color-dot" style="background:#DEE2E6"></span><span class="token-value">#DEE2E6</span></td><td><span class="token-color-dot" style="background:rgba(255,255,255,0.12)"></span><span class="token-value">rgba(255,255,255,0.12)</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Bordas padrão</td></tr>
+            <tr><td class="token-name">--border-focus</td><td><span class="token-color-dot" style="background:#2D52EF"></span><span class="token-value">#2D52EF</span></td><td><span class="token-color-dot" style="background:#7A88FF"></span><span class="token-value">#7A88FF</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Focus ring de inputs</td></tr>
+            <tr><td class="token-name">--border-error</td><td><span class="token-color-dot" style="background:#EF4444"></span><span class="token-value">#EF4444</span></td><td><span class="token-color-dot" style="background:#EF4444"></span><span class="token-value">#EF4444</span></td><td style="color:var(--text-secondary);font-size:0.8125rem">Input com erro</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('theme-label').textContent = isDark ? 'Dark Mode' : 'Light Mode';
+    }
+
+    // Active tab on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const tabs = document.querySelectorAll('.nav-tab');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        if (t.getAttribute('href') === '#' + current) t.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
